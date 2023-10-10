@@ -1,0 +1,23 @@
+make -f nbproject/Makefile-Config_2.mk SUBPROJECTS= .clean-conf
+make[1]: Entering directory '/home/sirdep/MPLABXProjects/PROJ_OPDR1.X'
+rm -f  -r .ca/build/Config_2/production
+rm -f  -r .ca/dist/Config_2/production
+make[1]: Leaving directory '/home/sirdep/MPLABXProjects/PROJ_OPDR1.X'
+[32mCLEAN SUCCESSFUL (total time: 51ms)[0m
+make -f nbproject/Makefile-Config_2.mk SUBPROJECTS= .build-conf
+make[1]: Entering directory '/home/sirdep/MPLABXProjects/PROJ_OPDR1.X'
+make  -f nbproject/Makefile-Config_2.mk .ca/dist/Config_2/production/PROJ_OPDR1.X.production.hex
+make[2]: Entering directory '/home/sirdep/MPLABXProjects/PROJ_OPDR1.X'
+"/opt/microchip/xc8/v2.45/bin/xc8-cc"  -mcpu=16F887 -c   -mdfp="/home/sirdep/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.5.151/xc8"  -fno-short-double -fno-short-float -O2 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../../../../opt/microchip/xc8/v2.45/pic/include/c90" -I"../../../../opt/microchip/xc8/v2.45/pic/include/c99" -I"../../../../opt/microchip/xc8/v2.45/pic/include/legacy" -I"../../../../opt/microchip/xc8/v2.45/pic/include/proc" -mwarn=-3 -Wa,-a -DXPRJ_Config_2=Config_2  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall -mno-default-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o .ca/build/Config_2/production/newmain.p1 newmain.c 
+::: advisory: (2100) using the C99 standard library with the selected device may result in larger code and data usage
+newmain.c:84:5: error: no member named 'IOCBbits' in 'INTCONbits_t'
+    IOCBbits.IOCB4 = 1;
+    ^
+1 error generated.
+(908) exit status = 1
+make[2]: Leaving directory '/home/sirdep/MPLABXProjects/PROJ_OPDR1.X'
+make[1]: Leaving directory '/home/sirdep/MPLABXProjects/PROJ_OPDR1.X'
+[31mmake[2]: *** [nbproject/Makefile-Config_2.mk:104: .ca/build/Config_2/production/newmain.p1] Error 1
+make[1]: *** [nbproject/Makefile-Config_2.mk:85: .build-conf] Error 2
+make: *** [nbproject/Makefile-impl.mk:39: .build-impl] Error 2[0m
+[31mBUILD FAILED (exit value 2, total time: 555ms)[0m

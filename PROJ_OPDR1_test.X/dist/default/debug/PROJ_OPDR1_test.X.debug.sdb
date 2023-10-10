@@ -1,0 +1,95 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F887 ]
+[d frameptr 0 ]
+"10 /opt/microchip/xc8/v2.45/pic/sources/c99/common/sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 /opt/microchip/xc8/v2.45/pic/sources/c99/common/Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 /opt/microchip/xc8/v2.45/pic/sources/c99/pic/__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"45 /home/sirdep/MPLABXProjects/PROJ_OPDR1_test.X/newmain.c
+[v _main main `(v  1 e 1 0 ]
+"88
+[v _pic_init pic_init `(v  1 e 1 0 ]
+"96
+[v _init_gpio init_gpio `(v  1 e 1 0 ]
+"106
+[v _init_osc init_osc `(v  1 e 1 0 ]
+"166 /home/sirdep/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.5.151/xc8/pic/include/proc/pic16f887.h
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+[s S26 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"245
+[u S35 . 1 `S26 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES35  1 e 1 @6 ]
+"1416
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+[s S57 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"1495
+[u S66 . 1 `S57 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES66  1 e 1 @134 ]
+[s S80 . 1 `uc 1 SCS 1 0 :1:0 
+`uc 1 LTS 1 0 :1:1 
+`uc 1 HTS 1 0 :1:2 
+`uc 1 OSTS 1 0 :1:3 
+`uc 1 IRCF 1 0 :3:4 
+]
+"1882
+[s S86 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 IRCF0 1 0 :1:4 
+`uc 1 IRCF1 1 0 :1:5 
+`uc 1 IRCF2 1 0 :1:6 
+]
+[u S91 . 1 `S80 1 . 1 0 `S86 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES91  1 e 1 @143 ]
+"3387
+[v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
+"3449
+[v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
+"45 /home/sirdep/MPLABXProjects/PROJ_OPDR1_test.X/newmain.c
+[v _main main `(v  1 e 1 0 ]
+{
+"51
+[v main@OddCounter OddCounter `i  1 a 2 9 ]
+"49
+[v main@ENC_State ENC_State `i  1 a 2 7 ]
+"50
+[v main@counter counter `i  1 a 2 5 ]
+"48
+[v main@ENC_Last_State ENC_Last_State `i  1 a 2 3 ]
+"86
+} 0
+"88
+[v _pic_init pic_init `(v  1 e 1 0 ]
+{
+"93
+} 0
+"106
+[v _init_osc init_osc `(v  1 e 1 0 ]
+{
+"116
+} 0
+"96
+[v _init_gpio init_gpio `(v  1 e 1 0 ]
+{
+"103
+} 0

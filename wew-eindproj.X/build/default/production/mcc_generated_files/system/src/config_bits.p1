@@ -1,0 +1,33 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"37 mcc_generated_files/system/src/config_bits.c
+[p x FOSC  =  INTOSC     ]
+"38
+[p x WDTE  =  OFF     ]
+"39
+[p x PWRTE  =  OFF     ]
+"40
+[p x MCLRE  =  ON     ]
+"41
+[p x CP  =  OFF     ]
+"42
+[p x CPD  =  OFF     ]
+"43
+[p x BOREN  =  ON     ]
+"44
+[p x CLKOUTEN  =  OFF     ]
+"45
+[p x IESO  =  ON     ]
+"46
+[p x FCMEN  =  ON     ]
+"49
+[p x WRT  =  OFF     ]
+"50
+[p x PLLEN  =  OFF     ]
+"51
+[p x STVREN  =  ON     ]
+"52
+[p x BORV  =  LO     ]
+"53
+[p x LVP  =  OFF     ]
+"54
+[p x DEBUG  =  OFF     ]

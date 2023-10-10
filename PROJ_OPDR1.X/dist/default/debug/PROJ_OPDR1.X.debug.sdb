@@ -1,0 +1,112 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F887 ]
+[d frameptr 0 ]
+"10 /opt/microchip/xc8/v2.45/pic/sources/c99/common/sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 /opt/microchip/xc8/v2.45/pic/sources/c99/common/Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 /opt/microchip/xc8/v2.45/pic/sources/c99/pic/__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"54 /home/sirdep/MPLABXProjects/PROJ_OPDR1.X/newmain.c
+[v _main main `(v  1 e 1 0 ]
+"101
+[v _pic_init pic_init `(v  1 e 1 0 ]
+"107
+[v _init_osc init_osc `(v  1 e 1 0 ]
+"121
+[v _init_gpio init_gpio `(v  1 e 1 0 ]
+"166 /home/sirdep/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.5.151/xc8/pic/include/proc/pic16f887.h
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+[s S129 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"245
+[u S138 . 1 `S129 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES138  1 e 1 @6 ]
+[s S91 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"482
+[s S100 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+[u S105 . 1 `S91 1 . 1 0 `S100 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES105  1 e 1 @11 ]
+[s S65 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+"1366
+[s S72 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+]
+[u S76 . 1 `S65 1 . 1 0 `S72 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES76  1 e 1 @129 ]
+"1416
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"1478
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1862
+[v _OSCCON OSCCON `VEuc  1 e 1 @143 ]
+[s S39 . 1 `uc 1 IOCB 1 0 :8:0 
+]
+"2436
+[s S41 . 1 `uc 1 IOCB0 1 0 :1:0 
+`uc 1 IOCB1 1 0 :1:1 
+`uc 1 IOCB2 1 0 :1:2 
+`uc 1 IOCB3 1 0 :1:3 
+`uc 1 IOCB4 1 0 :1:4 
+`uc 1 IOCB5 1 0 :1:5 
+`uc 1 IOCB6 1 0 :1:6 
+`uc 1 IOCB7 1 0 :1:7 
+]
+[u S50 . 1 `S39 1 . 1 0 `S41 1 . 1 0 ]
+[v _IOCBbits IOCBbits `VES50  1 e 1 @150 ]
+"3387
+[v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
+"39 /home/sirdep/MPLABXProjects/PROJ_OPDR1.X/newmain.c
+[v _lights lights `uc  1 e 1 0 ]
+"40
+[v _direction direction `uc  1 e 1 0 ]
+"54
+[v _main main `(v  1 e 1 0 ]
+{
+"99
+} 0
+"101
+[v _pic_init pic_init `(v  1 e 1 0 ]
+{
+"105
+} 0
+"107
+[v _init_osc init_osc `(v  1 e 1 0 ]
+{
+"119
+} 0
+"121
+[v _init_gpio init_gpio `(v  1 e 1 0 ]
+{
+"132
+} 0
