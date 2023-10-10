@@ -2,7 +2,7 @@
  * Universal startup code structure for new and simple projects
  * 
  * PIC   : 16F1829
- * Board : PICkit 3 Low Pin Count Demo Board (PK3LPCDB) or breadboard
+ * Board : breadboard
  * Date  : A long time ago, in a galaxy far away
  * 
  **********************************************************************/
@@ -118,6 +118,9 @@ void init_gpio(void)
     TRISAbits.TRISA2 = 1;
     ANSELAbits.ANSA2 = 0;
     LED = 0;
+    INTCONbits.INTE =1; // enable interrupt
+    OPTION_REGbits.INTEDG = 0; //
+    INTCONbits.GIE = 1;
     }
 /* End-of Init functions -------------------------------------------- */
 
@@ -142,7 +145,14 @@ void led_blink(int counter)
 
 /* Interrupt Service Routine (ISR) hereafter -- keep with main module!*/
 
-void __interrupt() isr();
+void __interrupt() isr(void)
+    {
+    if (INTCONbits.INTF)
+        {
+        LATCbits.LATC0 ^= 0;
+        INTCONbits.INTF = 0;
+        }
+    }
 
 /* End-of Interrupt Service Routine (ISR) ----------------------------*/
 
