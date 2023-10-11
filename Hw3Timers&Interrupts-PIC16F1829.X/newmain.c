@@ -51,7 +51,7 @@
 #define LED LATCbits.LATC0
 #define BUTTON PORTAbits.RA2
 // ...
-
+#define HALF_SECOND_OFFSET 34285
 /* End-of hardware / state naming scheme -----------------------------*/
 
 //>>
@@ -69,21 +69,9 @@ void main(void)
     {
     // Do all initialisation here
     pic_init();
-    int counter = 0;
+    //    int counter = 0;
     while (1)
         {
-        // Main program loop here
-        switch (BUTTON)
-            {
-            case 0:
-                counter++;
-                led_blink(counter);
-                if (counter > 9)
-                    {
-                    counter = 0;
-                    }
-                break;
-            }
         }
     }
 
@@ -115,11 +103,19 @@ void init_osc(void)
 void init_gpio(void)
     {
     TRISCbits.TRISC0 = 0;
-    TRISAbits.TRISA2 = 1;
-    ANSELAbits.ANSA2 = 0;
+    //    TRISAbits.TRISA2 = 1;
+    ANSELA = 0;
     LED = 0;
-    INTCONbits.INTE =1; // enable interrupt
+    INTCONbits.INTE = 1; // enable interrupt
     OPTION_REGbits.INTEDG = 0; //
+
+    T1CON = 0x10; // Fosc/4, prescaler 1:2, tmr1 off
+    T1GCON = 0x00; // Timer 1 Gate disabled
+    TMR1 = HALF_SECOND_OFFSET; // 31250 * 16 us = exactly 500 ms
+    TMR1IE = 1; // PIE1.TMR1IE: Enable timer1 interrupt
+    PEIE = 1; // INTCON.PEIE: Enable periph. interr.
+
+    TMR1ON = 1;
     INTCONbits.GIE = 1;
     }
 /* End-of Init functions -------------------------------------------- */
@@ -147,12 +143,20 @@ void led_blink(int counter)
 
 void __interrupt() isr(void)
     {
-    if (INTCONbits.INTF)
+    if (BUTTON == 0)
         {
-        LATCbits.LATC0 ^= 0;
-        INTCONbits.INTF = 0;
+        if (TMR1IF)
+            {
+            TMR1IF = 0; // Mark interrupt flag as handled
+            TMR1 = HALF_SECOND_OFFSET; // Restart timer1
+            // Do timing-critical stuff right now, if it?s non-CPU-intensive (e.g. toggle LED):
+            LED ^= 1;
+            // You may also set a handler flag for non-critical stuff that is
+            // to be handled in the main program loop (irrelevant in this case)
+            }
         }
     }
+
 
 /* End-of Interrupt Service Routine (ISR) ----------------------------*/
 
