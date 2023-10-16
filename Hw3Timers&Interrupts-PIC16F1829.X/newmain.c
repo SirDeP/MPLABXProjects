@@ -8,18 +8,8 @@
  **********************************************************************/
 
 #include <xc.h>                 // PIC hardware mapping
-// This auto-determines (using sub-includes, #pragma's, and IDE-
-// controlled data sources) that 
-// /opt/microchip/xc8/v<compiler_version>/pic/include/proc/pic16f1829.h
-// should be included ...
-// As for Windoze, `/opt' is probably somewhere in the user's AppData 
-// folder ...
 
 #define _XTAL_FREQ      125000  // Used by the XC8 delay_ms(x) macro (125 kHz)
-
-// CONFIG WORD 1 @ flash program memory location 0x8007
-// For acceptable values use both datasheet and this file:
-// /opt/microchip/xc8/v<compiler_version>/docs/pic_chipinfo.html
 
 #pragma config FOSC     = 0x4   // xor INTOSC (name from IDE database)
 #pragma config WDTE     = 0x0   // OFF
@@ -32,12 +22,6 @@
 #pragma config IESO     = OFF
 #pragma config FCMEN    = OFF
 
-// XOR (not recommended)
-// #pragma config CONFIG1 = 0b (00)00 1111 1010 0100
-// i.e. (don't do this)
-// #pragma config CONFIG1 = 0x0FA4
-
-// CONFIG WORD 2 @ flash program memory location 0x8008
 #pragma config WRT      = OFF
 #pragma config PLLEN    = OFF
 #pragma config STVREN   = OFF
@@ -50,59 +34,43 @@
 #define LED_2   LATCbits.LATC1
 #define LED_4   LATCbits.LATC3
 
-#define BUTTON_1 PORTAbits.RA2 // de Button
-
-#define F_osc 125000        // FREQUENTIE van osccilator
-#define PRESCALER_TMR1 8    // Deze staat hier op 8, maar als je dze zou weizigen moet je hem ook daadwerkelijk verandere bij de T1CONbits.T1CKPS
-#define MAX_TMR1_PRELOAD    65536 // Maximale waarde van de TMR1 PRELOAD, voorbij dit getal geeft overflow
+#define F_osc 125000        // OSC frequency
+#define PRESCALER_TMR1 8    // Prescaler of TIMER1, if changed also change T1CONbits.T1CKPS
+#define MAX_TMR1_PRELOAD    65536 // MAX value of TMR1 Preload, more than this is overflow
 
 #define UITPERCENTAGE 0.1 // (std: 10%)
-#define PULSDELER 2 // (std: 10%)
+#define PULSDELER 2 // halves T_on each time
 
 
-#define NUM_ROUNDS 15 // Het aantal 'rondes' dat we willen uitvoeren
+#define NUM_ROUNDS 15 // Total amount of executable rounds
 
 int timer_opname_100ms = 0;
-int release = 0;
-int release_2 = 0;
+int Release = 0;
+int Release2 = 0;
 
-int button_1_getriggerd = 1;
+int button_triggered = 1;
 
-int aan_uit_schakelaar = 0;
+int OnOfSwitch = 0;
 
-double tijd_opname = 0; // tijd_opname, aanname van 100 eenheden voor dit voorbeelddouble tijd_opname = (timer_opname_100ms / 50);
-int index_counter = 0;
-// Arrays om de aan-tijd en uit-tijd voor elke ronde op te slaan
-long double tijd_aan[NUM_ROUNDS + 1];
-long double tijd_uit[NUM_ROUNDS + 1];
+double Recorded_Time = 0; // Record Time
+int CurrentRound = 0; // Current Round
+// Arrays to calculate Time_On and Time_Off for every round
+long double Time_On[NUM_ROUNDS + 1];
+long double Time_Off[NUM_ROUNDS + 1];
 double preload_calc_on[NUM_ROUNDS + 1];
 double preload_calc_off[NUM_ROUNDS + 1];
-/* Hardware / state naming scheme ------------------------------------*/
-
-// ...
-//lol
-/* End-of hardware / state naming scheme -----------------------------*/
-
-//>>
-
-/* Forward function declarations + main function hereafter -----------*/
 
 void pic_init(void);
 void init_gpio(void);
 void init_osc(void);
 void timer_calc(void);
 
-// ... more init function declarations here, one per each subsystem !
-
-// ... and even more function declarations here, for module behaviors !
-
 void main(void)
     {
-    // Do all initialisation here
     pic_init();
     while (1)
         {
-        // Leeg :P
+        // Empty as the void
         }
     }
 
@@ -127,24 +95,20 @@ void init_osc(void)
 /* End-of Init functions -------------------------------------------- */
 void init_gpio(void)
     {
-    /* Button en LED init */
-    TRISAbits.TRISA2 = 1; // A2 (BUTTON) moet op input ingesteld worden
-    TRISC = 0; // Gooi de hele C register op output, want daar zitten de LED's
-    ANSELAbits.ANSA2 = 0; // Analog UIT voor button
-    LED_4 = 0; // LED 4 is de PROCES indicator
+    /* Button and LED init */
+    TRISAbits.TRISA2 = 1; // A2 (BUTTON) is Input
+    TRISC = 0; // Reg C is output
+    ANSELAbits.ANSA2 = 0; // Analog OFF for button
+    LED_4 = 0; // LED 4 = Program calculation
+    LED_2 = 1; // LED 2 = Stopwatch (500ms)
     LED_1 = 0; // LED 1 is de Stopwatch licht plotter
-    LED_2 = 1; // LED 2 is de "om de halve seconde lichtje" indicator
-
-//    /* TMR1 config/init */
-//    T1CON = 0x10;
-//    T1GCON = 0x00;
-//    T1CONbits.T1CKPS = 0b11; // Prescaler staat op 8 (3 in bin voor config)
-/* TMR1 config/init */
-    T1CONbits.TMR1CS = 0b00; // DE clock source select bits (F_osc)
+    
+    /* TMR1 config and init */
+    T1CONbits.TMR1CS = 0b00; // Clock source select bits (F_OSC)
     T1CONbits.T1OSCEN = 0b1;
     T1CONbits.nT1SYNC = 0b1;
     T1CONbits.TMR1ON = 0b1;
-    T1CONbits.T1CKPS = 0b11; // Prescaler staat op 8 (3 in bin voor config)
+    T1CONbits.T1CKPS = 0b11; // Prescaler = 1:8
     
     T1GCON = 0b00000000;
 
@@ -163,49 +127,47 @@ void init_gpio(void)
     
     TMR2ON = 1;
     TMR1 = 61629; //TMR1 = 65047; //1sec=64560;
-    //TMR2 = 122;
     }
 
 //>>
 
 /* Interrupt Service Routine (ISR) hereafter -- keep with main module!*/
-
 void timer_calc(void)
     {
-    LED_2 = 0; // Zet de indicator LED uit
-    LED_4 = 1; // Laat zien met LED_4 hoelang hij aan het calculeren is (AAN)
+    LED_2 = 0; // Turn Indicator off
+    LED_4 = 1; // Turn LED4 on while calculating to show delay
     for (int round = 0; round <= NUM_ROUNDS-1; round++)
         {
         if (round == 0)
             {
-            tijd_aan[round] = tijd_opname; // (1 << (round)
-            tijd_uit[round] = UITPERCENTAGE * tijd_aan[round];
-            tijd_aan[round + 1] = tijd_aan[round] / PULSDELER;
+            Time_On[round] = Recorded_Time; // (1 << (round)
+            Time_Off[round] = UITPERCENTAGE * Time_On[round];
+            Time_On[round + 1] = Time_On[round] / PULSDELER;
             }
         else
-            tijd_aan[round + 1] = tijd_aan[round] / PULSDELER; //  tijd_aan[round] = tijd_opname / (powf(round,PULSDELER)); // (1 << (round)
-        tijd_uit[round+1] = UITPERCENTAGE * tijd_aan[round+1];
+            Time_On[round + 1] = Time_On[round] / PULSDELER; 
+        Time_Off[round+1] = UITPERCENTAGE * Time_On[round+1];
         }
     for (int round = 0; round <= NUM_ROUNDS; round++)
-        {
-        preload_calc_on[round] = (double)(-1 * (((F_osc / 4) / PRESCALER_TMR1) * tijd_aan[round] - MAX_TMR1_PRELOAD));
-        preload_calc_off[round] = (double)(-1 * (((F_osc / 4) / PRESCALER_TMR1) * tijd_uit[round] - MAX_TMR1_PRELOAD));
+        { //Precalculate the time on and off for compatability with the TMR register
+        preload_calc_on[round] = (double)(-1 * (((F_osc / 4) / PRESCALER_TMR1) * Time_On[round] - MAX_TMR1_PRELOAD));
+        preload_calc_off[round] = (double)(-1 * (((F_osc / 4) / PRESCALER_TMR1) * Time_Off[round] - MAX_TMR1_PRELOAD));
         }
-    LED_4 = 0; // Laat zien met LED_4 hoelang hij aan het calculeren is (UIT)
+    LED_4 = 0; // Turn LED4 off when finished
     }
 
 void __interrupt() isr(void)
     {
-    if (TMR2IF && button_1_getriggerd == 1) // Als knop getriggerd wordt met rising edge:
+    if (TMR2IF && button_triggered == 1) // If button triggered with rising edge:
         {
-        TMR2IF = 0; // Hiervoor gebruik ik TMR2
-        LED_2 ^= 1; // Halve seconde LED indicator
+        TMR2IF = 0; // Run stopwatch using TIMER2
+        LED_2 ^= 1; // half-second LED indicator
         }
 
-    if (INTCONbits.INTF) // Button event handelaar:
+    if (INTCONbits.INTF) // Button event handler:
         {
-        button_1_getriggerd ^= 1;
-        switch (button_1_getriggerd)
+        button_triggered ^= 1;
+        switch (button_triggered)
             {
             case 0:
                 OPTION_REGbits.INTEDG = 0; //
@@ -217,52 +179,50 @@ void __interrupt() isr(void)
                 break;
             }
         }
-    // Als TMR1Flag=1 en button is ingedrukt EN hij is nog niet los gelaten doe:
-    if (TMR1IF && button_1_getriggerd == 1 && release == 0)
+    // If TMR1Flag=1 and button is Pressed AND has not been triggered:
+    if (TMR1IF && button_triggered == 1 && Release == 0)
         {
-        release_2 = 1;
+        Release2 = 1;
         TMR1IF = 0;
-        timer_opname_100ms += 1;
-        tijd_opname = (timer_opname_100ms); // /50
+        Recorded_Time += 1;
         TMR1 = 61629;
         }
-        // Als button is NIET ingedrukt EN hij is los gelaten doe:
-    else if (button_1_getriggerd == 0 && release == 0 && release_2 == 1)
+        // If button is NOT Pressed AND has been triggered:
+    else if (button_triggered == 0 && Release == 0 && Release2 == 1)
         {
         timer_calc();
-        release = 1;
+        Release = 1;
         }
 
-    // Zodra release weer 1 wordt, begin het afspelen van de stopwatch
-    if (aan_uit_schakelaar == 0 && TMR1IF && button_1_getriggerd == 0 && release == 1)
+    // As soon as Release becomes 1, begin playback
+    if (OnOfSwitch == 0 && TMR1IF && button_triggered == 0 && Release == 1)
         {
         LED_1 = 1;
         TMR1IF = 0;
-        TMR1 = (unsigned short) preload_calc_on[index_counter];
+        TMR1 = (unsigned short) preload_calc_on[CurrentRound];
 
-        aan_uit_schakelaar = 1;
+        OnOfSwitch = 1;
         }
-    else if (aan_uit_schakelaar == 1 && TMR1IF && button_1_getriggerd == 0 && release == 1)
+    else if (OnOfSwitch == 1 && TMR1IF && button_triggered == 0 && Release == 1)
         {
         LED_1 = 0;
         TMR1IF = 0;
-        TMR1 = (unsigned short) preload_calc_off[index_counter];
+        TMR1 = (unsigned short) preload_calc_off[CurrentRound]; //load pre-calculated time converted to TMR register format
 
-        index_counter += 1;
-        if (index_counter >= NUM_ROUNDS)
-            aan_uit_schakelaar = -1;
+        CurrentRound += 1; // Goto next round
+        if (CurrentRound >= NUM_ROUNDS)// if finished final round
+            OnOfSwitch = -1;
         else
-            aan_uit_schakelaar = 0;
+            OnOfSwitch = 0; // continue
         }
-    if (aan_uit_schakelaar == -1)
+    if (OnOfSwitch == -1) // Reset variables to begin state
         {
-        timer_opname_100ms = 0;
-        release = 0;
-        release_2 = 0;
-        button_1_getriggerd = 0;
-        aan_uit_schakelaar = 0;
-        tijd_opname = 0; // tijd_opname, aanname van 100 eenheden voor dit voorbeelddouble tijd_opname = (timer_opname_100ms / 50);
-        index_counter = 0;
+        Release = 0;
+        Release2 = 0;
+        button_triggered = 0;
+        OnOfSwitch = 0;
+        Recorded_Time = 0;
+        CurrentRound = 0;
         }
     }
 /* End-of Interrupt Service Routine (ISR) -------------------------------------------*/
