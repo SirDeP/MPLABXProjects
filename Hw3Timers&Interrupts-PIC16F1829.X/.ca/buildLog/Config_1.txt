@@ -1,0 +1,58 @@
+make -f nbproject/Makefile-Config_1.mk SUBPROJECTS= .clean-conf
+make[1]: Entering directory '/home/sirdep/MPLABXProjects/Hw3Timers&Interrupts-PIC16F1829.X'
+rm -f  -r .ca/build/Config_1/production
+rm -f  -r .ca/dist/Config_1/production
+make[1]: Leaving directory '/home/sirdep/MPLABXProjects/Hw3Timers&Interrupts-PIC16F1829.X'
+[32mCLEAN SUCCESSFUL (total time: 51ms)[0m
+make -f nbproject/Makefile-Config_1.mk SUBPROJECTS= .build-conf
+make[1]: Entering directory '/home/sirdep/MPLABXProjects/Hw3Timers&Interrupts-PIC16F1829.X'
+make  -f nbproject/Makefile-Config_1.mk .ca/dist/Config_1/production/Hw3Timers_Interrupts-PIC16F1829.X.production.hex
+make[2]: Entering directory '/home/sirdep/MPLABXProjects/Hw3Timers&Interrupts-PIC16F1829.X'
+"/opt/microchip/xc8/v2.45/bin/xc8-cc"  -mcpu=16F1829 -c   -mdfp="/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8"  -fno-short-double -fno-short-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../../../../opt/microchip/xc8/v2.45/pic/include/c99" -I"../../../../opt/microchip/xc8/v2.45/pic/include/c90" -I"../../../../opt/microchip/xc8/v2.45/pic/include/legacy" -I"../../../../opt/microchip/xc8/v2.45/pic/include/proc" -mwarn=-3 -Wa,-a -DXPRJ_Config_1=Config_1  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall -mno-default-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o .ca/build/Config_1/production/newmain.p1 newmain.c 
+newmain.c:192:38: warning: implicit conversion loses floating-point precision: 'long double' to 'double' [-Wconversion]
+        preload_calc_on[round] = (-1 * (((F_osc / 4) / PRESCALER_TMR1) * tijd_aan[round] - MAX_TMR1_PRELOAD));
+                               ~  ~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+newmain.c:193:39: warning: implicit conversion loses floating-point precision: 'long double' to 'double' [-Wconversion]
+        preload_calc_off[round] = (-1 * (((F_osc / 4) / PRESCALER_TMR1) * tijd_uit[round] - MAX_TMR1_PRELOAD));
+                                ~  ~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2 warnings generated.
+"/opt/microchip/xc8/v2.45/bin/xc8-cc"  -mcpu=16F1829 -Wl,-Map=.ca/dist/Config_1/production/Hw3Timers_Interrupts-PIC16F1829.X.production.map  -DXPRJ_Config_1=Config_1  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8"  -fno-short-double -fno-short-float -O1 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../../../../opt/microchip/xc8/v2.45/pic/include/c99" -I"../../../../opt/microchip/xc8/v2.45/pic/include/c90" -I"../../../../opt/microchip/xc8/v2.45/pic/include/legacy" -I"../../../../opt/microchip/xc8/v2.45/pic/include/proc" -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall -mno-default-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto      -Wl,--memorysummary,.ca/dist/Config_1/production/memoryfile.xml -o .ca/dist/Config_1/production/Hw3Timers_Interrupts-PIC16F1829.X.production.elf  .ca/build/Config_1/production/newmain.p1     
+[31mmake[2]: *** [nbproject/Makefile-Config_1.mk:133: .ca/dist/Config_1/production/Hw3Timers_Interrupts-PIC16F1829.X.production.hex] Error 1
+make[1]: *** [nbproject/Makefile-Config_1.mk:85: .build-conf] Error 2
+make: *** [nbproject/Makefile-impl.mk:39: .build-impl] Error 2[0m
+::: error: (1347) can't find 0xF9 words (0xf9 withtotal) for psect "text7_split_3" in class "CODE" (largest unused contiguous range 0xBC)
+Non line specific message::: advisory: (1493) updated 32-bit floating-point routines might trigger "can't find space" messages appearing after updating to this release; consider using the smaller 24-bit floating-point types
+::: error: (1347) can't find 0xF2 words (0xf2 withtotal) for psect "text7_split_9" in class "CODE" (largest unused contiguous range 0xBC)
+::: error: (1347) can't find 0xB4 words (0xb4 withtotal) for psect "text7_split_10" in class "CODE" (largest unused contiguous range 0xAC)
+::: error: (1347) can't find 0xB3 words (0xb3 withtotal) for psect "text7" in class "CODE" (largest unused contiguous range 0xAC)
+::: error: (1347) can't find 0xB3 words (0xb3 withtotal) for psect "text7_split_15" in class "CODE" (largest unused contiguous range 0xAC)
+::: error: (1347) can't find 0xAE words (0xae withtotal) for psect "text16" in class "CODE" (largest unused contiguous range 0xAC)
+::: error: (1347) can't find 0x90 words (0x90 withtotal) for psect "text7_split_8" in class "CODE" (largest unused contiguous range 0x1A)
+::: error: (1347) can't find 0x8D words (0x8d withtotal) for psect "text7_split_4" in class "CODE" (largest unused contiguous range 0x1A)
+::: error: (1347) can't find 0x89 words (0x89 withtotal) for psect "text7_split_12" in class "CODE" (largest unused contiguous range 0x1A)
+::: error: (1347) can't find 0x88 words (0x88 withtotal) for psect "text7_split_14" in class "CODE" (largest unused contiguous range 0x1A)
+::: error: (1347) can't find 0x85 words (0x85 withtotal) for psect "text7_split_13" in class "CODE" (largest unused contiguous range 0x1A)
+::: error: (1347) can't find 0x83 words (0x83 withtotal) for psect "text7_split_11" in class "CODE" (largest unused contiguous range 0x1A)
+::: error: (1347) can't find 0x61 words (0x61 withtotal) for psect "text18" in class "CODE" (largest unused contiguous range 0x1A)
+::: error: (1347) can't find 0x33 words (0x33 withtotal) for psect "text6" in class "CODE" (largest unused contiguous range 0x1A)
+::: error: (1347) can't find 0x29 words (0x29 withtotal) for psect "text3" in class "CODE" (largest unused contiguous range 0x1A)
+::: error: (1347) can't find 0x1F words (0x1f withtotal) for psect "text11" in class "CODE" (largest unused contiguous range 0x1A)
+::: error: (1347) can't find 0x1F words (0x1f withtotal) for psect "text13" in class "CODE" (largest unused contiguous range 0x1A)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext7" in class "STRCODE" (largest unused contiguous range 0x3)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext8" in class "STRCODE" (largest unused contiguous range 0x3)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext9" in class "STRCODE" (largest unused contiguous range 0x3)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext10" in class "STRCODE" (largest unused contiguous range 0x3)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext11" in class "STRCODE" (largest unused contiguous range 0x3)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext12" in class "STRCODE" (largest unused contiguous range 0x3)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext13" in class "STRCODE" (largest unused contiguous range 0x3)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext14" in class "STRCODE" (largest unused contiguous range 0x3)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext15" in class "STRCODE" (largest unused contiguous range 0x3)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext16" in class "STRCODE" (largest unused contiguous range 0x3)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext17" in class "STRCODE" (largest unused contiguous range 0x3)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext18" in class "STRCODE" (largest unused contiguous range 0x3)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext19" in class "STRCODE" (largest unused contiguous range 0x3)
+::: advisory: (1) too many errors (31)
+(908) exit status = 1
+make[2]: Leaving directory '/home/sirdep/MPLABXProjects/Hw3Timers&Interrupts-PIC16F1829.X'
+make[1]: Leaving directory '/home/sirdep/MPLABXProjects/Hw3Timers&Interrupts-PIC16F1829.X'
+[31mBUILD FAILED (exit value 2, total time: 2s)[0m

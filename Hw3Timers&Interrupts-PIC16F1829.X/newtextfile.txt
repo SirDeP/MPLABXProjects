@@ -1,0 +1,238 @@
+/***********************************************************************
+ * Universal startup code structure for new and simple projects
+ * 
+ * PIC   : 16F1829
+ * Board : breadboard
+ * Date  : A long time ago, in a galaxy far away
+ * 
+ **********************************************************************/
+
+#include <xc.h>                 // PIC hardware mapping
+// This auto-determines (using sub-includes, #pragma's, and IDE-
+// controlled data sources) that 
+// /opt/microchip/xc8/v<compiler_version>/pic/include/proc/pic16f1829.h
+// should be included ...
+// As for Windoze, `/opt' is probably somewhere in the user's AppData 
+// folder ..
+
+
+
+#define _XTAL_FREQ      500000  // Used by the XC8 delay_ms(x) macro
+
+// CONFIG WORD 1 @ flash program memory location 0x8007
+// For acceptable values use both datasheet and this file:
+// /opt/microchip/xc8/v<compiler_version>/docs/pic_chipinfo.html
+
+#pragma config FOSC     = 0x4   // xor INTOSC (name from IDE database)
+#pragma config WDTE     = 0x0   // OFF
+#pragma config PWRTE    = 0x1   // OFF
+#pragma config MCLRE    = OFF   // etc.
+#pragma config CP       = OFF   // text is the most readable option
+#pragma config CPD      = OFF
+#pragma config BOREN    = ON
+#pragma config CLKOUTEN = OFF
+#pragma config IESO     = OFF
+#pragma config FCMEN    = OFF
+
+// XOR (not recommended)
+// #pragma config CONFIG1 = 0b (00)00 1111 1010 0100
+// i.e. (don't do this)
+// #pragma config CONFIG1 = 0x0FA4
+
+// CONFIG WORD 2 @ flash program memory location 0x8008
+#pragma config WRT      = OFF
+#pragma config PLLEN    = OFF
+#pragma config STVREN   = OFF
+#pragma config BORV     = LO
+//#pragma config DEBUG    = OFF   // Pre-processor short-circuits !
+#pragma config LVP      = OFF
+
+///* Hardware / state naming scheme ------------------------------------*/
+#define LED1 LATCbits.LATC0
+#define LED2 LATCbits.LATC1
+#define LED3 LATCbits.LATC2
+#define LED4 LATCbits.LATC3
+#define BUTTON PORTAbits.RA2
+// ...
+#define HALF_SECOND_OFFSET 34285
+long int Topname100ms = 0;
+int Press = 1;
+int temp = 3;
+long int timer = 0;
+/* End-of hardware / state naming scheme -----------------------------*/
+
+//>>
+
+/* Forward function declarations + main function hereafter -----------*/
+
+void pic_init(void);
+void init_osc(void);
+void led_blink(int counter);
+// ... more init function declarations here, one per each subsystem !
+void init_gpio(void);
+// ... and even more function declarations here, for module behaviors !
+void Timer();
+
+void main(void)
+    {
+    // Do all initialisation here
+    pic_init();
+    //    int counter = 0;
+    //LED3 = 0;
+    while (1)
+        {
+        }
+    }
+
+/* End-of function declarations + main function --------------------- */
+
+//>>
+
+/* Init functions hereafter -- may be modularized later --------------*/
+
+void pic_init(void)
+    {
+    init_osc();
+    init_gpio();
+    }
+
+void init_osc(void)
+    {
+    // Do it like this, it's easily compared to the datasheet:
+    // System Clock Select (SCS)
+    OSCCONbits.SCS = 0b00; // Clk determined by FOSC in Conf-1
+    // Internal Resistor-Capacitor Frequency select (IRCF)
+    OSCCONbits.IRCF = 0b0111; // 500 kHz clock speed
+    // Software Phase-Locked Loop ENable (SPLLEN)
+    OSCCONbits.SPLLEN = 0b0; // 4 x Phase-Locked Loop disabled
+    // XOR (Don't do this, it's unmaintainable)
+    // OSCCON = 0b00111000;
+    }
+
+void init_gpio(void)
+    {
+    TRISC = 0;
+    //    TRISAbits.TRISA2 = 1;
+    ANSELA = 0;
+    LED1 = 0;
+    LED3 = 0;
+    INTCONbits.INTE = 1; // enable interrupt
+    OPTION_REGbits.INTEDG = 0; //
+
+    T1CON = 0x10; // Fosc/4, prescaler 1:2, tmr1 off
+    T1GCON = 0x00; // Timer 1 Gate disabled
+    TMR1 = HALF_SECOND_OFFSET; // 31250 * 16 us = exactly 500 ms
+
+    PEIE = 1; // INTCON.PEIE: Enable periph. interr.
+
+    TMR1ON = 1;
+
+    //Timer2 Registers Prescaler= 16 - TMR2 PostScaler = 1 - PR2 = 156 - Freq = 50.08 Hz - Period = 0.019968 seconds
+    T2CON |= 0; // bits 6-3 Post scaler 1:1 thru 1:16
+    TMR2ON = 1; // bit 2 turn timer2 on;
+    T2CKPS1 = 1; // bits 1-0  Prescaler Rate Select bits
+    T2CKPS0 = 0;
+    PR2 = 156; // PR2 (Timer2 Match value)
+
+    TMR1IE = 1; // PIE1.TMR1IE: Enable timer1 interrupt
+    TMR2IE = 1;
+    INTCONbits.GIE = 1;
+    //    LED3 = 0;
+    }
+/* End-of Init functions -------------------------------------------- */
+
+//>>
+
+/* Utility functions per module hereafter -- may be modularized later!*/
+// ...
+
+/* End-of utility functions per module -------------------------------*/
+
+//>>
+
+/* Interrupt Service Routine (ISR) hereafter -- keep with main module!*/
+
+void __interrupt() ext_isr(void)
+    {
+    if (INTCONbits.INTF)
+    {
+        // Toggle the button state
+        Press = !Press;
+
+        // Depending on the button state, turn LED3 on or off
+        if (Press == 1)
+        {
+            // Button is pressed (LED3 ON)
+            LED2 = 1;
+            OPTION_REGbits.INTEDG = 1; // Set for falling edge
+        }
+        else
+        {
+            // Button is released (LED3 OFF)
+            LED2 = 0;
+            temp = 1;
+            OPTION_REGbits.INTEDG = 0; // Set for rising edge
+        }
+
+        // Clear the interrupt flag
+        INTCONbits.INTF = 0;
+    }
+    else if (Press)
+        {
+        if (TMR1IF)
+            {
+            LED1 ^= 1;
+            TMR1IF = 0;
+            }
+        else if (TMR2IF)
+            {
+            TMR2IF = 0;
+            //LED3 ^= 1;
+            timer = 0;
+            Topname100ms++;
+            }
+        }
+//            else if (TMR1IF && Press == 1)
+//                {
+//                LED1 ^= 1;
+//                TMR1IF = 0;
+//                }
+    else if (TMR1IF && Press == 0)
+        LED1 = 0;
+        //    else if (TMR2IF && Press == 1)
+        //        {
+        //        TMR2IF = 0;
+        //
+        //        //        LED3 ^= 1;
+        //        timer = 0;
+        //        Topname100ms++;
+        //        }
+    else if (Press == 0 && temp == 1)
+        {
+        LED3 = 0;
+        if (TMR2IF)
+            {
+            timer++;
+            
+            LED3 = 1;
+            if (timer == Topname100ms)
+                {
+                for (int i = 0; i < (Topname100ms / 10); i++)
+                    LED3 = 0;
+                    Timer();
+                }
+            }
+        }
+    }
+
+void Timer()
+    {
+    int i = 0;
+    i++;
+    if (i < 25)
+        {
+        Topname100ms /= 2;
+        }
+    }
+
+/* End-of Interrupt Service Routine (ISR) ----------------------------*/

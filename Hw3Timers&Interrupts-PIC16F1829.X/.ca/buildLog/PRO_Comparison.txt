@@ -1,0 +1,59 @@
+make -f nbproject/Makefile-PRO_Comparison.mk SUBPROJECTS= .clean-conf
+make[1]: Entering directory '/home/sirdep/MPLABXProjects/Hw3Timers&Interrupts-PIC16F1829.X'
+rm -f  -r .ca/build/PRO_Comparison/production
+rm -f  -r .ca/dist/PRO_Comparison/production
+make[1]: Leaving directory '/home/sirdep/MPLABXProjects/Hw3Timers&Interrupts-PIC16F1829.X'
+[32mCLEAN SUCCESSFUL (total time: 51ms)[0m
+make -f nbproject/Makefile-PRO_Comparison.mk SUBPROJECTS= .build-conf
+make[1]: Entering directory '/home/sirdep/MPLABXProjects/Hw3Timers&Interrupts-PIC16F1829.X'
+make  -f nbproject/Makefile-PRO_Comparison.mk .ca/dist/PRO_Comparison/production/Hw3Timers_Interrupts-PIC16F1829.X.production.hex
+make[2]: Entering directory '/home/sirdep/MPLABXProjects/Hw3Timers&Interrupts-PIC16F1829.X'
+"/opt/microchip/xc8/v2.45/bin/xc8-cc"  -mcpu=16F1829 -c   -mdfp="/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8"  -fno-short-double -fno-short-float -O2 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../../../../opt/microchip/xc8/v2.45/pic/include/c99" -I"../../../../opt/microchip/xc8/v2.45/pic/include/c90" -I"../../../../opt/microchip/xc8/v2.45/pic/include/legacy" -I"../../../../opt/microchip/xc8/v2.45/pic/include/proc" -mwarn=-3 -Wa,-a -DXPRJ_PRO_Comparison=PRO_Comparison  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall -mno-default-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto -mafrlcsj     -o .ca/build/PRO_Comparison/production/newmain.p1 newmain.c 
+newmain.c:192:38: warning: implicit conversion loses floating-point precision: 'long double' to 'double' [-Wconversion]
+        preload_calc_on[round] = (-1 * (((F_osc / 4) / PRESCALER_TMR1) * tijd_aan[round] - MAX_TMR1_PRELOAD));
+                               ~  ~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+newmain.c:193:39: warning: implicit conversion loses floating-point precision: 'long double' to 'double' [-Wconversion]
+        preload_calc_off[round] = (-1 * (((F_osc / 4) / PRESCALER_TMR1) * tijd_uit[round] - MAX_TMR1_PRELOAD));
+                                ~  ~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2 warnings generated.
+"/opt/microchip/xc8/v2.45/bin/xc8-cc"  -mcpu=16F1829 -Wl,-Map=.ca/dist/PRO_Comparison/production/Hw3Timers_Interrupts-PIC16F1829.X.production.map  -DXPRJ_PRO_Comparison=PRO_Comparison  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8"  -fno-short-double -fno-short-float -O2 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../../../../opt/microchip/xc8/v2.45/pic/include/c99" -I"../../../../opt/microchip/xc8/v2.45/pic/include/c90" -I"../../../../opt/microchip/xc8/v2.45/pic/include/legacy" -I"../../../../opt/microchip/xc8/v2.45/pic/include/proc" -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall -mno-default-config-bits -mafrlcsj -std=c99 -gdwarf-3 -mstack=compiled:auto:auto      -Wl,--memorysummary,.ca/dist/PRO_Comparison/production/memoryfile.xml -o .ca/dist/PRO_Comparison/production/Hw3Timers_Interrupts-PIC16F1829.X.production.elf  .ca/build/PRO_Comparison/production/newmain.p1     
+(908) exit status = 1
+::: error: (1347) can't find 0xF1 words (0xf1 withtotal) for psect "text7_split_9" in class "CODE" (largest unused contiguous range 0x84)
+Non line specific message::: advisory: (1493) updated 32-bit floating-point routines might trigger "can't find space" messages appearing after updating to this release; consider using the smaller 24-bit floating-point types
+::: error: (1347) can't find 0xB8 words (0xb8 withtotal) for psect "text7_split_2" in class "CODE" (largest unused contiguous range 0x84)
+::: error: (1347) can't find 0xB3 words (0xb3 withtotal) for psect "text7_split_11" in class "CODE" (largest unused contiguous range 0x84)
+::: error: (1347) can't find 0xB1 words (0xb1 withtotal) for psect "text7" in class "CODE" (largest unused contiguous range 0x84)
+::: error: (1347) can't find 0xB0 words (0xb0 withtotal) for psect "text7_split_10" in class "CODE" (largest unused contiguous range 0x84)
+::: error: (1347) can't find 0xAD words (0xad withtotal) for psect "text16" in class "CODE" (largest unused contiguous range 0x84)
+::: error: (1347) can't find 0xA9 words (0xa9 withtotal) for psect "text7_split_14" in class "CODE" (largest unused contiguous range 0x84)
+::: error: (1347) can't find 0x93 words (0x93 withtotal) for psect "text12" in class "CODE" (largest unused contiguous range 0x84)
+::: error: (1347) can't find 0x8D words (0x8d withtotal) for psect "text7_split_4" in class "CODE" (largest unused contiguous range 0x84)
+::: error: (1347) can't find 0x8D words (0x8d withtotal) for psect "text7_split_8" in class "CODE" (largest unused contiguous range 0x84)
+::: error: (1347) can't find 0x8D words (0x8d withtotal) for psect "text7_split_12" in class "CODE" (largest unused contiguous range 0x84)
+::: error: (1347) can't find 0x61 words (0x61 withtotal) for psect "text18" in class "CODE" (largest unused contiguous range 0x2A)
+::: error: (1347) can't find 0x32 words (0x32 withtotal) for psect "text6" in class "CODE" (largest unused contiguous range 0x2A)
+::: error: (1347) can't find 0x1F words (0x1f withtotal) for psect "text11" in class "CODE" (largest unused contiguous range 0x10)
+::: error: (1347) can't find 0x1D words (0x1d withtotal) for psect "text13" in class "CODE" (largest unused contiguous range 0x10)
+::: error: (1347) can't find 0x9 words (0x9 withtotal) for psect "text15" in class "CODE" (largest unused contiguous range 0x4)
+::: error: (1347) can't find 0x8 words (0x8 withtotal) for psect "stringtext1" in class "STRCODE" (largest unused contiguous range 0x4)
+::: error: (1347) can't find 0x8 words (0x8 withtotal) for psect "stringtext2" in class "STRCODE" (largest unused contiguous range 0x4)
+::: error: (1347) can't find 0x8 words (0x8 withtotal) for psect "stringtext3" in class "STRCODE" (largest unused contiguous range 0x4)
+::: error: (1347) can't find 0x6 words (0x6 withtotal) for psect "text1" in class "CODE" (largest unused contiguous range 0x4)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext5" in class "STRCODE" (largest unused contiguous range 0x2)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext6" in class "STRCODE" (largest unused contiguous range 0x2)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext7" in class "STRCODE" (largest unused contiguous range 0x2)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext8" in class "STRCODE" (largest unused contiguous range 0x2)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext9" in class "STRCODE" (largest unused contiguous range 0x2)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext10" in class "STRCODE" (largest unused contiguous range 0x2)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext11" in class "STRCODE" (largest unused contiguous range 0x2)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext12" in class "STRCODE" (largest unused contiguous range 0x2)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext13" in class "STRCODE" (largest unused contiguous range 0x2)
+::: error: (1347) can't find 0x4 words (0x4 withtotal) for psect "stringtext14" in class "STRCODE" (largest unused contiguous range 0x2)
+::: advisory: (1) too many errors (31)
+(908) exit status = 1
+make[2]: Leaving directory '/home/sirdep/MPLABXProjects/Hw3Timers&Interrupts-PIC16F1829.X'
+make[1]: Leaving directory '/home/sirdep/MPLABXProjects/Hw3Timers&Interrupts-PIC16F1829.X'
+[31mmake[2]: *** [nbproject/Makefile-PRO_Comparison.mk:133: .ca/dist/PRO_Comparison/production/Hw3Timers_Interrupts-PIC16F1829.X.production.hex] Error 1
+make[1]: *** [nbproject/Makefile-PRO_Comparison.mk:85: .build-conf] Error 2
+make: *** [nbproject/Makefile-impl.mk:39: .build-impl] Error 2[0m
+[31mBUILD FAILED (exit value 2, total time: 5s)[0m
