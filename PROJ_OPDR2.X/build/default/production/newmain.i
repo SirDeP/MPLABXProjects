@@ -22,7 +22,7 @@
 
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
-# 40 "newmain.c"
+# 36 "newmain.c"
 # 1 "/opt/microchip/xc8/v2.45/pic/include/xc.h" 1 3
 # 18 "/opt/microchip/xc8/v2.45/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2639,26 +2639,14 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "/opt/microchip/xc8/v2.45/pic/include/xc.h" 2 3
-# 41 "newmain.c" 2
-
-typedef struct _rot
-    {
-    int oldstate;
-    int state;
-    int counter;
-    int oddcounter;
-    } rot;
+# 37 "newmain.c" 2
 
 void pic_init(void);
 void init_gpio(void);
 void init_osc(void);
-void rotary_read(rot *rotary);
 
 void main(void)
     {
-    pic_init();
-
-
 
     pic_init();
     int ADR[4] = {0};
@@ -2669,22 +2657,16 @@ void main(void)
 
     while (1)
         {
-        _delay((unsigned long)((5)*(500000/4000000.0)));
+        _delay((unsigned long)((5)*(8000000/4000000.0)));
         GO = 1;
         while (GO)continue;
         int ADRES = ADRESL + (ADRESH * 256);
         for (int i = 0; i < 4; i++)
             {
             if (ADRES > (ADR[i] - 20))
-                {
-
                 PORTA &= ~(1 << i);
-                }
             else if (ADRES <= (ADR[i] - 20))
-                {
                 PORTA |= (1 << i);
-
-                }
             }
         }
     }
@@ -2701,22 +2683,24 @@ init_gpio(void)
     {
     TRISA = 0;
     TRISEbits.TRISE2 = 1;
+
     ANSEL = 0;
-    ANSELbits.ANS7 = 1;
     ANSELH = 0;
-    ADCON0 = 0b00011111;
-    ADCON1bits.ADFM = 1;
+    ANSELbits.ANS7 = 1;
+
+    ADCON0bits.ADCS = 0b10;
+    ADCON0bits.CHS = 0b0111;
+    ADCON0bits.ADON = 0b1;
+    ADCON1bits.ADFM = 0b1;
     }
 
 void
 init_osc(void)
     {
 
-
     OSCCONbits.SCS = 0b1;
 
-    OSCCONbits.IRCF = 0b100;
+    OSCCONbits.IRCF = 0b111;
     OSCCONbits.OSTS = 0b1;
     while (OSCCONbits.HTS != 0b1);
-
     }

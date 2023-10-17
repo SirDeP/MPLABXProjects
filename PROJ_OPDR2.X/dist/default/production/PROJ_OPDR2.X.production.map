@@ -5,10 +5,10 @@ Linker command line:
 -W-3 --edf=/opt/microchip/xc8/v2.45/pic/dat/20230818022343_en.msgs -cn \
   -h+dist/default/production/PROJ_OPDR2.X.production.sym \
   --cmf=dist/default/production/PROJ_OPDR2.X.production.cmf -z -Q16F887 \
-  -o/tmp/xcXnOFmfP/driver_tmp_3.o --defsym=__MPLAB_BUILD=1 \
+  -o/tmp/xcXEmKCNL/driver_tmp_3.o --defsym=__MPLAB_BUILD=1 \
   --fixupoverflow=error \
   -Mdist/default/production/PROJ_OPDR2.X.production.map \
-  --md=/tmp/xcXnOFmfP/driver_tmp_0.dat -E1 -ver=XC8 Compiler --acfsm=1493 \
+  --md=/tmp/xcXEmKCNL/driver_tmp_0.dat -E1 -ver=XC8 Compiler --acfsm=1493 \
   -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 \
   -ACONST=00h-0FFhx32 -AENTRY=00h-0FFhx32 -ACOMMON=070h-07Fh \
   -ABANK0=020h-06Fh -ABANK1=0A0h-0EFh -ABANK2=0110h-016Fh \
@@ -19,7 +19,7 @@ Linker command line:
   -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 \
   -preset_vec=00h,intentry,init,end_init -ppowerup=CODE -pcinit=CODE \
-  -pfunctab=ENTRY -k /tmp/xcXnOFmfP/driver_tmp_12.o \
+  -pfunctab=ENTRY -k /tmp/xcXEmKCNL/driver_tmp_12.o \
   dist/default/production/PROJ_OPDR2.X.production.o 
 
 Object code version is 3.11
@@ -29,17 +29,17 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcXnOFmfP/driver_tmp_12.o
+/tmp/xcXEmKCNL/driver_tmp_12.o
                 end_init                              0        0        3        0       0
                 config                             2007     2007        2        0       4
 dist/default/production/PROJ_OPDR2.X.production.o
                 cinit                               7F2      7F2        E      FE4       0
                 config                             2007     2007        2        0       4
-                text4                               6ED      6ED       25      DDA       0
-                text3                               6DC      6DC       11      DB8       0
-                text2                               6C0      6C0        D      D80       0
-                text1                               6CD      6CD        F      D9A       0
-                maintext                            712      712       E0      E24       0
+                text4                               6EE      6EE       25      DDC       0
+                text3                               6D6      6D6       18      DAC       0
+                text2                               6BC      6BC        B      D78       0
+                text1                               6C7      6C7        F      D8E       0
+                maintext                            713      713       DF      E26       0
                 cstackBANK0                          20       20        E       20       1
                 cstackCOMMON                         70       70        C       70       1
                 bssBANK0                             2E       2E        8       20       1
@@ -48,11 +48,11 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   CODE           
                 end_init                              0        0        3         0
                 cinit                               7F2      7F2        E         0
-                text4                               6ED      6ED       25         0
-                text3                               6DC      6DC       11         0
-                text2                               6C0      6C0        D         0
-                text1                               6CD      6CD        F         0
-                maintext                            712      712       E0         0
+                text4                               6EE      6EE       25         0
+                text3                               6D6      6D6       18         0
+                text2                               6BC      6BC        B         0
+                text1                               6C7      6C7        F         0
+                maintext                            713      713       DF         0
 
         CLASS   STRCODE        
 
@@ -103,11 +103,11 @@ TOTAL           Name                               Link     Load   Length     Sp
 
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
-                text1                          0006CD  00000F  0006DC       D9A       0  CODE        2
-                text2                          0006C0  00000D  0006CD       D80       0  CODE        2
-                text3                          0006DC  000011  0006ED       DB8       0  CODE        2
-                maintext                       000712  0000E0  0007F2       E24       0  CODE        2
-                text4                          0006ED  000025  000712       DDA       0  CODE        2
+                text1                          0006C7  00000F  0006D6       D8E       0  CODE        2
+                text2                          0006BC  00000B  0006C7       D78       0  CODE        2
+                text3                          0006D6  000018  0006EE       DAC       0  CODE        2
+                maintext                       000713  0000DF  0007F2       E26       0  CODE        2
+                text4                          0006EE  000025  000713       DDC       0  CODE        2
                 cstackBANK0                    000020  000016  000036        20       1  BANK0       1
                 cinit                          0007F2  00000E  000800       FE4       0  CODE        2
                 reset_vec                      000000  000003  000003         0       0  CODE        2
@@ -121,13 +121,13 @@ UNUSED ADDRESS RANGES
         BANK1            00A0-00EF             50           1
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
-        CODE             0003-06BF            6BD           2
+        CODE             0003-06BB            6B9           2
                          0800-1FFF            800
         COMMON           007C-007D              2           1
-        CONST            0003-06BF            100           2
+        CONST            0003-06BB            100           2
                          0800-1FFF            100
         EEDATA           2100-21FF            100           2
-        ENTRY            0003-06BF            100           2
+        ENTRY            0003-06BB            100           2
                          0800-1FFF            100
         IDLOC            2000-2003              4           2
         RAM              0036-006F             3A           1
@@ -138,15 +138,15 @@ UNUSED ADDRESS RANGES
         SFR1             0080-009F             20           1
         SFR2             0100-010F             10           1
         SFR3             0180-018F             10           1
-        STRCODE          0003-06BF            6BD           2
+        STRCODE          0003-06BB            6B9           2
                          0800-1FFF           1800
-        STRING           0003-06BF            100           2
+        STRING           0003-06BB            100           2
                          0800-1FFF            100
 
                                   Symbol Table
 
 ?___wmul                 cstackCOMMON 0070
-_ADCON0                  (abs)        001F
+_ADCON0bits              (abs)        001F
 _ADCON1bits              (abs)        009F
 _ADRESH                  (abs)        001E
 _ADRESL                  (abs)        009E
@@ -244,29 +244,29 @@ ___stack_hi              stack        0000
 ___stack_lo              stack        0000
 ___stackhi               (abs)        0000
 ___stacklo               (abs)        0000
-___wmul                  text4        06ED
+___wmul                  text4        06EE
 ___wmul@multiplicand     cstackCOMMON 0072
 ___wmul@multiplier       cstackCOMMON 0070
 ___wmul@product          cstackCOMMON 0074
-__end_of___wmul          text4        0712
+__end_of___wmul          text4        0713
 __end_of__initialization cinit        07FC
-__end_of_init_gpio       text3        06ED
-__end_of_init_osc        text2        06CD
+__end_of_init_gpio       text3        06EE
+__end_of_init_osc        text2        06C7
 __end_of_main            maintext     07F2
-__end_of_pic_init        text1        06DC
+__end_of_pic_init        text1        06D6
 __initialization         cinit        07F2
 __pbssBANK0              bssBANK0     002E
 __pcstackBANK0           cstackBANK0  0020
 __pcstackCOMMON          cstackCOMMON 0070
-__pmaintext              maintext     0712
-__ptext1                 text1        06CD
-__ptext2                 text2        06C0
-__ptext3                 text3        06DC
-__ptext4                 text4        06ED
-_init_gpio               text3        06DC
-_init_osc                text2        06C0
-_main                    maintext     0712
-_pic_init                text1        06CD
+__pmaintext              maintext     0713
+__ptext1                 text1        06C7
+__ptext2                 text2        06BC
+__ptext3                 text3        06D6
+__ptext4                 text4        06EE
+_init_gpio               text3        06D6
+_init_osc                text2        06BC
+_main                    maintext     0713
+_pic_init                text1        06C7
 btemp                    (abs)        007E
 end_of_initialization    cinit        07FC
 intlevel0                functab      0000
@@ -278,7 +278,7 @@ intlevel5                functab      0000
 main@ADR                 cstackBANK0  0020
 main@ADRES               cstackBANK0  0028
 main@i                   cstackBANK0  002A
-main@i_132               cstackBANK0  002C
+main@i_177               cstackBANK0  002C
 reset_vec                reset_vec    0000
 start                    init         0000
 start_initialization     cinit        07F2
@@ -289,15 +289,15 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 newmain.c
-		_pic_init      		CODE           	06CD	0000	15
-		_main          		CODE           	0712	0000	224
-		_init_osc      		CODE           	06C0	0000	13
-		_init_gpio     		CODE           	06DC	0000	17
+		_pic_init      		CODE           	06C7	0000	15
+		_main          		CODE           	0713	0000	223
+		_init_osc      		CODE           	06BC	0000	11
+		_init_gpio     		CODE           	06D6	0000	24
 
-newmain.c estimated size: 269
+newmain.c estimated size: 273
 
 /opt/microchip/xc8/v2.45/pic/sources/c99/common/Umul16.c
-		___wmul        		CODE           	06ED	0000	37
+		___wmul        		CODE           	06EE	0000	37
 
 /opt/microchip/xc8/v2.45/pic/sources/c99/common/Umul16.c estimated size: 37
 

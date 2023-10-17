@@ -13,20 +13,41 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"55 /home/sirdep/MPLABXProjects/PROJ_OPDR2.X/newmain.c
+"42 /home/sirdep/MPLABXProjects/PROJ_OPDR2.X/newmain.c
 [v _main main `(v  1 e 1 0 ]
-"90
+"68
 [v _pic_init pic_init `(v  1 e 1 0 ]
-"98
+"76
 [v _init_gpio init_gpio `(v  1 e 1 0 ]
-"110
+"92
 [v _init_osc init_osc `(v  1 e 1 0 ]
 "166 /home/sirdep/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.5.151/xc8/pic/include/proc/pic16f887.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
 "1238
 [v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
-"1245
-[v _ADCON0 ADCON0 `VEuc  1 e 1 @31 ]
+[s S81 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+`uc 1 ADCS 1 0 :2:6 
+]
+"1276
+[s S86 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+`uc 1 ADCS0 1 0 :1:6 
+`uc 1 ADCS1 1 0 :1:7 
+]
+[s S95 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S98 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[u S101 . 1 `S81 1 . 1 0 `S86 1 . 1 0 `S95 1 . 1 0 `S98 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES101  1 e 1 @31 ]
 "1416
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 [s S45 . 1 `uc 1 TRISE0 1 0 :1:0 
@@ -37,34 +58,34 @@
 "1677
 [u S50 . 1 `S45 1 . 1 0 ]
 [v _TRISEbits TRISEbits `VES50  1 e 1 @137 ]
-[s S97 . 1 `uc 1 SCS 1 0 :1:0 
+[s S142 . 1 `uc 1 SCS 1 0 :1:0 
 `uc 1 LTS 1 0 :1:1 
 `uc 1 HTS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 ]
 "1882
-[s S103 . 1 `uc 1 . 1 0 :4:0 
+[s S148 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 IRCF0 1 0 :1:4 
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S108 . 1 `S97 1 . 1 0 `S103 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES108  1 e 1 @143 ]
+[u S153 . 1 `S142 1 . 1 0 `S148 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES153  1 e 1 @143 ]
 "2970
 [v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
-[s S82 . 1 `uc 1 . 1 0 :4:0 
+[s S127 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 VCFG0 1 0 :1:4 
 `uc 1 VCFG1 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "2991
-[u S88 . 1 `S82 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES88  1 e 1 @159 ]
+[u S133 . 1 `S127 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES133  1 e 1 @159 ]
 "3387
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
-[s S59 . 1 `uc 1 ANS0 1 0 :1:0 
+[s S60 . 1 `uc 1 ANS0 1 0 :1:0 
 `uc 1 ANS1 1 0 :1:1 
 `uc 1 ANS2 1 0 :1:2 
 `uc 1 ANS3 1 0 :1:3 
@@ -74,39 +95,39 @@
 `uc 1 ANS7 1 0 :1:7 
 ]
 "3404
-[u S68 . 1 `S59 1 . 1 0 ]
-[v _ANSELbits ANSELbits `VES68  1 e 1 @392 ]
+[u S69 . 1 `S60 1 . 1 0 ]
+[v _ANSELbits ANSELbits `VES69  1 e 1 @392 ]
 "3449
 [v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
 "3903
 [v _GO GO `VEb  1 e 0 @249 ]
-"55 /home/sirdep/MPLABXProjects/PROJ_OPDR2.X/newmain.c
+"42 /home/sirdep/MPLABXProjects/PROJ_OPDR2.X/newmain.c
 [v _main main `(v  1 e 1 0 ]
 {
-"74
-[v main@i_132 i `i  1 a 2 12 ]
-"73
+"58
+[v main@i_177 i `i  1 a 2 12 ]
+"57
 [v main@ADRES ADRES `i  1 a 2 8 ]
-"65
+"49
 [v main@i i `i  1 a 2 10 ]
-"62
+"46
 [v main@ADR ADR `[4]i  1 a 8 0 ]
-"88
+"66
 } 0
-"90
+"68
 [v _pic_init pic_init `(v  1 e 1 0 ]
 {
-"95
+"73
 } 0
-"110
+"92
 [v _init_osc init_osc `(v  1 e 1 0 ]
 {
-"120
+"100
 } 0
-"98
+"76
 [v _init_gpio init_gpio `(v  1 e 1 0 ]
 {
-"107
+"89
 } 0
 "15 /opt/microchip/xc8/v2.45/pic/sources/c99/common/Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]

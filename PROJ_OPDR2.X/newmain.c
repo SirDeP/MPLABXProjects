@@ -7,7 +7,7 @@
 //
 
 // PIC16F887 Configuration Bit Settings
-#define _XTAL_FREQ      500000  // Used by the XC8 delay_ms(x) macro
+#define _XTAL_FREQ      8000000 // Used by the XC8 delay_ms(x) macro
 // 'C' source line config statements
 
 // CONFIG1
@@ -28,10 +28,6 @@
 
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
-
-#define REB PORTBbits.RB5
-#define REA PORTBbits.RB4
-
 #define N 4
 
 #define DEADZONE 20
@@ -39,24 +35,12 @@
 
 #include <xc.h>
 
-typedef struct _rot
-    {
-    int oldstate;
-    int state;
-    int counter;
-    int oddcounter;
-    } rot;
-
 void pic_init(void);
 void init_gpio(void);
 void init_osc(void);
-void rotary_read(rot *rotary);
 
 void main(void)
     {
-    pic_init();
-
-
     // Do all initialisation here
     pic_init();
     int ADR[N] = {0};
@@ -92,23 +76,25 @@ void
 init_gpio(void)
     {
     TRISA = 0;
-    TRISEbits.TRISE2 = 1;
-    ANSEL = 0; // analog 0 to 7 off
-    ANSELbits.ANS7 = 1;
+    TRISEbits.TRISE2 = 1; // Enable E2 for input (Potentiometer)
+    
+    ANSEL = 0;  // Analog 0 to 7 off
     ANSELH = 0; // Analog 8 to 13 off
-    ADCON0 = 0b00011111;
-    ADCON1bits.ADFM = 1; // right justified
+    ANSELbits.ANS7 = 1; // Analog on for potentiometer ADC conversion
+
+    ADCON0bits.ADCS = 0b10; // Conversion Clock select: Fosc/32
+    ADCON0bits.CHS = 0b0111; // Channel select: AN7
+    ADCON0bits.ADON = 0b1; // ADC enable bit = 1;
+    ADCON1bits.ADFM = 0b1; // right justified
     }
 
 void
 init_osc(void)
     {
     // System Clock Select (SCS)
-    //  OSCCON = 0b00111110;
     OSCCONbits.SCS = 0b1; // Internal Clock selected
     // Internal Resistor-Capacitor Frequency select (IRCF)
-    OSCCONbits.IRCF = 0b100; // 1Mhz lock speed
+    OSCCONbits.IRCF = 0b111; // 8MHz clock speed
     OSCCONbits.OSTS = 0b1; // OSC startup time
     while (OSCCONbits.HTS != 0b1); // Wait with booting until clock is stable
-    // OSCCON = 0b00111000;
     }
