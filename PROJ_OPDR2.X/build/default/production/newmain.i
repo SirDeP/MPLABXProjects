@@ -2663,9 +2663,9 @@ void main(void)
         int ADRES = ADRESL + (ADRESH * 256);
         for (int i = 0; i < 4; i++)
             {
-            if (ADRES > (ADR[i] - 20))
+            if (ADRES > (ADR[i] + 50))
                 PORTA &= ~(1 << i);
-            else if (ADRES <= (ADR[i] - 20))
+            else if (ADRES <= (ADR[i] - 50))
                 PORTA |= (1 << i);
             }
         }

@@ -439,16 +439,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;newmain.c: 59:             {
 {
 "60
-[; ;newmain.c: 60:             if (ADRES > (ADR[i] - 20))
-[e $ ! > _ADRES - *U + &U _ADR * -> -> _i `ui `ux -> -> # *U &U _ADR `ui `ux -> 20 `i 151  ]
+[; ;newmain.c: 60:             if (ADRES > (ADR[i] + 50))
+[e $ ! > _ADRES + *U + &U _ADR * -> -> _i `ui `ux -> -> # *U &U _ADR `ui `ux -> 50 `i 151  ]
 "61
 [; ;newmain.c: 61:                 PORTA &= ~(1 << i);
 [e =& _PORTA -> ~ << -> 1 `i _i `Vuc ]
 [e $U 152  ]
 "62
-[; ;newmain.c: 62:             else if (ADRES <= (ADR[i] - 20))
+[; ;newmain.c: 62:             else if (ADRES <= (ADR[i] - 50))
 [e :U 151 ]
-[e $ ! <= _ADRES - *U + &U _ADR * -> -> _i `ui `ux -> -> # *U &U _ADR `ui `ux -> 20 `i 153  ]
+[e $ ! <= _ADRES - *U + &U _ADR * -> -> _i `ui `ux -> -> # *U &U _ADR `ui `ux -> 50 `i 153  ]
 "63
 [; ;newmain.c: 63:                 PORTA |= (1 << i);
 [e =| _PORTA -> << -> 1 `i _i `Vuc ]

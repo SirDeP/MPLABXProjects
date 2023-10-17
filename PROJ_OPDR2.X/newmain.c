@@ -30,7 +30,7 @@
 // Use project enums instead of #define for ON and OFF.
 #define N 4
 
-#define DEADZONE 20
+#define DEADZONE 50
 #define TOTAL 1023
 
 #include <xc.h>
@@ -57,7 +57,7 @@ void main(void)
         int ADRES = ADRESL + (ADRESH * 256);
         for (int i = 0; i < N; i++)
             {
-            if (ADRES > (ADR[i] - DEADZONE))
+            if (ADRES > (ADR[i] + DEADZONE))
                 PORTA &= ~(1 << i);
             else if (ADRES <= (ADR[i] - DEADZONE))
                 PORTA |= (1 << i);
