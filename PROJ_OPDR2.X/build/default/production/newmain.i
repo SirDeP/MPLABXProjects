@@ -2646,7 +2646,7 @@ void init_gpio(void);
 void init_osc(void);
 
 void main(void)
-    {
+{
 
     pic_init();
     int ADR[4] = {0};
@@ -2656,31 +2656,31 @@ void main(void)
         ADR[i] = ADR[0] * (i + 1);
 
     while (1)
-        {
+    {
         _delay((unsigned long)((5)*(8000000/4000000.0)));
         GO = 1;
         while (GO)continue;
         int ADRES = ADRESL + (ADRESH * 256);
         for (int i = 0; i < 4; i++)
-            {
-            if (ADRES > (ADR[i] + 50))
+        {
+            if (ADRES > (ADR[i] - 20))
                 PORTA &= ~(1 << i);
-            else if (ADRES <= (ADR[i] - 50))
+            else if (ADRES <= (ADR[i] - 20))
                 PORTA |= (1 << i);
-            }
         }
     }
+}
 
 void pic_init(void)
-    {
+{
     init_osc();
     init_gpio();
     PORTA = 0b1111;
-    }
+}
 
 void
 init_gpio(void)
-    {
+{
     TRISA = 0;
     TRISEbits.TRISE2 = 1;
 
@@ -2692,15 +2692,15 @@ init_gpio(void)
     ADCON0bits.CHS = 0b0111;
     ADCON0bits.ADON = 0b1;
     ADCON1bits.ADFM = 0b1;
-    }
+}
 
 void
 init_osc(void)
-    {
+{
 
     OSCCONbits.SCS = 0b1;
 
     OSCCONbits.IRCF = 0b111;
     OSCCONbits.OSTS = 0b1;
     while (OSCCONbits.HTS != 0b1);
-    }
+}

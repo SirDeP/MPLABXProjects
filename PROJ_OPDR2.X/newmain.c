@@ -30,7 +30,7 @@
 // Use project enums instead of #define for ON and OFF.
 #define N 4
 
-#define DEADZONE 50
+#define DEADZONE 20
 #define TOTAL 1023
 
 #include <xc.h>
@@ -40,7 +40,7 @@ void init_gpio(void);
 void init_osc(void);
 
 void main(void)
-    {
+{
     // Do all initialisation here
     pic_init();
     int ADR[N] = {0};
@@ -50,35 +50,35 @@ void main(void)
         ADR[i] = ADR[0] * (i + 1);
 
     while (1)
-        {
+    {
         __delay_us(5); //wait for ADC charging cap to settle
         GO = 1; //ADCON0.GO
         while (GO)continue; //wait voor conversion to be finished
         int ADRES = ADRESL + (ADRESH * 256);
         for (int i = 0; i < N; i++)
-            {
-            if (ADRES > (ADR[i] + DEADZONE))
+        {
+            if (ADRES > (ADR[i] - DEADZONE))
                 PORTA &= ~(1 << i);
             else if (ADRES <= (ADR[i] - DEADZONE))
                 PORTA |= (1 << i);
-            }
         }
     }
+}
 
 void pic_init(void)
-    {
+{
     init_osc();
     init_gpio();
     PORTA = 0b1111; // Turn LEDS off
-    }
+}
 
 void
 init_gpio(void)
-    {
+{
     TRISA = 0;
     TRISEbits.TRISE2 = 1; // Enable E2 for input (Potentiometer)
     
-    ANSEL = 0;  // Analog 0 to 7 off
+    ANSEL = 0; // Analog 0 to 7 off
     ANSELH = 0; // Analog 8 to 13 off
     ANSELbits.ANS7 = 1; // Analog on for potentiometer ADC conversion
 
@@ -86,15 +86,15 @@ init_gpio(void)
     ADCON0bits.CHS = 0b0111; // Channel select: AN7
     ADCON0bits.ADON = 0b1; // ADC enable bit = 1;
     ADCON1bits.ADFM = 0b1; // right justified
-    }
+}
 
 void
 init_osc(void)
-    {
+{
     // System Clock Select (SCS)
     OSCCONbits.SCS = 0b1; // Internal Clock selected
     // Internal Resistor-Capacitor Frequency select (IRCF)
     OSCCONbits.IRCF = 0b111; // 8MHz clock speed
     OSCCONbits.OSTS = 0b1; // OSC startup time
     while (OSCCONbits.HTS != 0b1); // Wait with booting until clock is stable
-    }
+}

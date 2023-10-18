@@ -368,7 +368,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;newmain.c: 42: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
 "43
-[; ;newmain.c: 43:     {
+[; ;newmain.c: 43: {
 {
 [e :U _main ]
 [f ]
@@ -407,7 +407,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;newmain.c: 52:     while (1)
 [e :U 143 ]
 "53
-[; ;newmain.c: 53:         {
+[; ;newmain.c: 53:     {
 {
 "54
 [; ;newmain.c: 54:         _delay((unsigned long)((5)*(8000000/4000000.0)));
@@ -436,46 +436,46 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 149  ]
 [e :U 148 ]
 "59
-[; ;newmain.c: 59:             {
+[; ;newmain.c: 59:         {
 {
 "60
-[; ;newmain.c: 60:             if (ADRES > (ADR[i] + 50))
-[e $ ! > _ADRES + *U + &U _ADR * -> -> _i `ui `ux -> -> # *U &U _ADR `ui `ux -> 50 `i 151  ]
+[; ;newmain.c: 60:             if (ADRES > (ADR[i] - 20))
+[e $ ! > _ADRES - *U + &U _ADR * -> -> _i `ui `ux -> -> # *U &U _ADR `ui `ux -> 20 `i 151  ]
 "61
 [; ;newmain.c: 61:                 PORTA &= ~(1 << i);
 [e =& _PORTA -> ~ << -> 1 `i _i `Vuc ]
 [e $U 152  ]
 "62
-[; ;newmain.c: 62:             else if (ADRES <= (ADR[i] - 50))
+[; ;newmain.c: 62:             else if (ADRES <= (ADR[i] - 20))
 [e :U 151 ]
-[e $ ! <= _ADRES - *U + &U _ADR * -> -> _i `ui `ux -> -> # *U &U _ADR `ui `ux -> 50 `i 153  ]
+[e $ ! <= _ADRES - *U + &U _ADR * -> -> _i `ui `ux -> -> # *U &U _ADR `ui `ux -> 20 `i 153  ]
 "63
 [; ;newmain.c: 63:                 PORTA |= (1 << i);
 [e =| _PORTA -> << -> 1 `i _i `Vuc ]
 [e :U 153 ]
 [e :U 152 ]
 "64
-[; ;newmain.c: 64:             }
+[; ;newmain.c: 64:         }
 }
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 4 `i 148  ]
 [e :U 149 ]
 }
 "65
-[; ;newmain.c: 65:         }
+[; ;newmain.c: 65:     }
 }
 [e :U 142 ]
 [e $U 143  ]
 [e :U 144 ]
 "66
-[; ;newmain.c: 66:     }
+[; ;newmain.c: 66: }
 [e :UE 138 ]
 }
 "68
 [; ;newmain.c: 68: void pic_init(void)
 [v _pic_init `(v ~T0 @X0 1 ef ]
 "69
-[; ;newmain.c: 69:     {
+[; ;newmain.c: 69: {
 {
 [e :U _pic_init ]
 [f ]
@@ -489,14 +489,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;newmain.c: 72:     PORTA = 0b1111;
 [e = _PORTA -> -> 15 `i `uc ]
 "73
-[; ;newmain.c: 73:     }
+[; ;newmain.c: 73: }
 [e :UE 154 ]
 }
 "76
 [; ;newmain.c: 76: init_gpio(void)
 [v _init_gpio `(v ~T0 @X0 1 ef ]
 "77
-[; ;newmain.c: 77:     {
+[; ;newmain.c: 77: {
 {
 [e :U _init_gpio ]
 [f ]
@@ -528,14 +528,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;newmain.c: 88:     ADCON1bits.ADFM = 0b1;
 [e = . . _ADCON1bits 0 4 -> -> 1 `i `uc ]
 "89
-[; ;newmain.c: 89:     }
+[; ;newmain.c: 89: }
 [e :UE 155 ]
 }
 "92
 [; ;newmain.c: 92: init_osc(void)
 [v _init_osc `(v ~T0 @X0 1 ef ]
 "93
-[; ;newmain.c: 93:     {
+[; ;newmain.c: 93: {
 {
 [e :U _init_osc ]
 [f ]
@@ -556,6 +556,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ != -> . . _OSCCONbits 0 2 `i -> 1 `i 158  ]
 [e :U 159 ]
 "100
-[; ;newmain.c: 100:     }
+[; ;newmain.c: 100: }
 [e :UE 156 ]
 }
