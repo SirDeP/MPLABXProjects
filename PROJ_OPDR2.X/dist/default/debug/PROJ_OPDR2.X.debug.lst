@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.45 build 20230818022343 
-                                                                                               Tue Oct 17 13:39:42 2023
+                                                                                               Mon Oct 30 11:33:27 2023
 
 Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1 
      1                           	processor	16F887
@@ -260,50 +260,50 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    246     002E                     	ds	8
    247                           
    248                           	psect	cstackCOMMON
-   249     0070                     __pcstackCOMMON:
-   250     0070                     ?_pic_init:
-   251     0070                     ??_pic_init:	
+   249     0071                     __pcstackCOMMON:
+   250     0071                     ?_pic_init:
+   251     0071                     ??_pic_init:	
    252                           ; 1 bytes @ 0x0
    253                           
-   254     0070                     ?_init_osc:	
+   254     0071                     ?_init_osc:	
    255                           ; 1 bytes @ 0x0
    256                           
-   257     0070                     ??_init_osc:	
+   257     0071                     ??_init_osc:	
    258                           ; 1 bytes @ 0x0
    259                           
-   260     0070                     ?_init_gpio:	
+   260     0071                     ?_init_gpio:	
    261                           ; 1 bytes @ 0x0
    262                           
-   263     0070                     ??_init_gpio:	
+   263     0071                     ??_init_gpio:	
    264                           ; 1 bytes @ 0x0
    265                           
-   266     0070                     ?_main:	
+   266     0071                     ?_main:	
    267                           ; 1 bytes @ 0x0
    268                           
-   269     0070                     ?___wmul:	
+   269     0071                     ?___wmul:	
    270                           ; 1 bytes @ 0x0
    271                           
-   272     0070                     ___wmul@multiplier:	
+   272     0071                     ___wmul@multiplier:	
    273                           ; 2 bytes @ 0x0
    274                           
    275                           
    276                           ; 2 bytes @ 0x0
-   277     0070                     	ds	2
-   278     0072                     ___wmul@multiplicand:
+   277     0071                     	ds	2
+   278     0073                     ___wmul@multiplicand:
    279                           
    280                           ; 2 bytes @ 0x2
-   281     0072                     	ds	2
-   282     0074                     ??___wmul:
-   283     0074                     ___wmul@product:	
+   281     0073                     	ds	2
+   282     0075                     ??___wmul:
+   283     0075                     ___wmul@product:	
    284                           ; 1 bytes @ 0x4
    285                           
    286                           
    287                           ; 2 bytes @ 0x4
-   288     0074                     	ds	2
-   289     0076                     ??_main:
+   288     0075                     	ds	2
+   289     0077                     ??_main:
    290                           
    291                           ; 1 bytes @ 0x6
-   292     0076                     	ds	6
+   292     0077                     	ds	6
    293                           
    294                           	psect	cstackBANK0
    295     0020                     __pcstackBANK0:
@@ -408,29 +408,29 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    394     072C  1303               	bcf	3,6	;RP1=0, select bank0
    395     072D  082A               	movf	main@i,w
    396     072E  3E01               	addlw	1
-   397     072F  00F0               	movwf	___wmul@multiplier
+   397     072F  00F1               	movwf	___wmul@multiplier
    398     0730  082B               	movf	main@i+1,w
    399     0731  1803               	skipnc
    400     0732  3E01               	addlw	1
    401     0733  3E00               	addlw	0
-   402     0734  00F1               	movwf	___wmul@multiplier+1
+   402     0734  00F2               	movwf	___wmul@multiplier+1
    403     0735  0821               	movf	main@ADR+1,w
-   404     0736  00F3               	movwf	___wmul@multiplicand+1
+   404     0736  00F4               	movwf	___wmul@multiplicand+1
    405     0737  0820               	movf	main@ADR,w
-   406     0738  00F2               	movwf	___wmul@multiplicand
+   406     0738  00F3               	movwf	___wmul@multiplicand
    407     0739  120A  118A  26EE  120A  118A  	fcall	___wmul
    408     073E  1283               	bcf	3,5	;RP0=0, select bank0
    409     073F  1303               	bcf	3,6	;RP1=0, select bank0
    410     0740  082A               	movf	main@i,w
-   411     0741  00F6               	movwf	??_main
-   412     0742  0776               	addwf	??_main,w
+   411     0741  00F7               	movwf	??_main
+   412     0742  0777               	addwf	??_main,w
    413     0743  3E20               	addlw	(low (main@ADR| 0))& (0+255)
    414     0744  0084               	movwf	4
-   415     0745  0870               	movf	?___wmul,w
+   415     0745  0871               	movf	?___wmul,w
    416     0746  1383               	bcf	3,7	;select IRP bank0
    417     0747  0080               	movwf	0
    418     0748  0A84               	incf	4,f
-   419     0749  0871               	movf	?___wmul+1,w
+   419     0749  0872               	movf	?___wmul+1,w
    420     074A  0080               	movwf	0
    421     074B                     l740:
    422     074B  3001               	movlw	1
@@ -461,9 +461,9 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    447                           ;newmain.c: 53:     {;newmain.c: 54:         _delay((unsigned long)((5)*(8000000/4000000
       +                          .0)));
    448     075E  3003               	movlw	3
-   449     075F  00F6               	movwf	??_main
+   449     075F  00F7               	movwf	??_main
    450     0760                     u277:
-   451     0760  0BF6               	decfsz	??_main,f
+   451     0760  0BF7               	decfsz	??_main,f
    452     0761  2F60               	goto	u277
    453     0762                     l746:
    454                           
@@ -502,34 +502,34 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    487     0773  1283               	bcf	3,5	;RP0=0, select bank0
    488     0774  1303               	bcf	3,6	;RP1=0, select bank0
    489     0775  082C               	movf	main@i_177,w
-   490     0776  00F6               	movwf	??_main
-   491     0777  0776               	addwf	??_main,w
+   490     0776  00F7               	movwf	??_main
+   491     0777  0777               	addwf	??_main,w
    492     0778  3E20               	addlw	(low (main@ADR| 0))& (0+255)
    493     0779  0084               	movwf	4
    494     077A  1383               	bcf	3,7	;select IRP bank0
    495     077B  0800               	movf	0,w
-   496     077C  00F7               	movwf	??_main+1
+   496     077C  00F8               	movwf	??_main+1
    497     077D  0A84               	incf	4,f
    498     077E  0800               	movf	0,w
-   499     077F  00F8               	movwf	??_main+2
-   500     0780  0877               	movf	??_main+1,w
+   499     077F  00F9               	movwf	??_main+2
+   500     0780  0878               	movf	??_main+1,w
    501     0781  3EEC               	addlw	236
-   502     0782  00F9               	movwf	??_main+3
-   503     0783  0878               	movf	??_main+2,w
+   502     0782  00FA               	movwf	??_main+3
+   503     0783  0879               	movf	??_main+2,w
    504     0784  1803               	skipnc
    505     0785  3E01               	addlw	1
    506     0786  3EFF               	addlw	255
-   507     0787  00FA               	movwf	??_main+4
-   508     0788  087A               	movf	??_main+4,w
+   507     0787  00FB               	movwf	??_main+4
+   508     0788  087B               	movf	??_main+4,w
    509     0789  3A80               	xorlw	128
-   510     078A  00FB               	movwf	??_main+5
+   510     078A  00FC               	movwf	??_main+5
    511     078B  0829               	movf	main@ADRES+1,w
    512     078C  3A80               	xorlw	128
-   513     078D  027B               	subwf	??_main+5,w
+   513     078D  027C               	subwf	??_main+5,w
    514     078E  1D03               	skipz
    515     078F  2F92               	goto	u225
    516     0790  0828               	movf	main@ADRES,w
-   517     0791  0279               	subwf	??_main+3,w
+   517     0791  027A               	subwf	??_main+3,w
    518     0792                     u225:
    519     0792  1803               	skipnc
    520     0793  2F95               	goto	u221
@@ -541,56 +541,56 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    526                           
    527                           ;newmain.c: 61:                 PORTA &= ~(1 << i);
    528     0796  3001               	movlw	1
-   529     0797  00F6               	movwf	??_main
+   529     0797  00F7               	movwf	??_main
    530     0798  1283               	bcf	3,5	;RP0=0, select bank0
    531     0799  1303               	bcf	3,6	;RP1=0, select bank0
    532     079A  0A2C               	incf	main@i_177,w
    533     079B  2F9E               	goto	u234
    534     079C                     u235:
    535     079C  1003               	clrc
-   536     079D  0DF6               	rlf	??_main,f
+   536     079D  0DF7               	rlf	??_main,f
    537     079E                     u234:
    538     079E  3EFF               	addlw	-1
    539     079F  1D03               	skipz
    540     07A0  2F9C               	goto	u235
-   541     07A1  0876               	movf	??_main,w
+   541     07A1  0877               	movf	??_main,w
    542     07A2  3AFF               	xorlw	255
-   543     07A3  00F7               	movwf	??_main+1
-   544     07A4  0877               	movf	??_main+1,w
+   543     07A3  00F8               	movwf	??_main+1
+   544     07A4  0878               	movf	??_main+1,w
    545     07A5  0585               	andwf	5,f	;volatile
    546     07A6  2FD9               	goto	l764
    547     07A7                     l760:
    548     07A7  1283               	bcf	3,5	;RP0=0, select bank0
    549     07A8  1303               	bcf	3,6	;RP1=0, select bank0
    550     07A9  082C               	movf	main@i_177,w
-   551     07AA  00F6               	movwf	??_main
-   552     07AB  0776               	addwf	??_main,w
+   551     07AA  00F7               	movwf	??_main
+   552     07AB  0777               	addwf	??_main,w
    553     07AC  3E20               	addlw	(low (main@ADR| 0))& (0+255)
    554     07AD  0084               	movwf	4
    555     07AE  1383               	bcf	3,7	;select IRP bank0
    556     07AF  0800               	movf	0,w
-   557     07B0  00F7               	movwf	??_main+1
+   557     07B0  00F8               	movwf	??_main+1
    558     07B1  0A84               	incf	4,f
    559     07B2  0800               	movf	0,w
-   560     07B3  00F8               	movwf	??_main+2
-   561     07B4  0877               	movf	??_main+1,w
+   560     07B3  00F9               	movwf	??_main+2
+   561     07B4  0878               	movf	??_main+1,w
    562     07B5  3EEC               	addlw	236
-   563     07B6  00F9               	movwf	??_main+3
-   564     07B7  0878               	movf	??_main+2,w
+   563     07B6  00FA               	movwf	??_main+3
+   564     07B7  0879               	movf	??_main+2,w
    565     07B8  1803               	skipnc
    566     07B9  3E01               	addlw	1
    567     07BA  3EFF               	addlw	255
-   568     07BB  00FA               	movwf	??_main+4
-   569     07BC  087A               	movf	??_main+4,w
+   568     07BB  00FB               	movwf	??_main+4
+   569     07BC  087B               	movf	??_main+4,w
    570     07BD  3A80               	xorlw	128
-   571     07BE  00FB               	movwf	??_main+5
+   571     07BE  00FC               	movwf	??_main+5
    572     07BF  0829               	movf	main@ADRES+1,w
    573     07C0  3A80               	xorlw	128
-   574     07C1  027B               	subwf	??_main+5,w
+   574     07C1  027C               	subwf	??_main+5,w
    575     07C2  1D03               	skipz
    576     07C3  2FC6               	goto	u245
    577     07C4  0828               	movf	main@ADRES,w
-   578     07C5  0279               	subwf	??_main+3,w
+   578     07C5  027A               	subwf	??_main+3,w
    579     07C6                     u245:
    580     07C6  1C03               	skipc
    581     07C7  2FC9               	goto	u241
@@ -602,21 +602,21 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    587                           
    588                           ;newmain.c: 63:                 PORTA |= (1 << i);
    589     07CA  3001               	movlw	1
-   590     07CB  00F6               	movwf	??_main
+   590     07CB  00F7               	movwf	??_main
    591     07CC  1283               	bcf	3,5	;RP0=0, select bank0
    592     07CD  1303               	bcf	3,6	;RP1=0, select bank0
    593     07CE  0A2C               	incf	main@i_177,w
    594     07CF  2FD2               	goto	u254
    595     07D0                     u255:
    596     07D0  1003               	clrc
-   597     07D1  0DF6               	rlf	??_main,f
+   597     07D1  0DF7               	rlf	??_main,f
    598     07D2                     u254:
    599     07D2  3EFF               	addlw	-1
    600     07D3  1D03               	skipz
    601     07D4  2FD0               	goto	u255
-   602     07D5  0876               	movf	??_main,w
-   603     07D6  00F7               	movwf	??_main+1
-   604     07D7  0877               	movf	??_main+1,w
+   602     07D5  0877               	movf	??_main,w
+   603     07D6  00F8               	movwf	??_main+1
+   604     07D7  0878               	movf	??_main+1,w
    605     07D8  0485               	iorwf	5,f	;volatile
    606     07D9                     l764:
    607                           
@@ -647,7 +647,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    632     07ED  2F73               	goto	l756
    633     07EE                     u260:
    634     07EE  2F5E               	goto	l744
-   635     07EF  120A  118A  2800   	ljmp	start
+   635     07EF  120A  118A  2801   	ljmp	start
    636     07F2                     __end_of_main:
    637                           
    638                           	psect	text1
@@ -900,28 +900,28 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    885                           ;incstack = 0
    886                           ; Regs used in ___wmul: [wreg+status,2+status,0]
    887                           
-   888     06EE  01F4               	clrf	___wmul@product
-   889     06EF  01F5               	clrf	___wmul@product+1
+   888     06EE  01F5               	clrf	___wmul@product
+   889     06EF  01F6               	clrf	___wmul@product+1
    890     06F0                     l714:
-   891     06F0  1C70               	btfss	___wmul@multiplier,0
+   891     06F0  1C71               	btfss	___wmul@multiplier,0
    892     06F1  2EF3               	goto	u151
    893     06F2  2EF4               	goto	u150
    894     06F3                     u151:
    895     06F3  2EFA               	goto	l150
    896     06F4                     u150:
    897     06F4                     l716:
-   898     06F4  0872               	movf	___wmul@multiplicand,w
-   899     06F5  07F4               	addwf	___wmul@product,f
+   898     06F4  0873               	movf	___wmul@multiplicand,w
+   899     06F5  07F5               	addwf	___wmul@product,f
    900     06F6  1803               	skipnc
-   901     06F7  0AF5               	incf	___wmul@product+1,f
-   902     06F8  0873               	movf	___wmul@multiplicand+1,w
-   903     06F9  07F5               	addwf	___wmul@product+1,f
+   901     06F7  0AF6               	incf	___wmul@product+1,f
+   902     06F8  0874               	movf	___wmul@multiplicand+1,w
+   903     06F9  07F6               	addwf	___wmul@product+1,f
    904     06FA                     l150:
    905     06FA  3001               	movlw	1
    906     06FB                     u165:
    907     06FB  1003               	clrc
-   908     06FC  0DF2               	rlf	___wmul@multiplicand,f
-   909     06FD  0DF3               	rlf	___wmul@multiplicand+1,f
+   908     06FC  0DF3               	rlf	___wmul@multiplicand,f
+   909     06FD  0DF4               	rlf	___wmul@multiplicand+1,f
    910     06FE  3EFF               	addlw	-1
    911     06FF  1D03               	skipz
    912     0700  2EFB               	goto	u165
@@ -929,14 +929,14 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    914     0701  3001               	movlw	1
    915     0702                     u175:
    916     0702  1003               	clrc
-   917     0703  0CF1               	rrf	___wmul@multiplier+1,f
-   918     0704  0CF0               	rrf	___wmul@multiplier,f
+   917     0703  0CF2               	rrf	___wmul@multiplier+1,f
+   918     0704  0CF1               	rrf	___wmul@multiplier,f
    919     0705  3EFF               	addlw	-1
    920     0706  1D03               	skipz
    921     0707  2F02               	goto	u175
    922     0708                     l720:
-   923     0708  0870               	movf	___wmul@multiplier,w
-   924     0709  0471               	iorwf	___wmul@multiplier+1,w
+   923     0708  0871               	movf	___wmul@multiplier,w
+   924     0709  0472               	iorwf	___wmul@multiplier+1,w
    925     070A  1D03               	btfss	3,2
    926     070B  2F0D               	goto	u181
    927     070C  2F0E               	goto	u180
@@ -944,10 +944,10 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    929     070D  2EF0               	goto	l714
    930     070E                     u180:
    931     070E                     l722:
-   932     070E  0875               	movf	___wmul@product+1,w
-   933     070F  00F1               	movwf	?___wmul+1
-   934     0710  0874               	movf	___wmul@product,w
-   935     0711  00F0               	movwf	?___wmul
+   932     070E  0876               	movf	___wmul@product+1,w
+   933     070F  00F2               	movwf	?___wmul+1
+   934     0710  0875               	movf	___wmul@product,w
+   935     0711  00F1               	movwf	?___wmul
    936     0712                     l152:
    937     0712  0008               	return
    938     0713                     __end_of___wmul:
@@ -1001,10 +1001,10 @@ Data Sizes:
 
 Auto Spaces:
     Space          Size  Autos    Used
-    COMMON           14     12      12
+    COMMON           13     12      12
     BANK0            80     14      22
     BANK1            80      0       0
-    BANK3            96      0       0
+    BANK3            85      0       0
     BANK2            96      0       0
 
 Pointer List with Targets:
@@ -1066,11 +1066,11 @@ Call Graph Tables:
 
  Address spaces:
 Name               Size   Autos  Total    Cost      Usage
-BITCOMMON            E      0       0       0        0.0%
+BITCOMMON            D      0       0       0        0.0%
 EEDATA             100      0       0       0        0.0%
 NULL                 0      0       0       0        0.0%
 CODE                 0      0       0       0        0.0%
-COMMON               E      C       C       1       85.7%
+COMMON               D      C       C       1       92.3%
 BITSFR0              0      0       0       1        0.0%
 SFR0                 0      0       0       1        0.0%
 BITSFR1              0      0       0       2        0.0%
@@ -1085,19 +1085,19 @@ BITSFR2              0      0       0       5        0.0%
 SFR2                 0      0       0       5        0.0%
 BITBANK1            50      0       0       6        0.0%
 BANK1               50      0       0       7        0.0%
-BITBANK3            60      0       0       8        0.0%
-BANK3               60      0       0       9        0.0%
+BITBANK3            55      0       0       8        0.0%
+BANK3               55      0       0       9        0.0%
 BITBANK2            60      0       0      10        0.0%
 BANK2               60      0       0      11        0.0%
 DATA                 0      0      22      12        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.45 build 20230818022343 
-Symbol Table                                                                                   Tue Oct 17 13:39:42 2023
+Symbol Table                                                                                   Mon Oct 30 11:33:27 2023
 
                      l42 0765                       l61 06C2                       l55 06D5  
                      l64 06C6                       l58 06ED                       _GO 00F9  
-    ___wmul@multiplicand 0072                      l150 06FA                      l152 0712  
+    ___wmul@multiplicand 0073                      l150 06FA                      l152 0712  
                     l700 06DF                      l702 06E5                      l710 06D1  
                     l720 0708                      l712 06EE                      l704 06E9  
                     l722 070E                      l714 06F0                      l706 06EA  
@@ -1120,21 +1120,21 @@ Symbol Table                                                                    
                     u254 07D2                      u190 071C                      u175 0702  
                     u255 07D0                      u265 07EA                      u277 0760  
                     fsr0 0004                      indf 0000                     _main 0713  
-                   btemp 007E                     start 0000                    ?_main 0070  
+                   btemp 007E                     start 0001                    ?_main 0071  
                   _ANSEL 0188                    _PORTA 0005                    _TRISA 0085  
                   main@i 002A                    status 0003                    wtemp0 007E  
-        __initialization 07F2             __end_of_main 07F2                   ??_main 0076  
+        __initialization 07F2             __end_of_main 07F2                   ??_main 0077  
                  _ADRESH 001E                   _ADRESL 009E                   _ANSELH 0189  
                  ___wmul 06EE         __end_of_init_osc 06C7         __end_of_pic_init 06D6  
-__end_of__initialization 07FC           __pcstackCOMMON 0070               __pbssBANK0 002E  
-             __pmaintext 0713                  ?___wmul 0070                ?_init_osc 0070  
-              ?_pic_init 0070                _ANSELbits 0188                  __ptext1 06C7  
+__end_of__initialization 07FC           __pcstackCOMMON 0071               __pbssBANK0 002E  
+             __pmaintext 0713                  ?___wmul 0071                ?_init_osc 0071  
+              ?_pic_init 0071                _ANSELbits 0188                  __ptext1 06C7  
                 __ptext2 06BC                  __ptext3 06D6                  __ptext4 06EE  
       __end_of_init_gpio 06EE                  main@ADR 0020     end_of_initialization 07FC  
-             ??_init_osc 0070               ??_pic_init 0070                _TRISEbits 0089  
-         __end_of___wmul 0713      start_initialization 07F2                 ??___wmul 0074  
+             ??_init_osc 0071               ??_pic_init 0071                _TRISEbits 0089  
+         __end_of___wmul 0713      start_initialization 07F2                 ??___wmul 0075  
               ___latbits 0002            __pcstackBANK0 0020                _init_gpio 06D6  
-         ___wmul@product 0074                main@F1296 002E                main@ADRES 0028  
+         ___wmul@product 0075                main@F1296 002E                main@ADRES 0028  
              _ADCON0bits 001F               _ADCON1bits 009F                main@i_177 002C  
-      ___wmul@multiplier 0070               ?_init_gpio 0070                 _init_osc 06BC  
-               _pic_init 06C7              ??_init_gpio 0070               _OSCCONbits 008F  
+      ___wmul@multiplier 0071               ?_init_gpio 0071                 _init_osc 06BC  
+               _pic_init 06C7              ??_init_gpio 0071               _OSCCONbits 008F  
