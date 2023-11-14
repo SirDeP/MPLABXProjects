@@ -110,17 +110,17 @@ void __interrupt() isr(void)
     }
     // button handler:
     if (INTCONbits.INTF) {
-        ButtonTrigger ^= 1; // xor uitvoeren:
+        ButtonTrigger ^= 1; 
         switch (ButtonTrigger) {
             case 0:
 
-                OPTION_REGbits.INTEDG = 0; // rising edge instelling
+                OPTION_REGbits.INTEDG = 0; 
                 INTCONbits.INTF = 0;
                 on = 0;
                 break;
             case 1:
                 on = 1;
-                OPTION_REGbits.INTEDG = 1; // rising edge instelling
+                OPTION_REGbits.INTEDG = 1;
                 INTCONbits.INTF = 0;
                 break;
         }
