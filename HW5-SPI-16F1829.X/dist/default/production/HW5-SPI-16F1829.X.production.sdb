@@ -1,0 +1,272 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1829 ]
+[d frameptr 6 ]
+"22 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+[e E2477 . `uc
+MST_OSC_DIV_04 0
+MST_OSC_DIV_16 1
+MST_OSC_DIV_64 2
+MST_OSC_DIV_T2 3
+SLV_SS_EN 4
+SLV_SS_DIS 5
+]
+[e E2485 . `uc
+SMP0_SDI_MIDDLE 0
+SMP1_SDI_END 1
+]
+[e E2489 . `uc
+CKP0_CPOL0_IDLE_LOW 0
+CKP1_CPOL1_IDLE_HIGH 1
+]
+[e E2493 . `uc
+CKE0_CPHA1_TRSMIT_IDL2ACT 0
+CKE1_CPHA0_TRSMIT_ACT2IDL 1
+]
+"58 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+[e E2477 . `uc
+MST_OSC_DIV_04 0
+MST_OSC_DIV_16 1
+MST_OSC_DIV_64 2
+MST_OSC_DIV_T2 3
+SLV_SS_EN 4
+SLV_SS_DIS 5
+]
+[e E2485 . `uc
+SMP0_SDI_MIDDLE 0
+SMP1_SDI_END 1
+]
+[e E2489 . `uc
+CKP0_CPOL0_IDLE_LOW 0
+CKP1_CPOL1_IDLE_HIGH 1
+]
+[e E2493 . `uc
+CKE0_CPHA1_TRSMIT_IDL2ACT 0
+CKE1_CPHA0_TRSMIT_ACT2IDL 1
+]
+"10 /opt/microchip/xc8/v2.45/pic/sources/c99/common/sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 /opt/microchip/xc8/v2.45/pic/sources/c99/common/Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 /opt/microchip/xc8/v2.45/pic/sources/c99/pic/__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"46 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+[v _main main `(v  1 e 1 0 ]
+"53
+[v _pic_init pic_init `(v  1 e 1 0 ]
+"61
+[v _init_osc init_osc `(v  1 e 1 0 ]
+"71
+[v _init_gpio init_gpio `(v  1 e 1 0 ]
+"83
+[v _isr isr `II(v  1 e 1 0 ]
+"22 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+[v _spi_init spi_init `(v  1 e 1 0 ]
+"116
+[v _spi_transmit spi_transmit `(v  1 e 1 0 ]
+"129
+[v _spi_read spi_read `(uc  1 e 1 0 ]
+[s S316 . 1 `uc 1 IOCIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 IOCIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"374 /home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h
+[s S325 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 T0IE 1 0 :1:5 
+]
+[u S330 . 1 `S316 1 . 1 0 `S325 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES330  1 e 1 @11 ]
+[s S121 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"493
+[u S127 . 1 `S121 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES127  1 e 1 @13 ]
+[s S106 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"1249
+[u S112 . 1 `S106 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES112  1 e 1 @141 ]
+[s S64 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"1291
+[u S73 . 1 `S64 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES73  1 e 1 @142 ]
+[s S138 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSP1IE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+"1353
+[u S147 . 1 `S138 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES147  1 e 1 @145 ]
+[s S348 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 TMR0SE 1 0 :1:4 
+`uc 1 TMR0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nWPUEN 1 0 :1:7 
+]
+"1538
+[s S357 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 . 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+]
+[u S362 . 1 `S348 1 . 1 0 `S357 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES362  1 e 1 @149 ]
+[s S240 . 1 `uc 1 SCS0 1 0 :1:0 
+`uc 1 SCS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 IRCF0 1 0 :1:3 
+`uc 1 IRCF1 1 0 :1:4 
+`uc 1 IRCF2 1 0 :1:5 
+`uc 1 IRCF3 1 0 :1:6 
+`uc 1 SPLLEN 1 0 :1:7 
+]
+"1788
+[s S249 . 1 `uc 1 SCS 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 IRCF 1 0 :4:3 
+]
+[u S253 . 1 `S240 1 . 1 0 `S249 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES253  1 e 1 @153 ]
+[s S285 . 1 `uc 1 LATC0 1 0 :1:0 
+`uc 1 LATC1 1 0 :1:1 
+`uc 1 LATC2 1 0 :1:2 
+`uc 1 LATC3 1 0 :1:3 
+`uc 1 LATC4 1 0 :1:4 
+`uc 1 LATC5 1 0 :1:5 
+`uc 1 LATC6 1 0 :1:6 
+`uc 1 LATC7 1 0 :1:7 
+]
+"2200
+[u S294 . 1 `S285 1 . 1 0 ]
+[v _LATCbits LATCbits `VES294  1 e 1 @270 ]
+"2950
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"2997
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+"3033
+[v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
+"3725
+[v _SSP1BUF SSP1BUF `VEuc  1 e 1 @529 ]
+[s S85 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+"3861
+[u S94 . 1 `S85 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES94  1 e 1 @532 ]
+[s S38 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"3990
+[s S47 . 1 `uc 1 SSPM 1 0 :4:0 
+]
+[u S49 . 1 `S38 1 . 1 0 `S47 1 . 1 0 ]
+[v _SSP1CON1bits SSP1CON1bits `VES49  1 e 1 @533 ]
+"7623
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"7695
+[v _INTE INTE `VEb  1 e 0 @92 ]
+"8034
+[v _PEIE PEIE `VEb  1 e 0 @94 ]
+"42 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+[v _spi_buffer spi_buffer `uc  1 e 1 0 ]
+"43
+[v _ButtonTrigger ButtonTrigger `i  1 e 2 0 ]
+"44
+[v _on on `i  1 e 2 0 ]
+"46
+[v _main main `(v  1 e 1 0 ]
+{
+"51
+} 0
+"53
+[v _pic_init pic_init `(v  1 e 1 0 ]
+{
+"59
+} 0
+"22 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+[v _spi_init spi_init `(v  1 e 1 0 ]
+{
+[v spi_init@mst_slv_oscdiv mst_slv_oscdiv `E2477  1 a 1 wreg ]
+[v spi_init@mst_slv_oscdiv mst_slv_oscdiv `E2477  1 a 1 wreg ]
+[v spi_init@sdi_rx_smp sdi_rx_smp `E2485  1 p 1 3 ]
+[v spi_init@clock_pol clock_pol `E2489  1 p 1 4 ]
+[v spi_init@sdo_tx_edge sdo_tx_edge `E2493  1 p 1 5 ]
+"28
+[v spi_init@mst_slv_oscdiv mst_slv_oscdiv `E2477  1 a 1 0 ]
+"114
+} 0
+"61 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+[v _init_osc init_osc `(v  1 e 1 0 ]
+{
+"69
+} 0
+"71
+[v _init_gpio init_gpio `(v  1 e 1 0 ]
+{
+"80
+} 0
+"83
+[v _isr isr `II(v  1 e 1 0 ]
+{
+"117
+} 0
+"116 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+[v _spi_transmit spi_transmit `(v  1 e 1 0 ]
+{
+[v spi_transmit@c c `uc  1 a 1 wreg ]
+[v spi_transmit@c c `uc  1 a 1 wreg ]
+"122
+[v spi_transmit@c c `uc  1 a 1 0 ]
+"127
+} 0
+"129
+[v _spi_read spi_read `(uc  1 e 1 0 ]
+{
+"143
+} 0

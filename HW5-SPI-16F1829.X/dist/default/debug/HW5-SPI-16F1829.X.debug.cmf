@@ -1,0 +1,552 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta> <reloc>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$dist/default/debug/HW5-SPI-16F1829.X.debug.o
+cinit CODE 0 5D 5D F 2 1
+text1 CODE 0 B3 B3 E 2 1
+text2 CODE 0 6C 6C 47 2 1
+text3 CODE 0 CD CD 9 2 1
+text4 CODE 0 C1 C1 C 2 1
+text6 CODE 0 E3 E3 5 2 1
+text7 CODE 0 D6 D6 7 2 1
+idataCOMMON CODE 0 E8 E8 2 2 1
+maintext CODE 0 DD DD 6 2 1
+cstackCOMMON COMMON 1 70 70 6 1 1
+cstackBANK0 BANK0 1 20 20 1 1 1
+intentry CODE 0 4 4 57 2 1
+dataCOMMON COMMON 1 79 79 2 1 1
+bssCOMMON COMMON 1 76 76 3 1 1
+config CONFIG 4 8007 8007 2 2 1
+$/tmp/xcXPNCoEk/driver_tmp_15.o
+reset_vec CODE 0 0 0 3 2 1
+end_init CODE 0 5B 5B 2 2 1
+config CONFIG 4 8007 8007 2 2 1
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM 21-6F 1
+RAM A0-EF 1
+RAM 120-16F 1
+RAM 1A0-1EF 1
+RAM 220-26F 1
+RAM 2A0-2EF 1
+RAM 320-36F 1
+RAM 3A0-3EF 1
+RAM 420-46F 1
+RAM 4A0-4EF 1
+RAM 520-56F 1
+RAM 5A0-5EF 1
+RAM 620-64F 1
+BANK0 21-6F 1
+BANK1 A0-EF 1
+BANK2 120-16F 1
+BANK3 1A0-1EF 1
+BANK4 220-26F 1
+BANK5 2A0-2EF 1
+BANK6 320-36F 1
+BANK7 3A0-3EF 1
+BANK8 420-46F 1
+BANK9 4A0-4EF 1
+CONST 3-3 2
+CONST EA-1FFF 2
+ENTRY 3-3 2
+ENTRY EA-1FFF 2
+IDLOC 8000-8003 2
+SFR10 500-51F 1
+SFR11 580-59F 1
+SFR12 600-61F 1
+SFR13 680-6EF 1
+SFR14 700-76F 1
+SFR15 780-7EF 1
+SFR16 800-86F 1
+SFR17 880-8EF 1
+SFR18 900-96F 1
+SFR19 980-9EF 1
+SFR20 A00-A6F 1
+SFR21 A80-AEF 1
+SFR22 B00-B6F 1
+SFR23 B80-BEF 1
+SFR24 C00-C6F 1
+SFR25 C80-CEF 1
+SFR26 D00-D6F 1
+SFR27 D80-DEF 1
+SFR28 E00-E6F 1
+SFR29 E80-EEF 1
+SFR30 F00-F6F 1
+SFR31 F80-FEF 1
+CODE 3-3 2
+CODE EA-1FFF 2
+SFR0 0-1F 1
+SFR1 80-9F 1
+SFR2 100-11F 1
+SFR3 180-19F 1
+SFR4 200-21F 1
+SFR5 280-29F 1
+SFR6 300-31F 1
+SFR7 380-39F 1
+SFR8 400-41F 1
+SFR9 480-49F 1
+BANK10 520-56F 1
+BANK11 5A0-5EF 1
+BANK12 620-64F 1
+BIGRAM 2000-23EF 1
+COMMON 7B-7D 1
+EEDATA F000-F0FF 2
+STRCODE 3-3 2
+STRCODE EA-1FFF 2
+STRING 3-3 2
+STRING EA-1FFF 2
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$dist/default/debug/HW5-SPI-16F1829.X.debug.o
+5D cinit CODE >1171:/tmp/xcXPNCoEk/driver_tmp_1.s
+5D cinit CODE >1174:/tmp/xcXPNCoEk/driver_tmp_1.s
+5D cinit CODE >1197:/tmp/xcXPNCoEk/driver_tmp_1.s
+60 cinit CODE >1198:/tmp/xcXPNCoEk/driver_tmp_1.s
+61 cinit CODE >1199:/tmp/xcXPNCoEk/driver_tmp_1.s
+64 cinit CODE >1200:/tmp/xcXPNCoEk/driver_tmp_1.s
+65 cinit CODE >1205:/tmp/xcXPNCoEk/driver_tmp_1.s
+66 cinit CODE >1206:/tmp/xcXPNCoEk/driver_tmp_1.s
+67 cinit CODE >1207:/tmp/xcXPNCoEk/driver_tmp_1.s
+68 cinit CODE >1213:/tmp/xcXPNCoEk/driver_tmp_1.s
+68 cinit CODE >1215:/tmp/xcXPNCoEk/driver_tmp_1.s
+69 cinit CODE >1216:/tmp/xcXPNCoEk/driver_tmp_1.s
+6A cinit CODE >1217:/tmp/xcXPNCoEk/driver_tmp_1.s
+4 intentry CODE >93:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+6 intentry CODE >95:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+7 intentry CODE >96:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+7 intentry CODE >97:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+9 intentry CODE >98:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+A intentry CODE >100:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+E intentry CODE >102:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+12 intentry CODE >103:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+18 intentry CODE >104:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+1A intentry CODE >105:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+25 intentry CODE >106:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+28 intentry CODE >109:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+2A intentry CODE >109:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+2F intentry CODE >109:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+32 intentry CODE >109:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+35 intentry CODE >111:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+39 intentry CODE >112:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+3D intentry CODE >113:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+3E intentry CODE >114:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+3E intentry CODE >115:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+40 intentry CODE >116:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+41 intentry CODE >117:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+45 intentry CODE >118:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+46 intentry CODE >120:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+48 intentry CODE >121:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+4A intentry CODE >122:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+4B intentry CODE >123:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+4C intentry CODE >124:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+4E intentry CODE >124:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+53 intentry CODE >124:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+56 intentry CODE >124:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+59 intentry CODE >126:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+D6 text7 CODE >175:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+D6 text7 CODE >182:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+DB text7 CODE >183:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+DC text7 CODE >190:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+E3 text6 CODE >137:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+E4 text6 CODE >144:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+E7 text6 CODE >149:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+C1 text4 CODE >79:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+C1 text4 CODE >81:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+C3 text4 CODE >82:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+C4 text4 CODE >83:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+C5 text4 CODE >84:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+C7 text4 CODE >85:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+C9 text4 CODE >86:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+CA text4 CODE >87:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+CB text4 CODE >88:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+CC text4 CODE >89:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+CD text3 CODE >68:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+CD text3 CODE >71:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+D0 text3 CODE >73:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+D4 text3 CODE >75:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+D5 text3 CODE >76:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+6C text2 CODE >23:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+6E text2 CODE >31:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+76 text2 CODE >39:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+78 text2 CODE >42:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+7B text2 CODE >42:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+81 text2 CODE >42:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+85 text2 CODE >48:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+87 text2 CODE >54:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+89 text2 CODE >62:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+92 text2 CODE >70:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+93 text2 CODE >71:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+94 text2 CODE >76:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+96 text2 CODE >83:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+99 text2 CODE >83:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+9D text2 CODE >91:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+9F text2 CODE >91:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+A1 text2 CODE >91:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+A3 text2 CODE >97:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+A5 text2 CODE >106:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+A7 text2 CODE >106:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+A9 text2 CODE >106:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+AB text2 CODE >111:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+AB text2 CODE >120:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+AD text2 CODE >120:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+AF text2 CODE >120:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+B1 text2 CODE >130:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+B2 text2 CODE >135:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+B3 text1 CODE >60:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+B3 text1 CODE >62:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+B6 text1 CODE >63:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+B9 text1 CODE >65:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+C0 text1 CODE >66:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+DD maintext CODE >50:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+DD maintext CODE >52:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+E0 maintext CODE >53:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+E0 maintext CODE >57:/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+___latbits 2 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__Hspace_0 EA 0 ABS 0 - -
+__Hspace_1 7B 0 ABS 0 - -
+__Hspace_2 0 0 ABS 0 - -
+__Hspace_3 0 0 ABS 0 - -
+__Hspace_4 10010 0 ABS 0 - -
+_SSP1STATbits 214 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__Heeprom_data 0 0 EEDATA 3 eeprom_data -
+_pic_init 166 0 CODE 0 text1 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+_on 76 0 COMMON 1 bssCOMMON dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__L__absolute__ 0 0 ABS 0 __absolute__ -
+__Hstrings 0 0 ABS 0 strings -
+_INTE 5C 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+_PEIE 5E 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+___sp 0 0 STACK 2 stack /tmp/xcXPNCoEk/driver_tmp_15.o
+_main 1BA 0 CODE 0 maintext dist/default/debug/HW5-SPI-16F1829.X.debug.o
+btemp 7E 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+___stack_hi 0 0 STACK 2 stack /tmp/xcXPNCoEk/driver_tmp_15.o
+___stack_lo 0 0 STACK 2 stack /tmp/xcXPNCoEk/driver_tmp_15.o
+start B6 0 CODE 0 init /tmp/xcXPNCoEk/driver_tmp_15.o
+__end_of_pic_init 182 0 CODE 0 text1 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__HbssCOMMON 0 0 ABS 0 bssCOMMON -
+_OPTION_REGbits 95 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__Hpowerup 0 0 CODE 0 powerup -
+spi_init@clock_pol 74 0 COMMON 1 cstackCOMMON dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__HdataCOMMON 0 0 ABS 0 dataCOMMON -
+intlevel0 0 0 ENTRY 0 functab /tmp/xcXPNCoEk/driver_tmp_15.o
+intlevel1 0 0 ENTRY 0 functab /tmp/xcXPNCoEk/driver_tmp_15.o
+intlevel2 0 0 ENTRY 0 functab /tmp/xcXPNCoEk/driver_tmp_15.o
+intlevel3 0 0 ENTRY 0 functab /tmp/xcXPNCoEk/driver_tmp_15.o
+intlevel4 0 0 ENTRY 0 functab /tmp/xcXPNCoEk/driver_tmp_15.o
+intlevel5 0 0 ENTRY 0 functab /tmp/xcXPNCoEk/driver_tmp_15.o
+__LbssCOMMON 0 0 ABS 0 bssCOMMON -
+_init_osc 19A 0 CODE 0 text3 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+_OSCCONbits 99 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+wtemp0 7E 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__Hfunctab 0 0 ENTRY 0 functab -
+__Hclrtext 0 0 ABS 0 clrtext -
+__end_of_init_osc 1AC 0 CODE 0 text3 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__pidataCOMMON 1D0 0 CODE 0 idataCOMMON dist/default/debug/HW5-SPI-16F1829.X.debug.o
+_ANSELA 18C 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+_ANSELB 18D 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+_ANSELC 18E 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__LdataCOMMON 0 0 ABS 0 dataCOMMON -
+spi_init@sdo_tx_edge 75 0 COMMON 1 cstackCOMMON dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__Lmaintext 0 0 ABS 0 maintext -
+___stackhi 0 0 ABS 0 - /tmp/xcXPNCoEk/driver_tmp_15.o
+___stacklo 0 0 ABS 0 - /tmp/xcXPNCoEk/driver_tmp_15.o
+__LidataCOMMON 0 0 ABS 0 idataCOMMON -
+start_initialization BA 0 CODE 0 cinit dist/default/debug/HW5-SPI-16F1829.X.debug.o
+_TRISBbits 8D 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+_TRISCbits 8E 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+spi_transmit@c 70 0 COMMON 1 cstackCOMMON dist/default/debug/HW5-SPI-16F1829.X.debug.o
+_spi_transmit 1C6 0 CODE 0 text6 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+___int_sp 0 0 STACK 2 stack /tmp/xcXPNCoEk/driver_tmp_15.o
+__Hbank0 0 0 ABS 0 bank0 -
+__Hbank1 0 0 ABS 0 bank1 -
+__Hbank2 0 0 ABS 0 bank2 -
+__Hbank3 0 0 ABS 0 bank3 -
+__Hbank4 0 0 ABS 0 bank4 -
+__Hbank5 0 0 ABS 0 bank5 -
+__Hbank6 0 0 ABS 0 bank6 -
+__Hbank7 0 0 ABS 0 bank7 -
+__Hbank8 0 0 ABS 0 bank8 -
+__Hbank9 0 0 ABS 0 bank9 -
+__Hcinit D8 0 CODE 0 cinit -
+__Hsfr10 0 0 ABS 0 sfr10 -
+__Hsfr11 0 0 ABS 0 sfr11 -
+__Hsfr12 0 0 ABS 0 sfr12 -
+__Hsfr13 0 0 ABS 0 sfr13 -
+__Hsfr14 0 0 ABS 0 sfr14 -
+__Hsfr15 0 0 ABS 0 sfr15 -
+__Hsfr16 0 0 ABS 0 sfr16 -
+__Hsfr17 0 0 ABS 0 sfr17 -
+__Hsfr18 0 0 ABS 0 sfr18 -
+__Hsfr19 0 0 ABS 0 sfr19 -
+__Hsfr20 0 0 ABS 0 sfr20 -
+__Hsfr21 0 0 ABS 0 sfr21 -
+__Hsfr22 0 0 ABS 0 sfr22 -
+__Hsfr23 0 0 ABS 0 sfr23 -
+__Hsfr24 0 0 ABS 0 sfr24 -
+__Hsfr25 0 0 ABS 0 sfr25 -
+__Hsfr26 0 0 ABS 0 sfr26 -
+__Hsfr27 0 0 ABS 0 sfr27 -
+__Hsfr28 0 0 ABS 0 sfr28 -
+__Hsfr29 0 0 ABS 0 sfr29 -
+__Hsfr30 0 0 ABS 0 sfr30 -
+__Hsfr31 0 0 ABS 0 sfr31 -
+__Hstack 0 0 STACK 2 stack -
+__Hbank10 0 0 ABS 0 bank10 -
+__Hbank11 0 0 ABS 0 bank11 -
+__Hbank12 0 0 ABS 0 bank12 -
+__Hbank13 0 0 BANK13 1 bank13 -
+__Hbank14 0 0 BANK14 1 bank14 -
+__Hbank15 0 0 BANK15 1 bank15 -
+__Hbank16 0 0 BANK16 1 bank16 -
+__Hbank17 0 0 BANK17 1 bank17 -
+__Hbank18 0 0 BANK18 1 bank18 -
+__Hbank19 0 0 BANK19 1 bank19 -
+__Hbank20 0 0 BANK20 1 bank20 -
+__Hbank21 0 0 BANK21 1 bank21 -
+__Hbank22 0 0 BANK22 1 bank22 -
+__Hbank23 0 0 BANK23 1 bank23 -
+__Hbank24 0 0 BANK24 1 bank24 -
+__Hbank25 0 0 BANK25 1 bank25 -
+__Hbank26 0 0 BANK26 1 bank26 -
+__Hbank27 0 0 BANK27 1 bank27 -
+__Hbank28 0 0 BANK28 1 bank28 -
+__Hbank29 0 0 BANK29 1 bank29 -
+__Hbank30 0 0 BANK30 1 bank30 -
+__Hbank31 0 0 BANK31 1 bank31 -
+__Hbigram 0 0 ABS 0 bigram -
+__Hmaintext 0 0 ABS 0 maintext -
+__Hcommon 0 0 ABS 0 common -
+__Hconfig 10012 0 CONFIG 4 config -
+__Lbank0 0 0 ABS 0 bank0 -
+__Lbank1 0 0 ABS 0 bank1 -
+__Lbank2 0 0 ABS 0 bank2 -
+__Lbank3 0 0 ABS 0 bank3 -
+__Lbank4 0 0 ABS 0 bank4 -
+__Lbank5 0 0 ABS 0 bank5 -
+__Lbank6 0 0 ABS 0 bank6 -
+__Lbank7 0 0 ABS 0 bank7 -
+__Lbank8 0 0 ABS 0 bank8 -
+__Lbank9 0 0 ABS 0 bank9 -
+__Lcinit BA 0 CODE 0 cinit -
+__Lsfr10 0 0 ABS 0 sfr10 -
+__Lsfr11 0 0 ABS 0 sfr11 -
+__Lsfr12 0 0 ABS 0 sfr12 -
+__Lsfr13 0 0 ABS 0 sfr13 -
+__Lsfr14 0 0 ABS 0 sfr14 -
+__Lsfr15 0 0 ABS 0 sfr15 -
+__Lsfr16 0 0 ABS 0 sfr16 -
+__Lsfr17 0 0 ABS 0 sfr17 -
+__Lsfr18 0 0 ABS 0 sfr18 -
+__Lsfr19 0 0 ABS 0 sfr19 -
+__Lsfr20 0 0 ABS 0 sfr20 -
+__Lsfr21 0 0 ABS 0 sfr21 -
+__Lsfr22 0 0 ABS 0 sfr22 -
+__Lsfr23 0 0 ABS 0 sfr23 -
+__Lsfr24 0 0 ABS 0 sfr24 -
+__Lsfr25 0 0 ABS 0 sfr25 -
+__Lsfr26 0 0 ABS 0 sfr26 -
+__Lsfr27 0 0 ABS 0 sfr27 -
+__Lsfr28 0 0 ABS 0 sfr28 -
+__Lsfr29 0 0 ABS 0 sfr29 -
+__Lsfr30 0 0 ABS 0 sfr30 -
+__Lsfr31 0 0 ABS 0 sfr31 -
+__Lstack 0 0 STACK 2 stack -
+_PORTBbits D 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+_INTCONbits B 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__Habs1 0 0 ABS 0 abs1 -
+__Hcode 0 0 ABS 0 code -
+__Hheap 0 0 HEAP 7 heap -
+__Hinit B6 0 CODE 0 init -
+__Hsfr0 0 0 ABS 0 sfr0 -
+__Hsfr1 0 0 ABS 0 sfr1 -
+__Hsfr2 0 0 ABS 0 sfr2 -
+__Hsfr3 0 0 ABS 0 sfr3 -
+__Hsfr4 0 0 ABS 0 sfr4 -
+__Hsfr5 0 0 ABS 0 sfr5 -
+__Hsfr6 0 0 ABS 0 sfr6 -
+__Hsfr7 0 0 ABS 0 sfr7 -
+__Hsfr8 0 0 ABS 0 sfr8 -
+__Hsfr9 0 0 ABS 0 sfr9 -
+__Htext 0 0 ABS 0 text -
+__Labs1 0 0 ABS 0 abs1 -
+__Lcode 0 0 ABS 0 code -
+__Lheap 0 0 HEAP 7 heap -
+__Linit B6 0 CODE 0 init -
+__Lsfr0 0 0 ABS 0 sfr0 -
+__Lsfr1 0 0 ABS 0 sfr1 -
+__Lsfr2 0 0 ABS 0 sfr2 -
+__Lsfr3 0 0 ABS 0 sfr3 -
+__Lsfr4 0 0 ABS 0 sfr4 -
+__Lsfr5 0 0 ABS 0 sfr5 -
+__Lsfr6 0 0 ABS 0 sfr6 -
+__Lsfr7 0 0 ABS 0 sfr7 -
+__Lsfr8 0 0 ABS 0 sfr8 -
+__Lsfr9 0 0 ABS 0 sfr9 -
+__Ltext 0 0 ABS 0 text -
+__LcstackBANK0 0 0 ABS 0 cstackBANK0 -
+int$flags 7E 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+_ButtonTrigger 79 0 COMMON 1 dataCOMMON dist/default/debug/HW5-SPI-16F1829.X.debug.o
+_GIE 5F 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__S0 EA 0 ABS 0 - -
+__S1 7B 0 ABS 0 - -
+__S3 0 0 ABS 0 - -
+_isr 8 0 CODE 0 intentry dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__end_of_spi_transmit 1D0 0 CODE 0 text6 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__HidataCOMMON 0 0 ABS 0 idataCOMMON -
+__end_of_isr B6 0 CODE 0 intentry dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__Lintentry 8 0 CODE 0 intentry -
+reset_vec 0 0 CODE 0 reset_vec /tmp/xcXPNCoEk/driver_tmp_15.o
+_spi_buffer 78 0 COMMON 1 bssCOMMON dist/default/debug/HW5-SPI-16F1829.X.debug.o
+_PIE1bits 91 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__end_of_init_gpio 19A 0 CODE 0 text4 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__Lbank10 0 0 ABS 0 bank10 -
+__Lbank11 0 0 ABS 0 bank11 -
+__Lbank12 0 0 ABS 0 bank12 -
+__Lbank13 0 0 BANK13 1 bank13 -
+__Lbank14 0 0 BANK14 1 bank14 -
+__Lbank15 0 0 BANK15 1 bank15 -
+__Lbank16 0 0 BANK16 1 bank16 -
+__Lbank17 0 0 BANK17 1 bank17 -
+__Lbank18 0 0 BANK18 1 bank18 -
+__Lbank19 0 0 BANK19 1 bank19 -
+__Lbank20 0 0 BANK20 1 bank20 -
+__Lbank21 0 0 BANK21 1 bank21 -
+__Lbank22 0 0 BANK22 1 bank22 -
+__Lbank23 0 0 BANK23 1 bank23 -
+__Lbank24 0 0 BANK24 1 bank24 -
+__Lbank25 0 0 BANK25 1 bank25 -
+__Lbank26 0 0 BANK26 1 bank26 -
+__Lbank27 0 0 BANK27 1 bank27 -
+__Lbank28 0 0 BANK28 1 bank28 -
+__Lbank29 0 0 BANK29 1 bank29 -
+__Lbank30 0 0 BANK30 1 bank30 -
+__Lbank31 0 0 BANK31 1 bank31 -
+__pmaintext 1BA 0 CODE 0 maintext dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__Lbigram 0 0 ABS 0 bigram -
+__Lcommon 0 0 ABS 0 common -
+__Lconfig 0 0 CONFIG 4 config -
+_LATCbits 10E 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+_init_gpio 182 0 CODE 0 text4 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__Lspace_0 0 0 ABS 0 - -
+__Lspace_1 0 0 ABS 0 - -
+__Lspace_2 0 0 ABS 0 - -
+__Lspace_3 0 0 ABS 0 - -
+__Lspace_4 0 0 ABS 0 - -
+__pbssCOMMON 76 0 COMMON 1 bssCOMMON dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__HcstackBANK0 0 0 ABS 0 cstackBANK0 -
+__Lend_init B6 0 CODE 0 end_init -
+__LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+end_of_initialization D0 0 CODE 0 cinit dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__Hintentry B6 0 CODE 0 intentry -
+__Lstrings 0 0 ABS 0 strings -
+spi_init@mst_slv_oscdiv 20 0 BANK0 1 cstackBANK0 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__Hreset_vec 6 0 CODE 0 reset_vec -
+__ptext1 166 0 CODE 0 text1 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__ptext2 D8 0 CODE 0 text2 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__ptext3 19A 0 CODE 0 text3 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__ptext4 182 0 CODE 0 text4 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__ptext6 1C6 0 CODE 0 text6 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__ptext7 1AC 0 CODE 0 text7 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__Lpowerup 0 0 CODE 0 powerup -
+__Leeprom_data 0 0 EEDATA 3 eeprom_data -
+__H__absolute__ 0 0 ABS 0 __absolute__ -
+__Lreset_vec 0 0 CODE 0 reset_vec -
+___heap_hi 0 0 ABS 0 - /tmp/xcXPNCoEk/driver_tmp_15.o
+___heap_lo 0 0 ABS 0 - /tmp/xcXPNCoEk/driver_tmp_15.o
+__end_of__initialization D0 0 CODE 0 cinit dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__Lfunctab 0 0 ENTRY 0 functab -
+__Lclrtext 0 0 ABS 0 clrtext -
+_SSP1CON1bits 215 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/debug/HW5-SPI-16F1829.X.debug.o
+_SSP1BUF 211 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+_SSP2BUF 219 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__Hend_init BA 0 CODE 0 end_init -
+__end_of_main 1C6 0 CODE 0 maintext dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__Hram 0 0 ABS 0 ram -
+__Lram 0 0 ABS 0 ram -
+_SSPSTATbits 214 0 ABS 0 - dist/default/debug/HW5-SPI-16F1829.X.debug.o
+spi_init@sdi_rx_smp 73 0 COMMON 1 cstackCOMMON dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__pintentry 8 0 CODE 0 intentry dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__initialization BA 0 CODE 0 cinit dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__pdataCOMMON 79 0 COMMON 1 dataCOMMON dist/default/debug/HW5-SPI-16F1829.X.debug.o
+_spi_init D8 0 CODE 0 text2 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+_spi_read 1AC 0 CODE 0 text7 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__end_of_spi_init 166 0 CODE 0 text2 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+__end_of_spi_read 1BA 0 CODE 0 text7 dist/default/debug/HW5-SPI-16F1829.X.debug.o
+___int_stack_hi 0 0 STACK 2 stack /tmp/xcXPNCoEk/driver_tmp_15.o
+___int_stack_lo 0 0 STACK 2 stack /tmp/xcXPNCoEk/driver_tmp_15.o
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+- 1 7E 2
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+cstackCOMMON 1 70 70 B 1
+cstackBANK0 1 20 20 1 1
+intentry 0 4 8 E6 2
+reset_vec 0 0 0 3 2
+# %NOTES Section
+# This section contains data of all the note-psects.  The beginning of the section
+# is indicated by %NOTES. The first line indicates the name and decimal
+# byte-length of the first note-psect, e.g.
+#   $codecov_info_hdr 16
+# Each line that follows contains the byte-data of the psect in hexadecimal as a
+# space-separated list. These lines are limited to 16 bytes of data.
+%NOTES
