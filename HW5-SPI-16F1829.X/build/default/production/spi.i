@@ -4580,7 +4580,7 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "/opt/microchip/xc8/v2.45/pic/include/xc.h" 2 3
 # 5 "./spi.h" 2
-
+# 53 "./spi.h"
 typedef enum {
     MST_OSC_DIV_04,
     MST_OSC_DIV_16,
@@ -4614,119 +4614,36 @@ void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_pol, 
 void spi_transmit(char c);
 char spi_read(void);
 # 2 "spi.c" 2
-# 22 "spi.c"
+
 void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_pol, txclkedge sdo_tx_edge)
 {
-
-
-
-
     SSP1CON1bits.SSPM = mst_slv_oscdiv;
-
-
-
-
-
     TRISCbits.TRISC7 = 0;
 
     if (mst_slv_oscdiv >= SLV_SS_EN && mst_slv_oscdiv <= SLV_SS_DIS) {
-
-
-
-
         SSP1STATbits.SMP = 0;
-
-
-
-
         TRISBbits.TRISB6 = 1;
-
-
-
-
-
         SSP1CON1bits.CKP = PORTBbits.RB6;
-
-
-
-
-
         GIE = 1;
         PEIE = 1;
-
-
-
-
         PIE1bits.SSP1IE = 1;
-
-
-
-
-
     }
     else if (mst_slv_oscdiv >= MST_OSC_DIV_04 && mst_slv_oscdiv <= MST_OSC_DIV_T2) {
-
-
-
-
-
         SSP1STATbits.SMP = sdi_rx_smp;
-
-
-
-
-
         TRISBbits.TRISB6 = 0;
-
-
-
-
-
         SSP1CON1bits.CKP = clock_pol;
-
-
-
-
     }
-
-
-
-
-
     SSP1STATbits.CKE = sdo_tx_edge;
-# 109 "spi.c"
     SSP1CON1bits.SSPEN = 1;
-
-
-
-
 }
 
 void spi_transmit(char c)
 {
-
-
-
-
     SSP1BUF = c;
-
-
-
-
 }
 
 char spi_read()
 {
-
-
-
-
-
     while (!SSP1STATbits.BF);
     return (SSP1BUF);
-
-
-
-
-
 }

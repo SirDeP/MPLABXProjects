@@ -1,6 +1,6 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"23 spi.c
-[; ;spi.c: 23: void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_pol, txclkedge sdo_tx_edge)
+"3 spi.c
+[; ;spi.c: 3: void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_pol, txclkedge sdo_tx_edge)
 [c E2477 0 1 2 3 4 5 .. ]
 [n E2477 . MST_OSC_DIV_04 MST_OSC_DIV_16 MST_OSC_DIV_64 MST_OSC_DIV_T2 SLV_SS_EN SLV_SS_DIS  ]
 [c E2485 0 1 .. ]
@@ -88,20 +88,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3725
 [; ;/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h: 3725: extern volatile unsigned char SSP1BUF __attribute__((address(0x211)));
 [v _SSP1BUF `Vuc ~T0 @X0 0 e@529 ]
-"3905
-[; ;/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h: 3905:     struct {
-[s S207 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S207 . BF UA R_nW S P D_nA CKE SMP ]
-"3904
-[; ;/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h: 3904: typedef union {
-[u S206 `S207 1 ]
-[n S206 . . ]
-"3916
-[; ;/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h: 3916: extern volatile SSPSTATbits_t SSPSTATbits __attribute__((address(0x214)));
-[v _SSPSTATbits `VS206 ~T0 @X0 0 e@532 ]
-"4409
-[; ;/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h: 4409: extern volatile unsigned char SSP2BUF __attribute__((address(0x219)));
-[v _SSP2BUF `Vuc ~T0 @X0 0 e@537 ]
 "54 /home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h
 [; ;/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -597,172 +583,123 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7091
 [; ;/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h: 7091: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"23 spi.c
-[; ;spi.c: 23: void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_pol, txclkedge sdo_tx_edge)
+"3 spi.c
+[; ;spi.c: 3: void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_pol, txclkedge sdo_tx_edge)
 [v _spi_init `(v ~T0 @X0 1 ef4`E2477`E2485`E2489`E2493 ]
-"24
-[; ;spi.c: 24: {
+"4
+[; ;spi.c: 4: {
 {
 [e :U _spi_init ]
-"23
-[; ;spi.c: 23: void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_pol, txclkedge sdo_tx_edge)
+"3
+[; ;spi.c: 3: void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_pol, txclkedge sdo_tx_edge)
 [v _mst_slv_oscdiv `E2477 ~T0 @X0 1 r1 ]
 [v _sdi_rx_smp `E2485 ~T0 @X0 1 r2 ]
 [v _clock_pol `E2489 ~T0 @X0 1 r3 ]
 [v _sdo_tx_edge `E2493 ~T0 @X0 1 r4 ]
-"24
-[; ;spi.c: 24: {
+"4
+[; ;spi.c: 4: {
 [f ]
-"31
-[; ;spi.c: 31:     SSP1CON1bits.SSPM = mst_slv_oscdiv;
+"5
+[; ;spi.c: 5:     SSP1CON1bits.SSPM = mst_slv_oscdiv;
 [e = . . _SSP1CON1bits 1 0 -> _mst_slv_oscdiv `uc ]
-"39
-[; ;spi.c: 39:     TRISCbits.TRISC7 = 0;
+"6
+[; ;spi.c: 6:     TRISCbits.TRISC7 = 0;
 [e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
-"42
-[; ;spi.c: 42:     if (mst_slv_oscdiv >= SLV_SS_EN && mst_slv_oscdiv <= SLV_SS_DIS) {
+"8
+[; ;spi.c: 8:     if (mst_slv_oscdiv >= SLV_SS_EN && mst_slv_oscdiv <= SLV_SS_DIS) {
 [e $ ! && >= -> _mst_slv_oscdiv `ui -> . `E2477 4 `ui <= -> _mst_slv_oscdiv `ui -> . `E2477 5 `ui 371  ]
 {
-"48
-[; ;spi.c: 48:         SSP1STATbits.SMP = 0;
+"9
+[; ;spi.c: 9:         SSP1STATbits.SMP = 0;
 [e = . . _SSP1STATbits 0 7 -> -> 0 `i `uc ]
-"54
-[; ;spi.c: 54:         TRISBbits.TRISB6 = 1;
+"10
+[; ;spi.c: 10:         TRISBbits.TRISB6 = 1;
 [e = . . _TRISBbits 0 3 -> -> 1 `i `uc ]
-"62
-[; ;spi.c: 62:         SSP1CON1bits.CKP = PORTBbits.RB6;
+"11
+[; ;spi.c: 11:         SSP1CON1bits.CKP = PORTBbits.RB6;
 [e = . . _SSP1CON1bits 0 4 . . _PORTBbits 0 3 ]
-"70
-[; ;spi.c: 70:         GIE = 1;
+"12
+[; ;spi.c: 12:         GIE = 1;
 [e = _GIE -> -> 1 `i `b ]
-"71
-[; ;spi.c: 71:         PEIE = 1;
+"13
+[; ;spi.c: 13:         PEIE = 1;
 [e = _PEIE -> -> 1 `i `b ]
-"76
-[; ;spi.c: 76:         PIE1bits.SSP1IE = 1;
+"14
+[; ;spi.c: 14:         PIE1bits.SSP1IE = 1;
 [e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
-"83
-[; ;spi.c: 83:     } else if (mst_slv_oscdiv >= MST_OSC_DIV_04 && mst_slv_oscdiv <= MST_OSC_DIV_T2) {
+"15
+[; ;spi.c: 15:     }
 }
 [e $U 372  ]
+"16
+[; ;spi.c: 16:     else if (mst_slv_oscdiv >= MST_OSC_DIV_04 && mst_slv_oscdiv <= MST_OSC_DIV_T2) {
 [e :U 371 ]
 [e $ ! && >= -> _mst_slv_oscdiv `ui -> . `E2477 0 `ui <= -> _mst_slv_oscdiv `ui -> . `E2477 3 `ui 373  ]
 {
-"91
-[; ;spi.c: 91:         SSP1STATbits.SMP = sdi_rx_smp;
+"17
+[; ;spi.c: 17:         SSP1STATbits.SMP = sdi_rx_smp;
 [e = . . _SSP1STATbits 0 7 -> _sdi_rx_smp `uc ]
-"97
-[; ;spi.c: 97:         TRISBbits.TRISB6 = 0;
+"18
+[; ;spi.c: 18:         TRISBbits.TRISB6 = 0;
 [e = . . _TRISBbits 0 3 -> -> 0 `i `uc ]
-"106
-[; ;spi.c: 106:         SSP1CON1bits.CKP = clock_pol;
+"19
+[; ;spi.c: 19:         SSP1CON1bits.CKP = clock_pol;
 [e = . . _SSP1CON1bits 0 4 -> _clock_pol `uc ]
-"111
-[; ;spi.c: 111:     }
+"20
+[; ;spi.c: 20:     }
 }
 [e :U 373 ]
 [e :U 372 ]
-"120
-[; ;spi.c: 120:     SSP1STATbits.CKE = sdo_tx_edge;
+"21
+[; ;spi.c: 21:     SSP1STATbits.CKE = sdo_tx_edge;
 [e = . . _SSP1STATbits 0 6 -> _sdo_tx_edge `uc ]
-"130
-[; ;spi.c: 130:     SSP1CON1bits.SSPEN = 1;
+"22
+[; ;spi.c: 22:     SSP1CON1bits.SSPEN = 1;
 [e = . . _SSP1CON1bits 0 5 -> -> 1 `i `uc ]
-"135
-[; ;spi.c: 135: }
+"23
+[; ;spi.c: 23: }
 [e :UE 370 ]
 }
-"137
-[; ;spi.c: 137: void spi_transmit(char c)
+"25
+[; ;spi.c: 25: void spi_transmit(char c)
 [v _spi_transmit `(v ~T0 @X0 1 ef1`uc ]
-"138
-[; ;spi.c: 138: {
+"26
+[; ;spi.c: 26: {
 {
 [e :U _spi_transmit ]
-"137
-[; ;spi.c: 137: void spi_transmit(char c)
+"25
+[; ;spi.c: 25: void spi_transmit(char c)
 [v _c `uc ~T0 @X0 1 r1 ]
-"138
-[; ;spi.c: 138: {
+"26
+[; ;spi.c: 26: {
 [f ]
-"144
-[; ;spi.c: 144:     SSP1BUF = c;
+"27
+[; ;spi.c: 27:     SSP1BUF = c;
 [e = _SSP1BUF -> _c `uc ]
-"149
-[; ;spi.c: 149: }
+"28
+[; ;spi.c: 28: }
 [e :UE 374 ]
 }
-"151
-[; ;spi.c: 151: static void spi_receivewait()
-[v _spi_receivewait `(v ~T0 @X0 1 sf ]
-"152
-[; ;spi.c: 152: {
-{
-[e :U _spi_receivewait ]
-[f ]
-"158
-[; ;spi.c: 158:     while (!SSP1STATbits.BF)
-[e $U 376  ]
-[e :U 377 ]
-"159
-[; ;spi.c: 159:         ;
-[e :U 376 ]
-"158
-[; ;spi.c: 158:     while (!SSP1STATbits.BF)
-[e $ ! != -> . . _SSP1STATbits 0 0 `i -> 0 `i 377  ]
-[e :U 378 ]
-"165
-[; ;spi.c: 165: }
-[e :UE 375 ]
-}
-"167
-[; ;spi.c: 167: unsigned spi_dataready()
-[v _spi_dataready `(ui ~T0 @X0 1 ef ]
-"168
-[; ;spi.c: 168: {
-{
-[e :U _spi_dataready ]
-[f ]
-"169
-[; ;spi.c: 169:     if (SSPSTATbits.BF)
-[e $ ! != -> . . _SSPSTATbits 0 0 `i -> 0 `i 380  ]
-"170
-[; ;spi.c: 170:         return 1;
-[e ) -> -> 1 `i `ui ]
-[e $UE 379  ]
-[e $U 381  ]
-"171
-[; ;spi.c: 171:     else
-[e :U 380 ]
-"172
-[; ;spi.c: 172:         return 0;
-[e ) -> -> 0 `i `ui ]
-[e $UE 379  ]
-[e :U 381 ]
-"173
-[; ;spi.c: 173: }
-[e :UE 379 ]
-}
-"175
-[; ;spi.c: 175: char spi_read()
+"30
+[; ;spi.c: 30: char spi_read()
 [v _spi_read `(uc ~T0 @X0 1 ef ]
-"176
-[; ;spi.c: 176: {
+"31
+[; ;spi.c: 31: {
 {
 [e :U _spi_read ]
 [f ]
-"182
-[; ;spi.c: 182:     while (!SSP1STATbits.BF);
-[e $U 383  ]
-[e :U 384 ]
-[e :U 383 ]
-[e $ ! != -> . . _SSP1STATbits 0 0 `i -> 0 `i 384  ]
-[e :U 385 ]
-"183
-[; ;spi.c: 183:     return (SSP2BUF);
-[e ) -> _SSP2BUF `uc ]
-[e $UE 382  ]
-"190
-[; ;spi.c: 190: }
-[e :UE 382 ]
+"32
+[; ;spi.c: 32:     while (!SSP1STATbits.BF);
+[e $U 376  ]
+[e :U 377 ]
+[e :U 376 ]
+[e $ ! != -> . . _SSP1STATbits 0 0 `i -> 0 `i 377  ]
+[e :U 378 ]
+"33
+[; ;spi.c: 33:     return (SSP1BUF);
+[e ) -> _SSP1BUF `uc ]
+[e $UE 375  ]
+"34
+[; ;spi.c: 34: }
+[e :UE 375 ]
 }

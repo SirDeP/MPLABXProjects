@@ -1,12 +1,12 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"43 1829.c
+"41 1829.c
 [v _pic_init `(v ~T0 @X0 0 ef ]
-"45
+"43
 [v _init_osc `(v ~T0 @X0 0 ef ]
-"44
+"42
 [v _init_gpio `(v ~T0 @X0 0 ef ]
-"65
+"61
 [c E2477 0 1 2 3 4 5 .. ]
 [n E2477 . MST_OSC_DIV_04 MST_OSC_DIV_16 MST_OSC_DIV_64 MST_OSC_DIV_T2 SLV_SS_EN SLV_SS_DIS  ]
 [c E2485 0 1 .. ]
@@ -15,8 +15,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n E2489 . CKP0_CPOL0_IDLE_LOW CKP1_CPOL1_IDLE_HIGH  ]
 [c E2493 0 1 .. ]
 [n E2493 . CKE0_CPHA1_TRSMIT_IDL2ACT CKE1_CPHA0_TRSMIT_ACT2IDL  ]
-"106 ./spi.h
-[; ;./spi.h: 106: void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_pol, txclkedge sdo_tx_edge);
+"82 ./spi.h
+[; ;./spi.h: 82: void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_pol, txclkedge sdo_tx_edge);
 [v _spi_init `(v ~T0 @X0 0 ef4`E2477`E2485`E2489`E2493 ]
 "1772 /home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h
 [; ;/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h: 1772:     struct {
@@ -67,20 +67,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7623
 [; ;/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h: 7623: extern volatile __bit GIE __attribute__((address(0x5F)));
 [v _GIE `Vb ~T0 @X0 0 e@95 ]
-"8034
-[; ;/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h: 8034: extern volatile __bit PEIE __attribute__((address(0x5E)));
-[v _PEIE `Vb ~T0 @X0 0 e@94 ]
 "7695
 [; ;/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h: 7695: extern volatile __bit INTE __attribute__((address(0x5C)));
 [v _INTE `Vb ~T0 @X0 0 e@92 ]
 [t ~ __interrupt . k ]
 [t T1 __interrupt ]
-"107 ./spi.h
-[; ;./spi.h: 107: void spi_transmit(char c);
+"83 ./spi.h
+[; ;./spi.h: 83: void spi_transmit(char c);
 [v _spi_transmit `(v ~T0 @X0 0 ef1`uc ]
-"108
-[; ;./spi.h: 108: char spi_read();
-[v _spi_read `(uc ~T0 @X0 0 e? ]
+"84
+[; ;./spi.h: 84: char spi_read(void);
+[v _spi_read `(uc ~T0 @X0 0 ef ]
 [v F42 `(v ~T0 @X0 1 tf1`ul ]
 "20 /opt/microchip/xc8/v2.45/pic/include/builtins.h
 [v __delay `JF42 ~T0 @X0 0 e ]
@@ -610,209 +607,202 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7091
 [; ;/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h: 7091: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"18 1829.c
+"20 1829.c
 [p x FOSC          =  0x4    ]
-"19
-[p x WDTE          =  0x0    ]
-"20
-[p x PWRTE        =  0x1    ]
 "21
-[p x MCLRE        =  OFF    ]
+[p x WDTE          =  0x0    ]
 "22
-[p x CP              =  OFF    ]
+[p x PWRTE        =  0x1    ]
 "23
-[p x CPD            =  OFF ]
+[p x MCLRE        =  OFF    ]
 "24
-[p x BOREN        =  ON ]
+[p x CP              =  OFF    ]
 "25
-[p x CLKOUTEN  =  OFF ]
+[p x CPD            =  OFF ]
 "26
-[p x IESO          =  OFF ]
+[p x BOREN        =  ON ]
 "27
+[p x CLKOUTEN  =  OFF ]
+"28
+[p x IESO          =  OFF ]
+"29
 [p x FCMEN        =  OFF ]
-"30
-[p x WRT            =  OFF ]
-"31
-[p x PLLEN        =  OFF ]
 "32
-[p x STVREN      =  OFF ]
+[p x WRT            =  OFF ]
 "33
-[p x BORV          =  LO ]
+[p x PLLEN        =  OFF ]
+"34
+[p x STVREN      =  OFF ]
 "35
+[p x BORV          =  LO ]
+"37
 [p x LVP            =  OFF  ]
-"41
+"45
 [v _spi_buffer `uc ~T0 @X0 1 e ]
 [i _spi_buffer
 -> -> 0 `i `uc
 ]
-"47
+"46
 [v _ButtonTrigger `i ~T0 @X0 1 e ]
 [i _ButtonTrigger
 -> 1 `i
 ]
-"48
+"47
 [v _on `i ~T0 @X0 1 e ]
 [i _on
 -> 0 `i
 ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"50
+"49
 [v _main `(v ~T0 @X0 1 ef ]
-"51
+"50
 {
 [e :U _main ]
 [f ]
-"52
+"51
 [e ( _pic_init ..  ]
-"53
+"52
 [e :U 372 ]
 {
-"57
+"53
 }
 [e :U 371 ]
 [e $U 372  ]
 [e :U 373 ]
-"58
+"54
 [e :UE 370 ]
 }
-"60
+"56
 [v _pic_init `(v ~T0 @X0 1 ef ]
-"61
+"57
 {
 [e :U _pic_init ]
 [f ]
-"62
+"58
 [e ( _init_osc ..  ]
-"63
+"59
 [e ( _init_gpio ..  ]
-"65
+"61
 [e ( _spi_init (4 , , , . `E2477 0 . `E2485 0 . `E2489 0 . `E2493 0 ]
-"66
+"62
 [e :UE 374 ]
 }
-"68
+"64
 [v _init_osc `(v ~T0 @X0 1 ef ]
-"69
+"65
 {
 [e :U _init_osc ]
 [f ]
-"71
+"67
 [e = . . _OSCCONbits 1 0 -> -> 0 `i `uc ]
-"73
+"69
 [e = . . _OSCCONbits 1 2 -> -> 13 `i `uc ]
-"75
+"71
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
-"76
+"72
 [e :UE 375 ]
 }
-"79
+"74
 [v _init_gpio `(v ~T0 @X0 1 ef ]
-"80
+"75
 {
 [e :U _init_gpio ]
 [f ]
-"81
+"76
 [e = _ANSELC -> -> 0 `i `uc ]
-"82
+"77
 [e = _ANSELB -> -> 0 `i `uc ]
-"83
+"78
 [e = _ANSELA -> -> 0 `i `uc ]
-"84
+"79
 [e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
-"85
+"80
 [e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
-"86
+"81
 [e = _GIE -> -> 1 `i `b ]
-"87
-[e = _PEIE -> -> 1 `i `b ]
-"88
+"82
 [e = _INTE -> -> 1 `i `b ]
-"89
+"83
 [e :UE 376 ]
 }
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"93
+"86
 [v _isr `(v ~T1 @X0 1 ef ]
-"94
+"87
 {
 [e :U _isr ]
 [f ]
-"95
+"88
 [e $U 379  ]
 {
-"96
+"92
 [e :U 380 ]
-"97
-[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
-"98
-[e $U 378  ]
-"99
-[e :U 381 ]
-"100
+"93
 [e ( _spi_transmit (1 -> -> 85 `i `uc ]
-"102
+"95
 [e = _spi_buffer ( _spi_read ..  ]
-"103
-[e $ ! != & -> _spi_buffer `i -> 240 `i -> 0 `i 382  ]
+"96
+[e $ ! != & -> _spi_buffer `i -> 240 `i -> 0 `i 381  ]
 {
-"104
+"97
 [e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-"105
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"106
+"98
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"99
 [e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
-"107
+"100
 }
-[e :U 382 ]
-"108
+[e :U 381 ]
+"101
+[e = _ButtonTrigger -> 1 `i ]
+"102
 [e $U 378  ]
-"109
+"103
 }
 [e $U 378  ]
 [e :U 379 ]
-[e [\ _on , $ -> 0 `i 380
- , $ -> 1 `i 381
+[e [\ _on , $ -> 1 `i 380
  378 ]
 [e :U 378 ]
-"111
-[e $ ! != -> . . _INTCONbits 0 1 `i -> 0 `i 383  ]
+"105
+[e $ ! != -> . . _INTCONbits 0 1 `i -> 0 `i 382  ]
 {
-"112
+"106
 [e =^ _ButtonTrigger -> 1 `i ]
-"113
-[e $U 385  ]
+"107
+[e $U 384  ]
 {
-"114
-[e :U 386 ]
-"115
+"108
+[e :U 385 ]
+"109
 [e = . . _OPTION_REGbits 0 6 -> -> 0 `i `uc ]
+"110
+[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
+"111
+[e = _on -> 1 `i ]
+"112
+[e $U 383  ]
+"113
+[e :U 386 ]
+"114
+[e = _on -> 0 `i ]
+"115
+[e = . . _OPTION_REGbits 0 6 -> -> 1 `i `uc ]
 "116
 [e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
 "117
-[e = _on -> 1 `i ]
+[e $U 383  ]
 "118
-[e $U 384  ]
-"119
-[e :U 387 ]
-"120
-[e = _on -> 0 `i ]
-"121
-[e = . . _OPTION_REGbits 0 6 -> -> 1 `i `uc ]
-"122
-[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-"123
-[e $U 384  ]
-"124
 }
-[e $U 384  ]
-[e :U 385 ]
-[e [\ _ButtonTrigger , $ -> 0 `i 386
- , $ -> 1 `i 387
- 384 ]
+[e $U 383  ]
 [e :U 384 ]
-"125
-}
+[e [\ _ButtonTrigger , $ -> 0 `i 385
+ , $ -> 1 `i 386
+ 383 ]
 [e :U 383 ]
-"126
+"119
+}
+[e :U 382 ]
+"120
 [e :UE 377 ]
 }

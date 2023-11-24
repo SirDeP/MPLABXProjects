@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.45 build 20230818022343 
-                                                                                               Mon Nov 20 14:23:26 2023
+                                                                                               Tue Nov 21 19:12:21 2023
 
 Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1 
      1                           	processor	16F1829
@@ -563,11 +563,11 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    549     0FEF                     	;# 
    550                           
    551                           	psect	idataCOMMON
-   552     00E8                     __pidataCOMMON:
+   552     00E5                     __pidataCOMMON:
    553                           
    554                           ;initializer for _ButtonTrigger
-   555     00E8  3401               	retlw	1
-   556     00E9  3400               	retlw	0
+   555     00E5  3401               	retlw	1
+   556     00E6  3400               	retlw	0
    557     000B                     _INTCONbits	set	11
    558     000D                     _PORTBbits	set	13
    559     005C                     _INTE	set	92
@@ -582,882 +582,874 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    568     018C                     _ANSELA	set	396
    569     018D                     _ANSELB	set	397
    570     018E                     _ANSELC	set	398
-   571     0219                     _SSP2BUF	set	537
-   572     0214                     _SSPSTATbits	set	532
-   573     0211                     _SSP1BUF	set	529
-   574     0214                     _SSP1STATbits	set	532
-   575     0215                     _SSP1CON1bits	set	533
-   576                           
-   577                           	psect	cinit
-   578     005D                     start_initialization:	
-   579                           ; #config settings
+   571     0211                     _SSP1BUF	set	529
+   572     0214                     _SSP1STATbits	set	532
+   573     0215                     _SSP1CON1bits	set	533
+   574                           
+   575                           	psect	cinit
+   576     005B                     start_initialization:	
+   577                           ; #config settings
+   578                           
+   579     005B                     __initialization:
    580                           
-   581     005D                     __initialization:
-   582                           
-   583                           ; Initialize objects allocated to COMMON
-   584     005D  3180  20E8  3180   	fcall	__pidataCOMMON	;fetch initializer
-   585     0060  00F9               	movwf	__pdataCOMMON& (0+127)
-   586     0061  3180  20E9  3180   	fcall	__pidataCOMMON+1	;fetch initializer
-   587     0064  00FA               	movwf	(__pdataCOMMON+1)& (0+127)
-   588                           
-   589                           ; Clear objects allocated to COMMON
-   590     0065  01F6               	clrf	__pbssCOMMON& (0+127)
-   591     0066  01F7               	clrf	(__pbssCOMMON+1)& (0+127)
-   592     0067  01F8               	clrf	(__pbssCOMMON+2)& (0+127)
-   593     0068                     end_of_initialization:	
-   594                           ;End of C runtime variable initialization code
-   595                           
-   596     0068                     __end_of__initialization:
-   597     0068  107E               	bcf	int$flags,0	;clear compiler interrupt flag (level 1)
-   598     0069  0020               	movlb	0
-   599     006A  3180  28DD         	ljmp	_main	;jump to C main() function
-   600                           
-   601                           	psect	bssCOMMON
-   602     0076                     __pbssCOMMON:
-   603     0076                     _on:
-   604     0076                     	ds	2
-   605     0078                     _spi_buffer:
-   606     0078                     	ds	1
-   607                           
-   608                           	psect	dataCOMMON
-   609     0079                     __pdataCOMMON:
-   610     0079                     _ButtonTrigger:
-   611     0079                     	ds	2
-   612                           
-   613                           	psect	cstackCOMMON
-   614     0070                     __pcstackCOMMON:
-   615     0070                     ?_pic_init:
-   616     0070                     ?_init_osc:	
-   617                           ; 1 bytes @ 0x0
-   618                           
-   619     0070                     ?_init_gpio:	
-   620                           ; 1 bytes @ 0x0
-   621                           
-   622     0070                     ?_spi_transmit:	
-   623                           ; 1 bytes @ 0x0
-   624                           
-   625     0070                     ??_spi_transmit:	
-   626                           ; 1 bytes @ 0x0
-   627                           
-   628     0070                     ?_spi_read:	
-   629                           ; 1 bytes @ 0x0
-   630                           
-   631     0070                     ??_spi_read:	
-   632                           ; 1 bytes @ 0x0
-   633                           
-   634     0070                     ?_main:	
-   635                           ; 1 bytes @ 0x0
-   636                           
-   637     0070                     ?_isr:	
-   638                           ; 1 bytes @ 0x0
-   639                           
-   640     0070                     spi_transmit@c:	
-   641                           ; 1 bytes @ 0x0
-   642                           
-   643                           
-   644                           ; 1 bytes @ 0x0
-   645     0070                     	ds	1
-   646     0071                     ??_isr:
-   647                           
-   648                           ; 1 bytes @ 0x1
-   649     0071                     	ds	2
-   650     0073                     ??_init_osc:
-   651     0073                     ??_init_gpio:	
-   652                           ; 1 bytes @ 0x3
-   653                           
-   654     0073                     ?_spi_init:	
-   655                           ; 1 bytes @ 0x3
-   656                           
-   657     0073                     spi_init@sdi_rx_smp:	
-   658                           ; 1 bytes @ 0x3
-   659                           
-   660                           
-   661                           ; 1 bytes @ 0x3
-   662     0073                     	ds	1
-   663     0074                     spi_init@clock_pol:
-   664                           
-   665                           ; 1 bytes @ 0x4
-   666     0074                     	ds	1
-   667     0075                     spi_init@sdo_tx_edge:
-   668                           
-   669                           ; 1 bytes @ 0x5
-   670     0075                     	ds	1
-   671     0076                     ??_pic_init:
-   672     0076                     ??_spi_init:	
-   673                           ; 1 bytes @ 0x6
-   674                           
-   675     0076                     ??_main:	
-   676                           ; 1 bytes @ 0x6
-   677                           
-   678                           
-   679                           	psect	cstackBANK0
-   680     0020                     __pcstackBANK0:	
-   681                           ; 1 bytes @ 0x6
+   581                           ; Initialize objects allocated to COMMON
+   582     005B  3180  20E5  3180   	fcall	__pidataCOMMON	;fetch initializer
+   583     005E  00F9               	movwf	__pdataCOMMON& (0+127)
+   584     005F  3180  20E6  3180   	fcall	__pidataCOMMON+1	;fetch initializer
+   585     0062  00FA               	movwf	(__pdataCOMMON+1)& (0+127)
+   586                           
+   587                           ; Clear objects allocated to COMMON
+   588     0063  01F6               	clrf	__pbssCOMMON& (0+127)
+   589     0064  01F7               	clrf	(__pbssCOMMON+1)& (0+127)
+   590     0065  01F8               	clrf	(__pbssCOMMON+2)& (0+127)
+   591     0066                     end_of_initialization:	
+   592                           ;End of C runtime variable initialization code
+   593                           
+   594     0066                     __end_of__initialization:
+   595     0066  107E               	bcf	int$flags,0	;clear compiler interrupt flag (level 1)
+   596     0067  0020               	movlb	0
+   597     0068  3180  28DA         	ljmp	_main	;jump to C main() function
+   598                           
+   599                           	psect	bssCOMMON
+   600     0076                     __pbssCOMMON:
+   601     0076                     _on:
+   602     0076                     	ds	2
+   603     0078                     _spi_buffer:
+   604     0078                     	ds	1
+   605                           
+   606                           	psect	dataCOMMON
+   607     0079                     __pdataCOMMON:
+   608     0079                     _ButtonTrigger:
+   609     0079                     	ds	2
+   610                           
+   611                           	psect	cstackCOMMON
+   612     0070                     __pcstackCOMMON:
+   613     0070                     ?_pic_init:
+   614     0070                     ?_init_osc:	
+   615                           ; 1 bytes @ 0x0
+   616                           
+   617     0070                     ?_init_gpio:	
+   618                           ; 1 bytes @ 0x0
+   619                           
+   620     0070                     ?_spi_transmit:	
+   621                           ; 1 bytes @ 0x0
+   622                           
+   623     0070                     ??_spi_transmit:	
+   624                           ; 1 bytes @ 0x0
+   625                           
+   626     0070                     ?_spi_read:	
+   627                           ; 1 bytes @ 0x0
+   628                           
+   629     0070                     ??_spi_read:	
+   630                           ; 1 bytes @ 0x0
+   631                           
+   632     0070                     ?_main:	
+   633                           ; 1 bytes @ 0x0
+   634                           
+   635     0070                     ?_isr:	
+   636                           ; 1 bytes @ 0x0
+   637                           
+   638     0070                     spi_transmit@c:	
+   639                           ; 1 bytes @ 0x0
+   640                           
+   641                           
+   642                           ; 1 bytes @ 0x0
+   643     0070                     	ds	1
+   644     0071                     ??_isr:
+   645                           
+   646                           ; 1 bytes @ 0x1
+   647     0071                     	ds	2
+   648     0073                     ??_init_osc:
+   649     0073                     ??_init_gpio:	
+   650                           ; 1 bytes @ 0x3
+   651                           
+   652     0073                     ?_spi_init:	
+   653                           ; 1 bytes @ 0x3
+   654                           
+   655     0073                     spi_init@sdi_rx_smp:	
+   656                           ; 1 bytes @ 0x3
+   657                           
+   658                           
+   659                           ; 1 bytes @ 0x3
+   660     0073                     	ds	1
+   661     0074                     spi_init@clock_pol:
+   662                           
+   663                           ; 1 bytes @ 0x4
+   664     0074                     	ds	1
+   665     0075                     spi_init@sdo_tx_edge:
+   666                           
+   667                           ; 1 bytes @ 0x5
+   668     0075                     	ds	1
+   669     0076                     ??_pic_init:
+   670     0076                     ??_spi_init:	
+   671                           ; 1 bytes @ 0x6
+   672                           
+   673     0076                     ??_main:	
+   674                           ; 1 bytes @ 0x6
+   675                           
+   676                           
+   677                           	psect	cstackBANK0
+   678     0020                     __pcstackBANK0:	
+   679                           ; 1 bytes @ 0x6
+   680                           
+   681     0020                     spi_init@mst_slv_oscdiv:
    682                           
-   683     0020                     spi_init@mst_slv_oscdiv:
-   684                           
-   685                           ; 1 bytes @ 0x0
-   686     0020                     	ds	1
-   687                           
-   688                           	psect	maintext
-   689     00DD                     __pmaintext:	
+   683                           ; 1 bytes @ 0x0
+   684     0020                     	ds	1
+   685                           
+   686                           	psect	maintext
+   687     00DA                     __pmaintext:	
+   688 ;;
+   689 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
    690 ;;
-   691 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
-   692 ;;
-   693 ;; *************** function _main *****************
-   694 ;; Defined at:
-   695 ;;		line 50 in file "1829.c"
-   696 ;; Parameters:    Size  Location     Type
+   691 ;; *************** function _main *****************
+   692 ;; Defined at:
+   693 ;;		line 49 in file "1829.c"
+   694 ;; Parameters:    Size  Location     Type
+   695 ;;		None
+   696 ;; Auto vars:     Size  Location     Type
    697 ;;		None
-   698 ;; Auto vars:     Size  Location     Type
-   699 ;;		None
-   700 ;; Return value:  Size  Location     Type
-   701 ;;                  1    wreg      void 
-   702 ;; Registers used:
-   703 ;;		wreg, status,2, status,0, pclath, cstack
-   704 ;; Tracked objects:
-   705 ;;		On entry : B1F/0
-   706 ;;		On exit  : 0/0
-   707 ;;		Unchanged: 0/0
-   708 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   698 ;; Return value:  Size  Location     Type
+   699 ;;                  1    wreg      void 
+   700 ;; Registers used:
+   701 ;;		wreg, status,2, status,0, pclath, cstack
+   702 ;; Tracked objects:
+   703 ;;		On entry : B1F/0
+   704 ;;		On exit  : 0/0
+   705 ;;		Unchanged: 0/0
+   706 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12
-   709 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   707 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   710 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   708 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   711 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   709 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   712 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   710 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   713 ;;Total ram usage:        0 bytes
-   714 ;; Hardware stack levels required when called: 4
-   715 ;; This function calls:
-   716 ;;		_pic_init
-   717 ;; This function is called by:
-   718 ;;		Startup code after reset
-   719 ;; This function uses a non-reentrant model
-   720 ;;
-   721                           
-   722     00DD                     _main:	
-   723                           ;psect for function _main
-   724                           
-   725     00DD                     l1002:	
-   726                           ;incstack = 0
-   727                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
-   728                           
-   729     00DD  3180  20B3  3180   	fcall	_pic_init
-   730     00E0                     l95:
-   731     00E0                     l96:
-   732     00E0  28E0               	goto	l95
-   733     00E1  3180  285B         	ljmp	start
-   734     00E3                     __end_of_main:
-   735                           
-   736                           	psect	text1
-   737     00B3                     __ptext1:	
-   738 ;; *************** function _pic_init *****************
-   739 ;; Defined at:
-   740 ;;		line 60 in file "1829.c"
-   741 ;; Parameters:    Size  Location     Type
+   711 ;;Total ram usage:        0 bytes
+   712 ;; Hardware stack levels required when called: 4
+   713 ;; This function calls:
+   714 ;;		_pic_init
+   715 ;; This function is called by:
+   716 ;;		Startup code after reset
+   717 ;; This function uses a non-reentrant model
+   718 ;;
+   719                           
+   720     00DA                     _main:	
+   721                           ;psect for function _main
+   722                           
+   723     00DA                     l930:	
+   724                           ;incstack = 0
+   725                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   726                           
+   727     00DA  3180  20B1  3180   	fcall	_pic_init
+   728     00DD                     l78:
+   729     00DD                     l79:
+   730     00DD  28DD               	goto	l78
+   731     00DE  3180  2859         	ljmp	start
+   732     00E0                     __end_of_main:
+   733                           
+   734                           	psect	text1
+   735     00B1                     __ptext1:	
+   736 ;; *************** function _pic_init *****************
+   737 ;; Defined at:
+   738 ;;		line 56 in file "1829.c"
+   739 ;; Parameters:    Size  Location     Type
+   740 ;;		None
+   741 ;; Auto vars:     Size  Location     Type
    742 ;;		None
-   743 ;; Auto vars:     Size  Location     Type
-   744 ;;		None
-   745 ;; Return value:  Size  Location     Type
-   746 ;;                  1    wreg      void 
-   747 ;; Registers used:
-   748 ;;		wreg, status,2, status,0, pclath, cstack
-   749 ;; Tracked objects:
-   750 ;;		On entry : 0/0
-   751 ;;		On exit  : 0/0
-   752 ;;		Unchanged: 0/0
-   753 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   743 ;; Return value:  Size  Location     Type
+   744 ;;                  1    wreg      void 
+   745 ;; Registers used:
+   746 ;;		wreg, status,2, status,0, pclath, cstack
+   747 ;; Tracked objects:
+   748 ;;		On entry : 0/0
+   749 ;;		On exit  : 0/0
+   750 ;;		Unchanged: 0/0
+   751 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12
-   754 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   752 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   755 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   753 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   756 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   754 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   757 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   755 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   758 ;;Total ram usage:        0 bytes
-   759 ;; Hardware stack levels used: 1
-   760 ;; Hardware stack levels required when called: 3
-   761 ;; This function calls:
-   762 ;;		_init_gpio
-   763 ;;		_init_osc
-   764 ;;		_spi_init
-   765 ;; This function is called by:
-   766 ;;		_main
-   767 ;; This function uses a non-reentrant model
-   768 ;;
-   769                           
-   770     00B3                     _pic_init:	
-   771                           ;psect for function _pic_init
-   772                           
-   773     00B3                     l996:	
-   774                           ;incstack = 0
-   775                           ; Regs used in _pic_init: [wreg+status,2+status,0+pclath+cstack]
-   776                           
-   777     00B3  3180  20CD  3180   	fcall	_init_osc
-   778     00B6                     l998:
-   779     00B6  3180  20C1  3180   	fcall	_init_gpio
-   780     00B9                     l1000:
-   781     00B9  01F3               	clrf	spi_init@sdi_rx_smp
-   782     00BA  01F4               	clrf	spi_init@clock_pol
-   783     00BB  01F5               	clrf	spi_init@sdo_tx_edge
-   784     00BC  3000               	movlw	0
-   785     00BD  3180  206C  3180   	fcall	_spi_init
-   786     00C0                     l101:
-   787     00C0  0008               	return
-   788     00C1                     __end_of_pic_init:
-   789                           
-   790                           	psect	text2
-   791     006C                     __ptext2:	
-   792 ;; *************** function _spi_init *****************
-   793 ;; Defined at:
-   794 ;;		line 23 in file "spi.c"
-   795 ;; Parameters:    Size  Location     Type
-   796 ;;  mst_slv_oscd    1    wreg     enum E2477
-   797 ;;  sdi_rx_smp      1    3[COMMON] enum E2485
-   798 ;;  clock_pol       1    4[COMMON] enum E2489
-   799 ;;  sdo_tx_edge     1    5[COMMON] enum E2493
-   800 ;; Auto vars:     Size  Location     Type
-   801 ;;  mst_slv_oscd    1    0[BANK0 ] enum E2477
-   802 ;; Return value:  Size  Location     Type
-   803 ;;                  1    wreg      void 
-   804 ;; Registers used:
-   805 ;;		wreg, status,2, status,0
-   806 ;; Tracked objects:
-   807 ;;		On entry : 0/0
-   808 ;;		On exit  : 0/0
-   809 ;;		Unchanged: 0/0
-   810 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   756 ;;Total ram usage:        0 bytes
+   757 ;; Hardware stack levels used: 1
+   758 ;; Hardware stack levels required when called: 3
+   759 ;; This function calls:
+   760 ;;		_init_gpio
+   761 ;;		_init_osc
+   762 ;;		_spi_init
+   763 ;; This function is called by:
+   764 ;;		_main
+   765 ;; This function uses a non-reentrant model
+   766 ;;
+   767                           
+   768     00B1                     _pic_init:	
+   769                           ;psect for function _pic_init
+   770                           
+   771     00B1                     l924:	
+   772                           ;incstack = 0
+   773                           ; Regs used in _pic_init: [wreg+status,2+status,0+pclath+cstack]
+   774                           
+   775     00B1  3180  20CA  3180   	fcall	_init_osc
+   776     00B4                     l926:
+   777     00B4  3180  20BF  3180   	fcall	_init_gpio
+   778     00B7                     l928:
+   779     00B7  01F3               	clrf	spi_init@sdi_rx_smp
+   780     00B8  01F4               	clrf	spi_init@clock_pol
+   781     00B9  01F5               	clrf	spi_init@sdo_tx_edge
+   782     00BA  3000               	movlw	0
+   783     00BB  3180  206A  3180   	fcall	_spi_init
+   784     00BE                     l84:
+   785     00BE  0008               	return
+   786     00BF                     __end_of_pic_init:
+   787                           
+   788                           	psect	text2
+   789     006A                     __ptext2:	
+   790 ;; *************** function _spi_init *****************
+   791 ;; Defined at:
+   792 ;;		line 3 in file "spi.c"
+   793 ;; Parameters:    Size  Location     Type
+   794 ;;  mst_slv_oscd    1    wreg     enum E2477
+   795 ;;  sdi_rx_smp      1    3[COMMON] enum E2485
+   796 ;;  clock_pol       1    4[COMMON] enum E2489
+   797 ;;  sdo_tx_edge     1    5[COMMON] enum E2493
+   798 ;; Auto vars:     Size  Location     Type
+   799 ;;  mst_slv_oscd    1    0[BANK0 ] enum E2477
+   800 ;; Return value:  Size  Location     Type
+   801 ;;                  1    wreg      void 
+   802 ;; Registers used:
+   803 ;;		wreg, status,2, status,0
+   804 ;; Tracked objects:
+   805 ;;		On entry : 0/0
+   806 ;;		On exit  : 0/0
+   807 ;;		Unchanged: 0/0
+   808 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12
-   811 ;;      Params:         3       0       0       0       0       0       0       0       0       0       0       0       
+   809 ;;      Params:         3       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   812 ;;      Locals:         0       1       0       0       0       0       0       0       0       0       0       0       
+   810 ;;      Locals:         0       1       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   813 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   811 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   814 ;;      Totals:         3       1       0       0       0       0       0       0       0       0       0       0       
+   812 ;;      Totals:         3       1       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   815 ;;Total ram usage:        4 bytes
-   816 ;; Hardware stack levels used: 1
-   817 ;; Hardware stack levels required when called: 2
-   818 ;; This function calls:
-   819 ;;		Nothing
-   820 ;; This function is called by:
-   821 ;;		_pic_init
-   822 ;; This function uses a non-reentrant model
-   823 ;;
-   824                           
-   825     006C                     _spi_init:	
-   826                           ;psect for function _spi_init
-   827                           
-   828                           
-   829                           ;incstack = 0
-   830                           ; Regs used in _spi_init: [wreg+status,2+status,0]
-   831                           ;spi_init@mst_slv_oscdiv stored from wreg
-   832     006C  0020               	movlb	0	; select bank0
-   833     006D  00A0               	movwf	spi_init@mst_slv_oscdiv
-   834     006E                     l978:
-   835                           
-   836                           ;spi.c: 23: void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_p
-      +                          ol, txclkedge sdo_tx_edge);spi.c: 24: {;spi.c: 31:     SSP1CON1bits.SSPM = mst_slv_oscdi
-      +                          v;
-   837     006E  0024               	movlb	4	; select bank4
-   838     006F  0815               	movf	21,w	;volatile
-   839     0070  0020               	movlb	0	; select bank0
+   813 ;;Total ram usage:        4 bytes
+   814 ;; Hardware stack levels used: 1
+   815 ;; Hardware stack levels required when called: 2
+   816 ;; This function calls:
+   817 ;;		Nothing
+   818 ;; This function is called by:
+   819 ;;		_pic_init
+   820 ;; This function uses a non-reentrant model
+   821 ;;
+   822                           
+   823     006A                     _spi_init:	
+   824                           ;psect for function _spi_init
+   825                           
+   826                           
+   827                           ;incstack = 0
+   828                           ; Regs used in _spi_init: [wreg+status,2+status,0]
+   829                           ;spi_init@mst_slv_oscdiv stored from wreg
+   830     006A  0020               	movlb	0	; select bank0
+   831     006B  00A0               	movwf	spi_init@mst_slv_oscdiv
+   832     006C                     l906:
+   833                           
+   834                           ;spi.c: 3: void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_po
+      +                          l, txclkedge sdo_tx_edge);spi.c: 4: {;spi.c: 5:     SSP1CON1bits.SSPM = mst_slv_oscdiv;
+   835     006C  0024               	movlb	4	; select bank4
+   836     006D  0815               	movf	21,w	;volatile
+   837     006E  0020               	movlb	0	; select bank0
+   838     006F  0620               	xorwf	spi_init@mst_slv_oscdiv,w
+   839     0070  39F0               	andlw	-16
    840     0071  0620               	xorwf	spi_init@mst_slv_oscdiv,w
-   841     0072  39F0               	andlw	-16
-   842     0073  0620               	xorwf	spi_init@mst_slv_oscdiv,w
-   843     0074  0024               	movlb	4	; select bank4
-   844     0075  0095               	movwf	21	;volatile
-   845     0076                     l980:
-   846                           
-   847                           ;spi.c: 39:     TRISCbits.TRISC7 = 0;
-   848     0076  0021               	movlb	1	; select bank1
-   849     0077  138E               	bcf	14,7	;volatile
-   850     0078                     l982:
-   851                           
-   852                           ;spi.c: 42:     if (mst_slv_oscdiv >= SLV_SS_EN && mst_slv_oscdiv <= SLV_SS_DIS) {
-   853     0078  3004               	movlw	4
-   854     0079  0020               	movlb	0	; select bank0
-   855     007A  0220               	subwf	spi_init@mst_slv_oscdiv,w
-   856     007B  1C03               	skipc
-   857     007C  287E               	goto	u151
-   858     007D  287F               	goto	u150
-   859     007E                     u151:
-   860     007E  2897               	goto	l988
-   861     007F                     u150:
-   862     007F                     l984:
-   863     007F  3006               	movlw	6
-   864     0080  0220               	subwf	spi_init@mst_slv_oscdiv,w
-   865     0081  1803               	skipnc
-   866     0082  2884               	goto	u161
-   867     0083  2885               	goto	u160
-   868     0084                     u161:
-   869     0084  2897               	goto	l988
-   870     0085                     u160:
-   871     0085                     l986:
-   872                           
-   873                           ;spi.c: 48:         SSP1STATbits.SMP = 0;
-   874     0085  0024               	movlb	4	; select bank4
-   875     0086  1394               	bcf	20,7	;volatile
-   876                           
-   877                           ;spi.c: 54:         TRISBbits.TRISB6 = 1;
-   878     0087  0021               	movlb	1	; select bank1
-   879     0088  170D               	bsf	13,6	;volatile
-   880                           
-   881                           ;spi.c: 62:         SSP1CON1bits.CKP = PORTBbits.RB6;
-   882     0089  0020               	movlb	0	; select bank0
-   883     008A  1B0D               	btfsc	13,6	;volatile
-   884     008B  288D               	goto	u171
-   885     008C  2890               	goto	u170
-   886     008D                     u171:
-   887     008D  0024               	movlb	4	; select bank4
-   888     008E  1615               	bsf	21,4	;volatile
-   889     008F  2892               	goto	u184
-   890     0090                     u170:
-   891     0090  0024               	movlb	4	; select bank4
-   892     0091  1215               	bcf	21,4	;volatile
-   893     0092                     u184:
-   894                           
-   895                           ;spi.c: 70:         GIE = 1;
-   896     0092  178B               	bsf	11,7	;volatile
-   897                           
-   898                           ;spi.c: 71:         PEIE = 1;
-   899     0093  170B               	bsf	11,6	;volatile
-   900                           
-   901                           ;spi.c: 76:         PIE1bits.SSP1IE = 1;
-   902     0094  0021               	movlb	1	; select bank1
-   903     0095  1591               	bsf	17,3	;volatile
-   904                           
-   905                           ;spi.c: 83:     } else if (mst_slv_oscdiv >= MST_OSC_DIV_04 && mst_slv_oscdiv <= MST_OSC
-      +                          _DIV_T2) {
-   906     0096  28AB               	goto	l26
-   907     0097                     l988:
-   908     0097  3004               	movlw	4
-   909     0098  0220               	subwf	spi_init@mst_slv_oscdiv,w
-   910     0099  1803               	skipnc
-   911     009A  289C               	goto	u191
-   912     009B  289D               	goto	u190
-   913     009C                     u191:
-   914     009C  28AB               	goto	l26
-   915     009D                     u190:
-   916     009D                     l990:
-   917                           
-   918                           ;spi.c: 91:         SSP1STATbits.SMP = sdi_rx_smp;
-   919     009D  0C73               	rrf	spi_init@sdi_rx_smp,w
-   920     009E  0024               	movlb	4	; select bank4
-   921     009F  1C03               	skipc
-   922     00A0  1394               	bcf	20,7	;volatile
-   923     00A1  1803               	skipnc
-   924     00A2  1794               	bsf	20,7	;volatile
-   925     00A3                     l992:
-   926                           
-   927                           ;spi.c: 97:         TRISBbits.TRISB6 = 0;
-   928     00A3  0021               	movlb	1	; select bank1
-   929     00A4  130D               	bcf	13,6	;volatile
-   930                           
-   931                           ;spi.c: 106:         SSP1CON1bits.CKP = clock_pol;
-   932     00A5  0C74               	rrf	spi_init@clock_pol,w
-   933     00A6  0024               	movlb	4	; select bank4
-   934     00A7  1C03               	skipc
-   935     00A8  1215               	bcf	21,4	;volatile
-   936     00A9  1803               	skipnc
-   937     00AA  1615               	bsf	21,4	;volatile
-   938     00AB                     l26:
-   939                           
-   940                           ;spi.c: 120:     SSP1STATbits.CKE = sdo_tx_edge;
-   941     00AB  0C75               	rrf	spi_init@sdo_tx_edge,w
-   942     00AC  0024               	movlb	4	; select bank4
-   943     00AD  1C03               	skipc
-   944     00AE  1314               	bcf	20,6	;volatile
-   945     00AF  1803               	skipnc
-   946     00B0  1714               	bsf	20,6	;volatile
-   947     00B1                     l994:
-   948                           
-   949                           ;spi.c: 130:     SSP1CON1bits.SSPEN = 1;
-   950     00B1  1695               	bsf	21,5	;volatile
-   951     00B2                     l28:
-   952     00B2  0008               	return
-   953     00B3                     __end_of_spi_init:
-   954                           
-   955                           	psect	text3
-   956     00CD                     __ptext3:	
-   957 ;; *************** function _init_osc *****************
-   958 ;; Defined at:
-   959 ;;		line 68 in file "1829.c"
-   960 ;; Parameters:    Size  Location     Type
+   841     0072  0024               	movlb	4	; select bank4
+   842     0073  0095               	movwf	21	;volatile
+   843     0074                     l908:
+   844                           
+   845                           ;spi.c: 6:     TRISCbits.TRISC7 = 0;
+   846     0074  0021               	movlb	1	; select bank1
+   847     0075  138E               	bcf	14,7	;volatile
+   848     0076                     l910:
+   849                           
+   850                           ;spi.c: 8:     if (mst_slv_oscdiv >= SLV_SS_EN && mst_slv_oscdiv <= SLV_SS_DIS) {
+   851     0076  3004               	movlw	4
+   852     0077  0020               	movlb	0	; select bank0
+   853     0078  0220               	subwf	spi_init@mst_slv_oscdiv,w
+   854     0079  1C03               	skipc
+   855     007A  287C               	goto	u141
+   856     007B  287D               	goto	u140
+   857     007C                     u141:
+   858     007C  2895               	goto	l916
+   859     007D                     u140:
+   860     007D                     l912:
+   861     007D  3006               	movlw	6
+   862     007E  0220               	subwf	spi_init@mst_slv_oscdiv,w
+   863     007F  1803               	skipnc
+   864     0080  2882               	goto	u151
+   865     0081  2883               	goto	u150
+   866     0082                     u151:
+   867     0082  2895               	goto	l916
+   868     0083                     u150:
+   869     0083                     l914:
+   870                           
+   871                           ;spi.c: 9:         SSP1STATbits.SMP = 0;
+   872     0083  0024               	movlb	4	; select bank4
+   873     0084  1394               	bcf	20,7	;volatile
+   874                           
+   875                           ;spi.c: 10:         TRISBbits.TRISB6 = 1;
+   876     0085  0021               	movlb	1	; select bank1
+   877     0086  170D               	bsf	13,6	;volatile
+   878                           
+   879                           ;spi.c: 11:         SSP1CON1bits.CKP = PORTBbits.RB6;
+   880     0087  0020               	movlb	0	; select bank0
+   881     0088  1B0D               	btfsc	13,6	;volatile
+   882     0089  288B               	goto	u161
+   883     008A  288E               	goto	u160
+   884     008B                     u161:
+   885     008B  0024               	movlb	4	; select bank4
+   886     008C  1615               	bsf	21,4	;volatile
+   887     008D  2890               	goto	u174
+   888     008E                     u160:
+   889     008E  0024               	movlb	4	; select bank4
+   890     008F  1215               	bcf	21,4	;volatile
+   891     0090                     u174:
+   892                           
+   893                           ;spi.c: 12:         GIE = 1;
+   894     0090  178B               	bsf	11,7	;volatile
+   895                           
+   896                           ;spi.c: 13:         PEIE = 1;
+   897     0091  170B               	bsf	11,6	;volatile
+   898                           
+   899                           ;spi.c: 14:         PIE1bits.SSP1IE = 1;
+   900     0092  0021               	movlb	1	; select bank1
+   901     0093  1591               	bsf	17,3	;volatile
+   902                           
+   903                           ;spi.c: 15:     }
+   904     0094  28A9               	goto	l22
+   905     0095                     l916:
+   906     0095  3004               	movlw	4
+   907     0096  0220               	subwf	spi_init@mst_slv_oscdiv,w
+   908     0097  1803               	skipnc
+   909     0098  289A               	goto	u181
+   910     0099  289B               	goto	u180
+   911     009A                     u181:
+   912     009A  28A9               	goto	l22
+   913     009B                     u180:
+   914     009B                     l918:
+   915                           
+   916                           ;spi.c: 17:         SSP1STATbits.SMP = sdi_rx_smp;
+   917     009B  0C73               	rrf	spi_init@sdi_rx_smp,w
+   918     009C  0024               	movlb	4	; select bank4
+   919     009D  1C03               	skipc
+   920     009E  1394               	bcf	20,7	;volatile
+   921     009F  1803               	skipnc
+   922     00A0  1794               	bsf	20,7	;volatile
+   923     00A1                     l920:
+   924                           
+   925                           ;spi.c: 18:         TRISBbits.TRISB6 = 0;
+   926     00A1  0021               	movlb	1	; select bank1
+   927     00A2  130D               	bcf	13,6	;volatile
+   928                           
+   929                           ;spi.c: 19:         SSP1CON1bits.CKP = clock_pol;
+   930     00A3  0C74               	rrf	spi_init@clock_pol,w
+   931     00A4  0024               	movlb	4	; select bank4
+   932     00A5  1C03               	skipc
+   933     00A6  1215               	bcf	21,4	;volatile
+   934     00A7  1803               	skipnc
+   935     00A8  1615               	bsf	21,4	;volatile
+   936     00A9                     l22:
+   937                           
+   938                           ;spi.c: 21:     SSP1STATbits.CKE = sdo_tx_edge;
+   939     00A9  0C75               	rrf	spi_init@sdo_tx_edge,w
+   940     00AA  0024               	movlb	4	; select bank4
+   941     00AB  1C03               	skipc
+   942     00AC  1314               	bcf	20,6	;volatile
+   943     00AD  1803               	skipnc
+   944     00AE  1714               	bsf	20,6	;volatile
+   945     00AF                     l922:
+   946                           
+   947                           ;spi.c: 22:     SSP1CON1bits.SSPEN = 1;
+   948     00AF  1695               	bsf	21,5	;volatile
+   949     00B0                     l24:
+   950     00B0  0008               	return
+   951     00B1                     __end_of_spi_init:
+   952                           
+   953                           	psect	text3
+   954     00CA                     __ptext3:	
+   955 ;; *************** function _init_osc *****************
+   956 ;; Defined at:
+   957 ;;		line 64 in file "1829.c"
+   958 ;; Parameters:    Size  Location     Type
+   959 ;;		None
+   960 ;; Auto vars:     Size  Location     Type
    961 ;;		None
-   962 ;; Auto vars:     Size  Location     Type
-   963 ;;		None
-   964 ;; Return value:  Size  Location     Type
-   965 ;;                  1    wreg      void 
-   966 ;; Registers used:
-   967 ;;		wreg, status,2, status,0
-   968 ;; Tracked objects:
-   969 ;;		On entry : 0/0
-   970 ;;		On exit  : 0/0
-   971 ;;		Unchanged: 0/0
-   972 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   962 ;; Return value:  Size  Location     Type
+   963 ;;                  1    wreg      void 
+   964 ;; Registers used:
+   965 ;;		wreg, status,2, status,0
+   966 ;; Tracked objects:
+   967 ;;		On entry : 0/0
+   968 ;;		On exit  : 0/0
+   969 ;;		Unchanged: 0/0
+   970 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12
-   973 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   971 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   974 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   972 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   975 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   973 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   976 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   974 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-   977 ;;Total ram usage:        0 bytes
-   978 ;; Hardware stack levels used: 1
-   979 ;; Hardware stack levels required when called: 2
-   980 ;; This function calls:
-   981 ;;		Nothing
-   982 ;; This function is called by:
-   983 ;;		_pic_init
-   984 ;; This function uses a non-reentrant model
-   985 ;;
-   986                           
-   987     00CD                     _init_osc:	
-   988                           ;psect for function _init_osc
-   989                           
-   990     00CD                     l748:	
-   991                           ;incstack = 0
-   992                           ; Regs used in _init_osc: [wreg+status,2+status,0]
-   993                           
-   994     00CD  30FC               	movlw	-4
-   995     00CE  0021               	movlb	1	; select bank1
-   996     00CF  0599               	andwf	25,f	;volatile
-   997     00D0  0819               	movf	25,w	;volatile
-   998     00D1  3987               	andlw	-121
-   999     00D2  3868               	iorlw	104
-  1000     00D3  0099               	movwf	25	;volatile
-  1001     00D4                     l750:
-  1002     00D4  1399               	bcf	25,7	;volatile
-  1003     00D5                     l104:
-  1004     00D5  0008               	return
-  1005     00D6                     __end_of_init_osc:
-  1006                           
-  1007                           	psect	text4
-  1008     00C1                     __ptext4:	
-  1009 ;; *************** function _init_gpio *****************
-  1010 ;; Defined at:
-  1011 ;;		line 79 in file "1829.c"
-  1012 ;; Parameters:    Size  Location     Type
+   975 ;;Total ram usage:        0 bytes
+   976 ;; Hardware stack levels used: 1
+   977 ;; Hardware stack levels required when called: 2
+   978 ;; This function calls:
+   979 ;;		Nothing
+   980 ;; This function is called by:
+   981 ;;		_pic_init
+   982 ;; This function uses a non-reentrant model
+   983 ;;
+   984                           
+   985     00CA                     _init_osc:	
+   986                           ;psect for function _init_osc
+   987                           
+   988     00CA                     l730:	
+   989                           ;incstack = 0
+   990                           ; Regs used in _init_osc: [wreg+status,2+status,0]
+   991                           
+   992     00CA  30FC               	movlw	-4
+   993     00CB  0021               	movlb	1	; select bank1
+   994     00CC  0599               	andwf	25,f	;volatile
+   995     00CD  0819               	movf	25,w	;volatile
+   996     00CE  3987               	andlw	-121
+   997     00CF  3868               	iorlw	104
+   998     00D0  0099               	movwf	25	;volatile
+   999     00D1                     l732:
+  1000     00D1  1399               	bcf	25,7	;volatile
+  1001     00D2                     l87:
+  1002     00D2  0008               	return
+  1003     00D3                     __end_of_init_osc:
+  1004                           
+  1005                           	psect	text4
+  1006     00BF                     __ptext4:	
+  1007 ;; *************** function _init_gpio *****************
+  1008 ;; Defined at:
+  1009 ;;		line 74 in file "1829.c"
+  1010 ;; Parameters:    Size  Location     Type
+  1011 ;;		None
+  1012 ;; Auto vars:     Size  Location     Type
   1013 ;;		None
-  1014 ;; Auto vars:     Size  Location     Type
-  1015 ;;		None
-  1016 ;; Return value:  Size  Location     Type
-  1017 ;;                  1    wreg      void 
-  1018 ;; Registers used:
-  1019 ;;		status,2
-  1020 ;; Tracked objects:
-  1021 ;;		On entry : 0/0
-  1022 ;;		On exit  : 0/0
-  1023 ;;		Unchanged: 0/0
-  1024 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+  1014 ;; Return value:  Size  Location     Type
+  1015 ;;                  1    wreg      void 
+  1016 ;; Registers used:
+  1017 ;;		status,2
+  1018 ;; Tracked objects:
+  1019 ;;		On entry : 0/0
+  1020 ;;		On exit  : 0/0
+  1021 ;;		Unchanged: 0/0
+  1022 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12
-  1025 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1023 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  1026 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1024 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  1027 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+  1025 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  1028 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1026 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  1029 ;;Total ram usage:        0 bytes
-  1030 ;; Hardware stack levels used: 1
-  1031 ;; Hardware stack levels required when called: 2
-  1032 ;; This function calls:
-  1033 ;;		Nothing
-  1034 ;; This function is called by:
-  1035 ;;		_pic_init
-  1036 ;; This function uses a non-reentrant model
-  1037 ;;
-  1038                           
-  1039     00C1                     _init_gpio:	
-  1040                           ;psect for function _init_gpio
-  1041                           
-  1042     00C1                     l752:	
-  1043                           ;incstack = 0
-  1044                           ; Regs used in _init_gpio: [status,2]
-  1045                           
-  1046     00C1  0023               	movlb	3	; select bank3
-  1047     00C2  018E               	clrf	14	;volatile
-  1048     00C3  018D               	clrf	13	;volatile
-  1049     00C4  018C               	clrf	12	;volatile
-  1050     00C5                     l754:
-  1051     00C5  0021               	movlb	1	; select bank1
-  1052     00C6  130E               	bcf	14,6	;volatile
-  1053     00C7                     l756:
-  1054     00C7  0022               	movlb	2	; select bank2
-  1055     00C8  170E               	bsf	14,6	;volatile
-  1056     00C9                     l758:
-  1057     00C9  178B               	bsf	11,7	;volatile
-  1058     00CA                     l760:
-  1059     00CA  170B               	bsf	11,6	;volatile
-  1060     00CB                     l762:
-  1061     00CB  160B               	bsf	11,4	;volatile
-  1062     00CC                     l107:
-  1063     00CC  0008               	return
-  1064     00CD                     __end_of_init_gpio:
-  1065                           
-  1066                           	psect	intentry
-  1067     0004                     __pintentry:	
-  1068 ;; *************** function _isr *****************
-  1069 ;; Defined at:
-  1070 ;;		line 93 in file "1829.c"
-  1071 ;; Parameters:    Size  Location     Type
-  1072 ;;		None
-  1073 ;; Auto vars:     Size  Location     Type
-  1074 ;;		None
-  1075 ;; Return value:  Size  Location     Type
-  1076 ;;                  1    wreg      void 
-  1077 ;; Registers used:
-  1078 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
-  1079 ;; Tracked objects:
-  1080 ;;		On entry : 0/0
-  1081 ;;		On exit  : 0/0
-  1082 ;;		Unchanged: 0/0
-  1083 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+  1027 ;;Total ram usage:        0 bytes
+  1028 ;; Hardware stack levels used: 1
+  1029 ;; Hardware stack levels required when called: 2
+  1030 ;; This function calls:
+  1031 ;;		Nothing
+  1032 ;; This function is called by:
+  1033 ;;		_pic_init
+  1034 ;; This function uses a non-reentrant model
+  1035 ;;
+  1036                           
+  1037     00BF                     _init_gpio:	
+  1038                           ;psect for function _init_gpio
+  1039                           
+  1040     00BF                     l734:	
+  1041                           ;incstack = 0
+  1042                           ; Regs used in _init_gpio: [status,2]
+  1043                           
+  1044     00BF  0023               	movlb	3	; select bank3
+  1045     00C0  018E               	clrf	14	;volatile
+  1046     00C1  018D               	clrf	13	;volatile
+  1047     00C2  018C               	clrf	12	;volatile
+  1048     00C3                     l736:
+  1049     00C3  0021               	movlb	1	; select bank1
+  1050     00C4  130E               	bcf	14,6	;volatile
+  1051     00C5                     l738:
+  1052     00C5  0022               	movlb	2	; select bank2
+  1053     00C6  170E               	bsf	14,6	;volatile
+  1054     00C7                     l740:
+  1055     00C7  178B               	bsf	11,7	;volatile
+  1056     00C8                     l742:
+  1057     00C8  160B               	bsf	11,4	;volatile
+  1058     00C9                     l90:
+  1059     00C9  0008               	return
+  1060     00CA                     __end_of_init_gpio:
+  1061                           
+  1062                           	psect	intentry
+  1063     0004                     __pintentry:	
+  1064 ;; *************** function _isr *****************
+  1065 ;; Defined at:
+  1066 ;;		line 86 in file "1829.c"
+  1067 ;; Parameters:    Size  Location     Type
+  1068 ;;		None
+  1069 ;; Auto vars:     Size  Location     Type
+  1070 ;;		None
+  1071 ;; Return value:  Size  Location     Type
+  1072 ;;                  1    wreg      void 
+  1073 ;; Registers used:
+  1074 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+  1075 ;; Tracked objects:
+  1076 ;;		On entry : 0/0
+  1077 ;;		On exit  : 0/0
+  1078 ;;		Unchanged: 0/0
+  1079 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12
-  1084 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1080 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  1085 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1081 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  1086 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+  1082 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  1087 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+  1083 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  1088 ;;Total ram usage:        2 bytes
-  1089 ;; Hardware stack levels used: 1
-  1090 ;; Hardware stack levels required when called: 1
-  1091 ;; This function calls:
-  1092 ;;		_spi_read
-  1093 ;;		_spi_transmit
-  1094 ;; This function is called by:
-  1095 ;;		Interrupt level 1
-  1096 ;; This function uses a non-reentrant model
-  1097 ;;
-  1098                           
-  1099     0004                     _isr:
-  1100                           
-  1101                           ;incstack = 0
-  1102     0004  147E               	bsf	int$flags,0	;set compiler interrupt flag (level 1)
-  1103                           
-  1104                           ; Regs used in _isr: [wreg-fsr0h+status,2+status,0+pclath+cstack]
-  1105     0005  3180               	pagesel	$
-  1106     0006                     i1l788:
-  1107     0006  2828               	goto	i1l804
-  1108     0007                     i1l113:
-  1109     0007  0022               	movlb	2	; select bank2
-  1110     0008  170E               	bsf	14,6	;volatile
-  1111     0009  2835               	goto	i1l114
-  1112     000A                     i1l790:
-  1113     000A  3055               	movlw	85
-  1114     000B  3180  20E3  3180   	fcall	_spi_transmit
-  1115     000E                     i1l792:
-  1116     000E  3180  20D6  3180   	fcall	_spi_read
-  1117     0011  00F8               	movwf	_spi_buffer
-  1118     0012                     i1l794:
-  1119     0012  0878               	movf	_spi_buffer,w
-  1120     0013  39F0               	andlw	240
-  1121     0014  1903               	btfsc	3,2
-  1122     0015  2817               	goto	u8_21
-  1123     0016  2818               	goto	u8_20
-  1124     0017                     u8_21:
-  1125     0017  2835               	goto	i1l114
-  1126     0018                     u8_20:
-  1127     0018                     i1l796:
-  1128     0018  0022               	movlb	2	; select bank2
-  1129     0019  130E               	bcf	14,6	;volatile
-  1130     001A                     i1l798:
-  1131     001A  300B               	movlw	11
-  1132     001B  00F2               	movwf	??_isr+1
-  1133     001C  3026               	movlw	38
-  1134     001D  00F1               	movwf	??_isr
-  1135     001E  305E               	movlw	94
-  1136     001F                     u20_27:
-  1137     001F  0B89               	decfsz	9,f
-  1138     0020  281F               	goto	u20_27
-  1139     0021  0BF1               	decfsz	??_isr,f
-  1140     0022  281F               	goto	u20_27
-  1141     0023  0BF2               	decfsz	??_isr+1,f
-  1142     0024  281F               	goto	u20_27
-  1143     0025                     i1l800:
-  1144     0025  0022               	movlb	2	; select bank2
-  1145     0026  170E               	bsf	14,6	;volatile
-  1146     0027  2835               	goto	i1l114
-  1147     0028                     i1l804:
-  1148                           
-  1149                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+  1084 ;;Total ram usage:        2 bytes
+  1085 ;; Hardware stack levels used: 1
+  1086 ;; Hardware stack levels required when called: 1
+  1087 ;; This function calls:
+  1088 ;;		_spi_read
+  1089 ;;		_spi_transmit
+  1090 ;; This function is called by:
+  1091 ;;		Interrupt level 1
+  1092 ;; This function uses a non-reentrant model
+  1093 ;;
+  1094                           
+  1095     0004                     _isr:
+  1096                           
+  1097                           ;incstack = 0
+  1098     0004  147E               	bsf	int$flags,0	;set compiler interrupt flag (level 1)
+  1099                           
+  1100                           ; Regs used in _isr: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+  1101     0005  3180               	pagesel	$
+  1102     0006                     i1l760:
+  1103     0006  2829               	goto	i1l776
+  1104     0007                     i1l762:
+  1105     0007  3055               	movlw	85
+  1106     0008  3180  20E0  3180   	fcall	_spi_transmit
+  1107     000B                     i1l764:
+  1108     000B  3180  20D3  3180   	fcall	_spi_read
+  1109     000E  00F8               	movwf	_spi_buffer
+  1110     000F                     i1l766:
+  1111     000F  0878               	movf	_spi_buffer,w
+  1112     0010  39F0               	andlw	240
+  1113     0011  1903               	btfsc	3,2
+  1114     0012  2814               	goto	u7_21
+  1115     0013  2815               	goto	u7_20
+  1116     0014                     u7_21:
+  1117     0014  2824               	goto	i1l97
+  1118     0015                     u7_20:
+  1119     0015                     i1l768:
+  1120     0015  0022               	movlb	2	; select bank2
+  1121     0016  130E               	bcf	14,6	;volatile
+  1122     0017                     i1l770:
+  1123     0017  3003               	movlw	3
+  1124     0018  00F2               	movwf	??_isr+1
+  1125     0019  308A               	movlw	138
+  1126     001A  00F1               	movwf	??_isr
+  1127     001B  3056               	movlw	86
+  1128     001C                     u19_27:
+  1129     001C  0B89               	decfsz	9,f
+  1130     001D  281C               	goto	u19_27
+  1131     001E  0BF1               	decfsz	??_isr,f
+  1132     001F  281C               	goto	u19_27
+  1133     0020  0BF2               	decfsz	??_isr+1,f
+  1134     0021  281C               	goto	u19_27
+  1135     0022                     i1l772:
+  1136     0022  0022               	movlb	2	; select bank2
+  1137     0023  170E               	bsf	14,6	;volatile
+  1138     0024                     i1l97:
+  1139     0024  3001               	movlw	1
+  1140     0025  00F9               	movwf	_ButtonTrigger
+  1141     0026  3000               	movlw	0
+  1142     0027  00FA               	movwf	_ButtonTrigger+1
+  1143     0028  2833               	goto	i1l98
+  1144     0029                     i1l776:
+  1145                           
+  1146                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
       +                          itches
-  1150                           ; Switch size 1, requested type "simple"
-  1151                           ; Number of cases is 1, Range of values is 0 to 0
-  1152                           ; switch strategies available:
-  1153                           ; Name         Instructions Cycles
-  1154                           ; simple_byte            4     3 (average)
-  1155                           ; direct_byte            8     6 (fixed)
-  1156                           ; jumptable            260     6 (fixed)
-  1157                           ;	Chosen strategy is simple_byte
-  1158     0028  0877               	movf	_on+1,w
-  1159     0029  3A00               	xorlw	0	; case 0
-  1160     002A  1903               	skipnz
-  1161     002B  282D               	goto	i1l1064
-  1162     002C  2835               	goto	i1l114
-  1163     002D                     i1l1064:
-  1164                           
-  1165                           ; Switch size 1, requested type "simple"
-  1166                           ; Number of cases is 2, Range of values is 0 to 1
-  1167                           ; switch strategies available:
-  1168                           ; Name         Instructions Cycles
-  1169                           ; simple_byte            7     4 (average)
-  1170                           ; direct_byte           10     6 (fixed)
-  1171                           ; jumptable            260     6 (fixed)
-  1172                           ;	Chosen strategy is simple_byte
-  1173     002D  0876               	movf	_on,w
-  1174     002E  3A00               	xorlw	0	; case 0
-  1175     002F  1903               	skipnz
-  1176     0030  2807               	goto	i1l113
-  1177     0031  3A01               	xorlw	1	; case 1
-  1178     0032  1903               	skipnz
-  1179     0033  280A               	goto	i1l790
-  1180     0034  2835               	goto	i1l114
-  1181     0035                     i1l114:
-  1182     0035  1C8B               	btfss	11,1	;volatile
-  1183     0036  2838               	goto	u9_21
-  1184     0037  2839               	goto	u9_20
-  1185     0038                     u9_21:
-  1186     0038  2859               	goto	i1l122
-  1187     0039                     u9_20:
-  1188     0039                     i1l806:
-  1189     0039  3001               	movlw	1
-  1190     003A  06F9               	xorwf	_ButtonTrigger,f
-  1191     003B  3000               	movlw	0
-  1192     003C  06FA               	xorwf	_ButtonTrigger+1,f
-  1193     003D  284C               	goto	i1l818
-  1194     003E                     i1l119:
-  1195     003E  0021               	movlb	1	; select bank1
-  1196     003F  1315               	bcf	21,6	;volatile
-  1197     0040  108B               	bcf	11,1	;volatile
-  1198     0041                     i1l808:
-  1199     0041  3001               	movlw	1
-  1200     0042  00F6               	movwf	_on
-  1201     0043  3000               	movlw	0
-  1202     0044  00F7               	movwf	_on+1
-  1203     0045  2859               	goto	i1l122
-  1204     0046                     i1l810:
-  1205     0046  01F6               	clrf	_on
-  1206     0047  01F7               	clrf	_on+1
-  1207     0048                     i1l812:
-  1208     0048  0021               	movlb	1	; select bank1
-  1209     0049  1715               	bsf	21,6	;volatile
-  1210     004A                     i1l814:
-  1211     004A  108B               	bcf	11,1	;volatile
-  1212     004B  2859               	goto	i1l122
-  1213     004C                     i1l818:
-  1214                           
-  1215                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+  1147                           ; Switch size 1, requested type "simple"
+  1148                           ; Number of cases is 1, Range of values is 0 to 0
+  1149                           ; switch strategies available:
+  1150                           ; Name         Instructions Cycles
+  1151                           ; simple_byte            4     3 (average)
+  1152                           ; direct_byte            8     6 (fixed)
+  1153                           ; jumptable            260     6 (fixed)
+  1154                           ;	Chosen strategy is simple_byte
+  1155     0029  0877               	movf	_on+1,w
+  1156     002A  3A00               	xorlw	0	; case 0
+  1157     002B  1903               	skipnz
+  1158     002C  282E               	goto	i1l972
+  1159     002D  2833               	goto	i1l98
+  1160     002E                     i1l972:
+  1161                           
+  1162                           ; Switch size 1, requested type "simple"
+  1163                           ; Number of cases is 1, Range of values is 1 to 1
+  1164                           ; switch strategies available:
+  1165                           ; Name         Instructions Cycles
+  1166                           ; simple_byte            4     3 (average)
+  1167                           ; direct_byte           11     9 (fixed)
+  1168                           ; jumptable            263     9 (fixed)
+  1169                           ;	Chosen strategy is simple_byte
+  1170     002E  0876               	movf	_on,w
+  1171     002F  3A01               	xorlw	1	; case 1
+  1172     0030  1903               	skipnz
+  1173     0031  2807               	goto	i1l762
+  1174     0032  2833               	goto	i1l98
+  1175     0033                     i1l98:
+  1176     0033  1C8B               	btfss	11,1	;volatile
+  1177     0034  2836               	goto	u8_21
+  1178     0035  2837               	goto	u8_20
+  1179     0036                     u8_21:
+  1180     0036  2857               	goto	i1l104
+  1181     0037                     u8_20:
+  1182     0037                     i1l778:
+  1183     0037  3001               	movlw	1
+  1184     0038  06F9               	xorwf	_ButtonTrigger,f
+  1185     0039  3000               	movlw	0
+  1186     003A  06FA               	xorwf	_ButtonTrigger+1,f
+  1187     003B  284A               	goto	i1l790
+  1188     003C                     i1l101:
+  1189     003C  0021               	movlb	1	; select bank1
+  1190     003D  1315               	bcf	21,6	;volatile
+  1191     003E  108B               	bcf	11,1	;volatile
+  1192     003F                     i1l780:
+  1193     003F  3001               	movlw	1
+  1194     0040  00F6               	movwf	_on
+  1195     0041  3000               	movlw	0
+  1196     0042  00F7               	movwf	_on+1
+  1197     0043  2857               	goto	i1l104
+  1198     0044                     i1l782:
+  1199     0044  01F6               	clrf	_on
+  1200     0045  01F7               	clrf	_on+1
+  1201     0046                     i1l784:
+  1202     0046  0021               	movlb	1	; select bank1
+  1203     0047  1715               	bsf	21,6	;volatile
+  1204     0048                     i1l786:
+  1205     0048  108B               	bcf	11,1	;volatile
+  1206     0049  2857               	goto	i1l104
+  1207     004A                     i1l790:
+  1208                           
+  1209                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
       +                          itches
-  1216                           ; Switch size 1, requested type "simple"
-  1217                           ; Number of cases is 1, Range of values is 0 to 0
-  1218                           ; switch strategies available:
-  1219                           ; Name         Instructions Cycles
-  1220                           ; simple_byte            4     3 (average)
-  1221                           ; direct_byte            8     6 (fixed)
-  1222                           ; jumptable            260     6 (fixed)
-  1223                           ;	Chosen strategy is simple_byte
-  1224     004C  087A               	movf	_ButtonTrigger+1,w
-  1225     004D  3A00               	xorlw	0	; case 0
-  1226     004E  1903               	skipnz
-  1227     004F  2851               	goto	i1l1066
-  1228     0050  2859               	goto	i1l122
-  1229     0051                     i1l1066:
-  1230                           
-  1231                           ; Switch size 1, requested type "simple"
-  1232                           ; Number of cases is 2, Range of values is 0 to 1
-  1233                           ; switch strategies available:
-  1234                           ; Name         Instructions Cycles
-  1235                           ; simple_byte            7     4 (average)
-  1236                           ; direct_byte           10     6 (fixed)
-  1237                           ; jumptable            260     6 (fixed)
-  1238                           ;	Chosen strategy is simple_byte
-  1239     0051  0879               	movf	_ButtonTrigger,w
-  1240     0052  3A00               	xorlw	0	; case 0
-  1241     0053  1903               	skipnz
-  1242     0054  283E               	goto	i1l119
-  1243     0055  3A01               	xorlw	1	; case 1
-  1244     0056  1903               	skipnz
-  1245     0057  2846               	goto	i1l810
-  1246     0058  2859               	goto	i1l122
-  1247     0059                     i1l122:
-  1248     0059  107E               	bcf	int$flags,0	;clear compiler interrupt flag (level 1)
-  1249     005A  0009               	retfie
-  1250     005B                     __end_of_isr:
-  1251                           
-  1252                           	psect	text6
-  1253     00E3                     __ptext6:	
-  1254 ;; *************** function _spi_transmit *****************
-  1255 ;; Defined at:
-  1256 ;;		line 137 in file "spi.c"
-  1257 ;; Parameters:    Size  Location     Type
-  1258 ;;  c               1    wreg     unsigned char 
-  1259 ;; Auto vars:     Size  Location     Type
-  1260 ;;  c               1    0[COMMON] unsigned char 
-  1261 ;; Return value:  Size  Location     Type
-  1262 ;;                  1    wreg      void 
-  1263 ;; Registers used:
-  1264 ;;		wreg
-  1265 ;; Tracked objects:
-  1266 ;;		On entry : 0/0
-  1267 ;;		On exit  : 0/0
-  1268 ;;		Unchanged: 0/0
-  1269 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+  1210                           ; Switch size 1, requested type "simple"
+  1211                           ; Number of cases is 1, Range of values is 0 to 0
+  1212                           ; switch strategies available:
+  1213                           ; Name         Instructions Cycles
+  1214                           ; simple_byte            4     3 (average)
+  1215                           ; direct_byte            8     6 (fixed)
+  1216                           ; jumptable            260     6 (fixed)
+  1217                           ;	Chosen strategy is simple_byte
+  1218     004A  087A               	movf	_ButtonTrigger+1,w
+  1219     004B  3A00               	xorlw	0	; case 0
+  1220     004C  1903               	skipnz
+  1221     004D  284F               	goto	i1l974
+  1222     004E  2857               	goto	i1l104
+  1223     004F                     i1l974:
+  1224                           
+  1225                           ; Switch size 1, requested type "simple"
+  1226                           ; Number of cases is 2, Range of values is 0 to 1
+  1227                           ; switch strategies available:
+  1228                           ; Name         Instructions Cycles
+  1229                           ; simple_byte            7     4 (average)
+  1230                           ; direct_byte           10     6 (fixed)
+  1231                           ; jumptable            260     6 (fixed)
+  1232                           ;	Chosen strategy is simple_byte
+  1233     004F  0879               	movf	_ButtonTrigger,w
+  1234     0050  3A00               	xorlw	0	; case 0
+  1235     0051  1903               	skipnz
+  1236     0052  283C               	goto	i1l101
+  1237     0053  3A01               	xorlw	1	; case 1
+  1238     0054  1903               	skipnz
+  1239     0055  2844               	goto	i1l782
+  1240     0056  2857               	goto	i1l104
+  1241     0057                     i1l104:
+  1242     0057  107E               	bcf	int$flags,0	;clear compiler interrupt flag (level 1)
+  1243     0058  0009               	retfie
+  1244     0059                     __end_of_isr:
+  1245                           
+  1246                           	psect	text6
+  1247     00E0                     __ptext6:	
+  1248 ;; *************** function _spi_transmit *****************
+  1249 ;; Defined at:
+  1250 ;;		line 25 in file "spi.c"
+  1251 ;; Parameters:    Size  Location     Type
+  1252 ;;  c               1    wreg     unsigned char 
+  1253 ;; Auto vars:     Size  Location     Type
+  1254 ;;  c               1    0[COMMON] unsigned char 
+  1255 ;; Return value:  Size  Location     Type
+  1256 ;;                  1    wreg      void 
+  1257 ;; Registers used:
+  1258 ;;		wreg
+  1259 ;; Tracked objects:
+  1260 ;;		On entry : 0/0
+  1261 ;;		On exit  : 0/0
+  1262 ;;		Unchanged: 0/0
+  1263 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12
-  1270 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1264 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  1271 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+  1265 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  1272 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+  1266 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  1273 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+  1267 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  1274 ;;Total ram usage:        1 bytes
-  1275 ;; Hardware stack levels used: 1
-  1276 ;; This function calls:
-  1277 ;;		Nothing
-  1278 ;; This function is called by:
-  1279 ;;		_isr
-  1280 ;; This function uses a non-reentrant model
-  1281 ;;
-  1282                           
-  1283     00E3                     _spi_transmit:	
-  1284                           ;psect for function _spi_transmit
-  1285                           
+  1268 ;;Total ram usage:        1 bytes
+  1269 ;; Hardware stack levels used: 1
+  1270 ;; This function calls:
+  1271 ;;		Nothing
+  1272 ;; This function is called by:
+  1273 ;;		_isr
+  1274 ;; This function uses a non-reentrant model
+  1275 ;;
+  1276                           
+  1277     00E0                     _spi_transmit:	
+  1278                           ;psect for function _spi_transmit
+  1279                           
+  1280                           
+  1281                           ;incstack = 0
+  1282                           ; Regs used in _spi_transmit: [wreg]
+  1283                           ;spi_transmit@c stored from wreg
+  1284     00E0  00F0               	movwf	spi_transmit@c
+  1285     00E1                     i1l744:
   1286                           
-  1287                           ;incstack = 0
-  1288                           ; Regs used in _spi_transmit: [wreg]
-  1289                           ;spi_transmit@c stored from wreg
-  1290     00E3  00F0               	movwf	spi_transmit@c
-  1291     00E4                     i1l764:
-  1292                           
-  1293                           ;spi.c: 137: void spi_transmit(char c);spi.c: 138: {;spi.c: 144:     SSP1BUF = c;
-  1294     00E4  0870               	movf	spi_transmit@c,w
-  1295     00E5  0024               	movlb	4	; select bank4
-  1296     00E6  0091               	movwf	17	;volatile
-  1297     00E7                     i1l31:
-  1298     00E7  0008               	return
-  1299     00E8                     __end_of_spi_transmit:
-  1300                           
-  1301                           	psect	text7
-  1302     00D6                     __ptext7:	
-  1303 ;; *************** function _spi_read *****************
-  1304 ;; Defined at:
-  1305 ;;		line 175 in file "spi.c"
-  1306 ;; Parameters:    Size  Location     Type
-  1307 ;;		None
-  1308 ;; Auto vars:     Size  Location     Type
-  1309 ;;		None
-  1310 ;; Return value:  Size  Location     Type
-  1311 ;;                  1    wreg      unsigned char 
-  1312 ;; Registers used:
-  1313 ;;		wreg
-  1314 ;; Tracked objects:
-  1315 ;;		On entry : 0/0
-  1316 ;;		On exit  : 0/0
-  1317 ;;		Unchanged: 0/0
-  1318 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+  1287                           ;spi.c: 25: void spi_transmit(char c);spi.c: 26: {;spi.c: 27:     SSP1BUF = c;
+  1288     00E1  0870               	movf	spi_transmit@c,w
+  1289     00E2  0024               	movlb	4	; select bank4
+  1290     00E3  0091               	movwf	17	;volatile
+  1291     00E4                     i1l27:
+  1292     00E4  0008               	return
+  1293     00E5                     __end_of_spi_transmit:
+  1294                           
+  1295                           	psect	text7
+  1296     00D3                     __ptext7:	
+  1297 ;; *************** function _spi_read *****************
+  1298 ;; Defined at:
+  1299 ;;		line 30 in file "spi.c"
+  1300 ;; Parameters:    Size  Location     Type
+  1301 ;;		None
+  1302 ;; Auto vars:     Size  Location     Type
+  1303 ;;		None
+  1304 ;; Return value:  Size  Location     Type
+  1305 ;;                  1    wreg      unsigned char 
+  1306 ;; Registers used:
+  1307 ;;		wreg
+  1308 ;; Tracked objects:
+  1309 ;;		On entry : 0/0
+  1310 ;;		On exit  : 0/0
+  1311 ;;		Unchanged: 0/0
+  1312 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12
-  1319 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1313 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  1320 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1314 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  1321 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+  1315 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  1322 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1316 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  1323 ;;Total ram usage:        0 bytes
-  1324 ;; Hardware stack levels used: 1
-  1325 ;; This function calls:
-  1326 ;;		Nothing
-  1327 ;; This function is called by:
-  1328 ;;		_isr
-  1329 ;; This function uses a non-reentrant model
-  1330 ;;
-  1331                           
-  1332     00D6                     _spi_read:	
-  1333                           ;psect for function _spi_read
-  1334                           
-  1335     00D6                     i1l766:	
-  1336                           ;incstack = 0
-  1337                           ; Regs used in _spi_read: [wreg]
-  1338                           
-  1339     00D6                     i1l45:	
-  1340                           ;spi.c: 182:     while (!SSP1STATbits.BF);
-  1341                           
-  1342     00D6  0024               	movlb	4	; select bank4
-  1343     00D7  1C14               	btfss	20,0	;volatile
-  1344     00D8  28DA               	goto	u6_21
-  1345     00D9  28DB               	goto	u6_20
-  1346     00DA                     u6_21:
-  1347     00DA  28D6               	goto	i1l45
-  1348     00DB                     u6_20:
-  1349     00DB                     i1l768:
-  1350                           
-  1351                           ;spi.c: 183:     return (SSP2BUF);
-  1352     00DB  0819               	movf	25,w	;volatile
-  1353     00DC                     i1l48:
-  1354     00DC  0008               	return
-  1355     00DD                     __end_of_spi_read:
-  1356     007E                     btemp	set	126	;btemp
-  1357     007E                     int$flags	set	126
-  1358     007E                     wtemp0	set	126
-  1359                           
-  1360                           	psect	config
-  1361                           
-  1362                           ;Config register CONFIG1 @ 0x8007
-  1363                           ;	Oscillator Selection
-  1364                           ;	FOSC = 0x4, user specified literal
-  1365                           ;	Watchdog Timer Enable
-  1366                           ;	WDTE = 0x0, user specified literal
-  1367                           ;	Power-up Timer Enable
-  1368                           ;	PWRTE = 0x1, user specified literal
-  1369                           ;	MCLR Pin Function Select
-  1370                           ;	MCLRE = OFF, MCLR/VPP pin function is digital input
-  1371                           ;	Flash Program Memory Code Protection
-  1372                           ;	CP = OFF, Program memory code protection is disabled
-  1373                           ;	Data Memory Code Protection
-  1374                           ;	CPD = OFF, Data memory code protection is disabled
-  1375                           ;	Brown-out Reset Enable
-  1376                           ;	BOREN = ON, Brown-out Reset enabled
-  1377                           ;	Clock Out Enable
-  1378                           ;	CLKOUTEN = OFF, CLKOUT function is disabled. I/O or oscillator function on the CLKOUT 
+  1317 ;;Total ram usage:        0 bytes
+  1318 ;; Hardware stack levels used: 1
+  1319 ;; This function calls:
+  1320 ;;		Nothing
+  1321 ;; This function is called by:
+  1322 ;;		_isr
+  1323 ;; This function uses a non-reentrant model
+  1324 ;;
+  1325                           
+  1326     00D3                     _spi_read:	
+  1327                           ;psect for function _spi_read
+  1328                           
+  1329     00D3                     i1l746:	
+  1330                           ;incstack = 0
+  1331                           ; Regs used in _spi_read: [wreg]
+  1332                           
+  1333     00D3                     i1l30:	
+  1334                           ;spi.c: 32:     while (!SSP1STATbits.BF);
+  1335                           
+  1336     00D3  0024               	movlb	4	; select bank4
+  1337     00D4  1C14               	btfss	20,0	;volatile
+  1338     00D5  28D7               	goto	u6_21
+  1339     00D6  28D8               	goto	u6_20
+  1340     00D7                     u6_21:
+  1341     00D7  28D3               	goto	i1l30
+  1342     00D8                     u6_20:
+  1343     00D8                     i1l748:
+  1344                           
+  1345                           ;spi.c: 33:     return (SSP1BUF);
+  1346     00D8  0811               	movf	17,w	;volatile
+  1347     00D9                     i1l33:
+  1348     00D9  0008               	return
+  1349     00DA                     __end_of_spi_read:
+  1350     007E                     btemp	set	126	;btemp
+  1351     007E                     int$flags	set	126
+  1352     007E                     wtemp0	set	126
+  1353                           
+  1354                           	psect	config
+  1355                           
+  1356                           ;Config register CONFIG1 @ 0x8007
+  1357                           ;	Oscillator Selection
+  1358                           ;	FOSC = 0x4, user specified literal
+  1359                           ;	Watchdog Timer Enable
+  1360                           ;	WDTE = 0x0, user specified literal
+  1361                           ;	Power-up Timer Enable
+  1362                           ;	PWRTE = 0x1, user specified literal
+  1363                           ;	MCLR Pin Function Select
+  1364                           ;	MCLRE = OFF, MCLR/VPP pin function is digital input
+  1365                           ;	Flash Program Memory Code Protection
+  1366                           ;	CP = OFF, Program memory code protection is disabled
+  1367                           ;	Data Memory Code Protection
+  1368                           ;	CPD = OFF, Data memory code protection is disabled
+  1369                           ;	Brown-out Reset Enable
+  1370                           ;	BOREN = ON, Brown-out Reset enabled
+  1371                           ;	Clock Out Enable
+  1372                           ;	CLKOUTEN = OFF, CLKOUT function is disabled. I/O or oscillator function on the CLKOUT 
       +                          pin
-  1379                           ;	Internal/External Switchover
-  1380                           ;	IESO = OFF, Internal/External Switchover mode is disabled
-  1381                           ;	Fail-Safe Clock Monitor Enable
-  1382                           ;	FCMEN = OFF, Fail-Safe Clock Monitor is disabled
-  1383     8007                     	org	32775
-  1384     8007  0FA4               	dw	4004
-  1385                           
-  1386                           ;Config register CONFIG2 @ 0x8008
-  1387                           ;	Flash Memory Self-Write Protection
-  1388                           ;	WRT = OFF, Write protection off
-  1389                           ;	PLL Enable
-  1390                           ;	PLLEN = OFF, 4x PLL disabled
-  1391                           ;	Stack Overflow/Underflow Reset Enable
-  1392                           ;	STVREN = OFF, Stack Overflow or Underflow will not cause a Reset
-  1393                           ;	Brown-out Reset Voltage Selection
-  1394                           ;	BORV = LO, Brown-out Reset Voltage (Vbor), low trip point selected.
-  1395                           ;	In-Circuit Debugger Mode
-  1396                           ;	DEBUG = 0x1, unprogrammed default
-  1397                           ;	Low-Voltage Programming Enable
-  1398                           ;	LVP = OFF, High-voltage on MCLR/VPP must be used for programming
-  1399     8008                     	org	32776
-  1400     8008  1CFF               	dw	7423
+  1373                           ;	Internal/External Switchover
+  1374                           ;	IESO = OFF, Internal/External Switchover mode is disabled
+  1375                           ;	Fail-Safe Clock Monitor Enable
+  1376                           ;	FCMEN = OFF, Fail-Safe Clock Monitor is disabled
+  1377     8007                     	org	32775
+  1378     8007  0FA4               	dw	4004
+  1379                           
+  1380                           ;Config register CONFIG2 @ 0x8008
+  1381                           ;	Flash Memory Self-Write Protection
+  1382                           ;	WRT = OFF, Write protection off
+  1383                           ;	PLL Enable
+  1384                           ;	PLLEN = OFF, 4x PLL disabled
+  1385                           ;	Stack Overflow/Underflow Reset Enable
+  1386                           ;	STVREN = OFF, Stack Overflow or Underflow will not cause a Reset
+  1387                           ;	Brown-out Reset Voltage Selection
+  1388                           ;	BORV = LO, Brown-out Reset Voltage (Vbor), low trip point selected.
+  1389                           ;	In-Circuit Debugger Mode
+  1390                           ;	DEBUG = 0x1, unprogrammed default
+  1391                           ;	Low-Voltage Programming Enable
+  1392                           ;	LVP = OFF, High-voltage on MCLR/VPP must be used for programming
+  1393     8008                     	org	32776
+  1394     8008  1CFF               	dw	7423
 
 Data Sizes:
     Strings     0
@@ -1754,57 +1746,56 @@ SFR31                0      0       0      32        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.45 build 20230818022343 
-Symbol Table                                                                                   Mon Nov 20 14:23:26 2023
+Symbol Table                                                                                   Tue Nov 21 19:12:21 2023
 
-            _SSPSTATbits 0214                       l26 00AB                       l28 00B2  
-                     l95 00E0                       l96 00E0   spi_init@mst_slv_oscdiv 0020  
-                     _on 0076                      l101 00C0                      l104 00D5  
-                    l107 00CC                      l750 00D4                      l760 00CA  
-                    l752 00C1                      l762 00CB                      l754 00C5  
-                    l756 00C7                      l748 00CD                      l758 00C9  
-                    l980 0076                      l990 009D                      l982 0078  
-                    l992 00A3                      l984 007F                      l994 00B1  
-                    l986 0085                      l978 006E                      _GIE 005F  
-                    l988 0097                      l996 00B3                      l998 00B6  
-                    u150 007F                      u151 007E                      u160 0085  
-                    u161 0084                      u170 0090                      u171 008D  
-                    u190 009D                      u191 009C                      u184 0092  
-                    _isr 0004                      wreg 0009                     l1000 00B9  
-                   l1002 00DD                     ?_isr 0070                     _PEIE 005E  
-                   _INTE 005C                     i1l31 00E7                     i1l45 00D6  
-                   i1l48 00DC                     u6_20 00DB                     u6_21 00DA  
-                   u8_20 0018                     u8_21 0017                     u9_20 0039  
-                   u9_21 0038                     _main 00DD                     btemp 007E  
-                   start 005B                    ??_isr 0071      spi_init@sdo_tx_edge 0075  
-                  ?_main 0070                    i1l113 0007                    i1l122 0059  
-                  i1l114 0035                    i1l119 003E                    i1l800 0025  
-                  i1l810 0046                    i1l812 0048                    i1l804 0028  
-                  i1l814 004A                    i1l806 0039                    i1l808 0041  
-                  i1l818 004C                    i1l764 00E4                    i1l766 00D6  
-                  i1l790 000A                    i1l768 00DB                    i1l792 000E  
-                  i1l794 0012                    i1l796 0018                    i1l788 0006  
-                  i1l798 001A                    u20_27 001F                    status 0003  
-                  wtemp0 007E          __initialization 005D             __end_of_main 00E3  
+                     l22 00A9                       l24 00B0                       l90 00C9  
+                     l84 00BE                       l78 00DD                       l87 00D2  
+                     l79 00DD   spi_init@mst_slv_oscdiv 0020                       _on 0076  
+                    l730 00CA                      l740 00C7                      l732 00D1  
+                    l742 00C8                      l734 00BF                      l910 0076  
+                    l736 00C3                      l920 00A1                      l912 007D  
+                    l738 00C5                      l922 00AF                      l914 0083  
+                    l906 006C                      l930 00DA                      l916 0095  
+                    l908 0074                      l924 00B1                      l918 009B  
+                    l926 00B4                      l928 00B7                      _GIE 005F  
+                    u140 007D                      u141 007C                      u150 0083  
+                    u151 0082                      u160 008E                      u161 008B  
+                    u180 009B                      u181 009A                      u174 0090  
+                    _isr 0004                      wreg 0009                     ?_isr 0070  
+                   _PEIE 005E                     _INTE 005C                     i1l30 00D3  
+                   i1l33 00D9                     i1l27 00E4                     i1l97 0024  
+                   i1l98 0033                     u6_20 00D8                     u6_21 00D7  
+                   u7_20 0015                     u7_21 0014                     u8_20 0037  
+                   u8_21 0036                     _main 00DA                     btemp 007E  
+                   start 0059                    ??_isr 0071      spi_init@sdo_tx_edge 0075  
+                  ?_main 0070                    i1l101 003C                    i1l104 0057  
+                  i1l744 00E1                    i1l760 0006                    i1l746 00D3  
+                  i1l770 0017                    i1l762 0007                    i1l748 00D8  
+                  i1l780 003F                    i1l772 0022                    i1l764 000B  
+                  i1l782 0044                    i1l790 004A                    i1l766 000F  
+                  i1l784 0046                    i1l768 0015                    i1l776 0029  
+                  i1l786 0048                    i1l778 0037                    i1l972 002E  
+                  i1l974 004F                    u19_27 001C                    status 0003  
+                  wtemp0 007E          __initialization 005B             __end_of_main 00E0  
           _ButtonTrigger 0079                   ??_main 0076                   _ANSELA 018C  
-                 _ANSELB 018D                   _ANSELC 018E                   i1l1064 002D  
-                 i1l1066 0051         __end_of_init_osc 00D6         __end_of_pic_init 00C1  
-          spi_transmit@c 0070             __pdataCOMMON 0079         __end_of_spi_init 00B3  
-       __end_of_spi_read 00DD  __end_of__initialization 0068           __pcstackCOMMON 0070  
-         _OPTION_REGbits 0095               __pmaintext 00DD               __pintentry 0004  
-                _SSP1BUF 0211                  _SSP2BUF 0219                ?_init_osc 0070  
+                 _ANSELB 018D                   _ANSELC 018E         __end_of_init_osc 00D3  
+       __end_of_pic_init 00BF            spi_transmit@c 0070             __pdataCOMMON 0079  
+       __end_of_spi_init 00B1         __end_of_spi_read 00DA  __end_of__initialization 0066  
+         __pcstackCOMMON 0070           _OPTION_REGbits 0095               __pmaintext 00DA  
+             __pintentry 0004                  _SSP1BUF 0211                ?_init_osc 0070  
               ?_pic_init 0070                ?_spi_init 0073                ?_spi_read 0070  
-                __ptext1 00B3                  __ptext2 006C                  __ptext3 00CD  
-                __ptext4 00C1                  __ptext6 00E3                  __ptext7 00D6  
-      __end_of_init_gpio 00CD     end_of_initialization 0068               ??_init_osc 0073  
+                __ptext1 00B1                  __ptext2 006A                  __ptext3 00CA  
+                __ptext4 00BF                  __ptext6 00E0                  __ptext7 00D3  
+      __end_of_init_gpio 00CA     end_of_initialization 0066               ??_init_osc 0073  
              ??_pic_init 0076               ??_spi_init 0076               ??_spi_read 0070  
               _PORTBbits 000D               _spi_buffer 0078                _TRISBbits 008D  
               _TRISCbits 008E            ?_spi_transmit 0070       spi_init@sdi_rx_smp 0073  
-          __pidataCOMMON 00E8      start_initialization 005D              __end_of_isr 005B  
+          __pidataCOMMON 00E5      start_initialization 005B              __end_of_isr 0059  
          ??_spi_transmit 0070              __pbssCOMMON 0076                ___latbits 0002  
-          __pcstackBANK0 0020                _init_gpio 00C1        spi_init@clock_pol 0074  
-               _LATCbits 010E                 _PIE1bits 0091     __end_of_spi_transmit 00E8  
-             ?_init_gpio 0070             _SSP1CON1bits 0215                 _init_osc 00CD  
-               _pic_init 00B3                 _spi_init 006C                 _spi_read 00D6  
+          __pcstackBANK0 0020                _init_gpio 00BF        spi_init@clock_pol 0074  
+               _LATCbits 010E                 _PIE1bits 0091     __end_of_spi_transmit 00E5  
+             ?_init_gpio 0070             _SSP1CON1bits 0215                 _init_osc 00CA  
+               _pic_init 00B1                 _spi_init 006A                 _spi_read 00D3  
                int$flags 007E             _SSP1STATbits 0214               _INTCONbits 000B  
             ??_init_gpio 0073                 intlevel1 0000               _OSCCONbits 0099  
-           _spi_transmit 00E3  
+           _spi_transmit 00E0  

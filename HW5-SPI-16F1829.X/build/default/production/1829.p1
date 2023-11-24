@@ -15,8 +15,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n E2489 . CKP0_CPOL0_IDLE_LOW CKP1_CPOL1_IDLE_HIGH  ]
 [c E2493 0 1 .. ]
 [n E2493 . CKE0_CPHA1_TRSMIT_IDL2ACT CKE1_CPHA0_TRSMIT_ACT2IDL  ]
-"35 ./spi.h
-[; ;./spi.h: 35: void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_pol, txclkedge sdo_tx_edge);
+"82 ./spi.h
+[; ;./spi.h: 82: void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_pol, txclkedge sdo_tx_edge);
 [v _spi_init `(v ~T0 @X0 0 ef4`E2477`E2485`E2489`E2493 ]
 "1772 /home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h
 [; ;/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h: 1772:     struct {
@@ -72,11 +72,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _INTE `Vb ~T0 @X0 0 e@92 ]
 [t ~ __interrupt . k ]
 [t T1 __interrupt ]
-"36 ./spi.h
-[; ;./spi.h: 36: void spi_transmit(char c);
+"83 ./spi.h
+[; ;./spi.h: 83: void spi_transmit(char c);
 [v _spi_transmit `(v ~T0 @X0 0 ef1`uc ]
-"37
-[; ;./spi.h: 37: char spi_read(void);
+"84
+[; ;./spi.h: 84: char spi_read(void);
 [v _spi_read `(uc ~T0 @X0 0 ef ]
 [v F42 `(v ~T0 @X0 1 tf1`ul ]
 "20 /opt/microchip/xc8/v2.45/pic/include/builtins.h

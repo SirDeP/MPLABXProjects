@@ -6,10 +6,10 @@ Linker command line:
   --edf=/home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/dat/20230907200743_en.msgs \
   -cn -h+dist/default/production/HW5-SPI-16F1829.X.production.sym \
   --cmf=dist/default/production/HW5-SPI-16F1829.X.production.cmf -z \
-  -Q16F1829 -o/tmp/xcXdilpEA/driver_tmp_3.o --defsym=__MPLAB_BUILD=1 \
+  -Q16F1829 -o/tmp/xcXbmKklE/driver_tmp_3.o --defsym=__MPLAB_BUILD=1 \
   --fixupoverflow=error \
   -Mdist/default/production/HW5-SPI-16F1829.X.production.map \
-  --md=/tmp/xcXdilpEA/driver_tmp_0.dat -E1 -ver=XC8 Compiler --acfsm=1493 \
+  --md=/tmp/xcXbmKklE/driver_tmp_0.dat -E1 -ver=XC8 Compiler --acfsm=1493 \
   -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 \
   -ACONST=00h-0FFhx32 -AENTRY=00h-0FFhx32 -ACOMMON=070h-07Fh \
   -ABANK0=020h-06Fh -ABANK1=0A0h-0EFh -ABANK2=0120h-016Fh \
@@ -33,7 +33,7 @@ Linker command line:
   -AIDLOC=08000h-08003h -DIDLOC=2 -AEEDATA=00h-0FFh/0F000h \
   -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
   -DENTRY=2 -preset_vec=00h,intentry=04h,init,end_init -ppowerup=CODE \
-  -pcinit=CODE -pfunctab=ENTRY -k /tmp/xcXdilpEA/driver_tmp_15.o \
+  -pcinit=CODE -pfunctab=ENTRY -k /tmp/xcXbmKklE/driver_tmp_15.o \
   dist/default/production/HW5-SPI-16F1829.X.production.o 
 
 Object code version is 3.11
@@ -43,7 +43,7 @@ Machine type is 16F1829
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcXdilpEA/driver_tmp_15.o
+/tmp/xcXbmKklE/driver_tmp_15.o
                 end_init                             59       59        2        8       0
                 reset_vec                             0        0        2        0       0
                 config                             8007     8007        2        0       4

@@ -7,7 +7,14 @@
 # 1 "/opt/microchip/xc8/v2.45/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "1829.c" 2
-# 10 "1829.c"
+
+
+
+
+
+
+
+
 # 1 "/opt/microchip/xc8/v2.45/pic/include/xc.h" 1 3
 # 18 "/opt/microchip/xc8/v2.45/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4576,9 +4583,12 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "/opt/microchip/xc8/v2.45/pic/include/xc.h" 2 3
-# 11 "1829.c" 2
+# 10 "1829.c" 2
+
+
+
 # 1 "./spi.h" 1
-# 77 "./spi.h"
+# 53 "./spi.h"
 typedef enum {
     MST_OSC_DIV_04,
     MST_OSC_DIV_16,
@@ -4610,10 +4620,8 @@ typedef enum { CKE0_CPHA1_TRSMIT_IDL2ACT,
 
 void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_pol, txclkedge sdo_tx_edge);
 void spi_transmit(char c);
-char spi_read();
-unsigned spi_dataready();
-static void spi_receivewait();
-# 12 "1829.c" 2
+char spi_read(void);
+# 14 "1829.c" 2
 
 
 
@@ -4641,14 +4649,11 @@ static void spi_receivewait();
 
 
 
-
-
-char spi_buffer = 0;
-
 void pic_init(void);
 void init_gpio(void);
 void init_osc(void);
 
+char spi_buffer = 0;
 int ButtonTrigger = 1;
 int on = 0;
 
@@ -4656,9 +4661,6 @@ void main(void)
 {
     pic_init();
     while (1) {
-
-
-
     }
 }
 
@@ -4680,7 +4682,6 @@ void init_osc(void)
     OSCCONbits.SPLLEN = 0b0;
 }
 
-
 void init_gpio(void)
 {
     ANSELC = 0;
@@ -4689,27 +4690,26 @@ void init_gpio(void)
     TRISCbits.TRISC6 = 0;
     LATCbits.LATC6 = 1;
     GIE = 1;
-    PEIE = 1;
     INTE = 1;
 }
-
 
 
 void __attribute__((picinterrupt(("")))) isr(void)
 {
     switch (on) {
-        case 0:
-            LATCbits.LATC6 = 1;
-            break;
+
+
+
         case 1:
             spi_transmit(0b01010101);
 
             spi_buffer = spi_read();
             if (spi_buffer & 0b11110000) {
                 LATCbits.LATC6 = 0;
-                _delay((unsigned long)((2000)*(4000000/4000.0)));
+                _delay((unsigned long)((500)*(4000000/4000.0)));
                 LATCbits.LATC6 = 1;
             }
+            ButtonTrigger = 1;
             break;
     }
 

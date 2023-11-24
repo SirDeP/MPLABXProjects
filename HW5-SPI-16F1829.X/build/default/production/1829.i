@@ -4585,11 +4585,7 @@ extern __bank0 __bit __timeout;
 # 29 "/opt/microchip/xc8/v2.45/pic/include/xc.h" 2 3
 # 10 "1829.c" 2
 # 1 "./spi.h" 1
-
-
-
-
-
+# 53 "./spi.h"
 typedef enum {
     MST_OSC_DIV_04,
     MST_OSC_DIV_16,

@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F1829 ]
 [d frameptr 6 ]
-"22 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+"3 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
 [e E2477 . `uc
 MST_OSC_DIV_04 0
 MST_OSC_DIV_16 1
@@ -63,11 +63,11 @@ CKE1_CPHA0_TRSMIT_ACT2IDL 1
 [v _init_gpio init_gpio `(v  1 e 1 0 ]
 "83
 [v _isr isr `II(v  1 e 1 0 ]
-"22 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+"3 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
 [v _spi_init spi_init `(v  1 e 1 0 ]
-"116
+"25
 [v _spi_transmit spi_transmit `(v  1 e 1 0 ]
-"129
+"30
 [v _spi_read spi_read `(uc  1 e 1 0 ]
 [s S316 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
@@ -229,7 +229,7 @@ CKE1_CPHA0_TRSMIT_ACT2IDL 1
 {
 "59
 } 0
-"22 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+"3 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
 [v _spi_init spi_init `(v  1 e 1 0 ]
 {
 [v spi_init@mst_slv_oscdiv mst_slv_oscdiv `E2477  1 a 1 wreg ]
@@ -237,9 +237,9 @@ CKE1_CPHA0_TRSMIT_ACT2IDL 1
 [v spi_init@sdi_rx_smp sdi_rx_smp `E2485  1 p 1 3 ]
 [v spi_init@clock_pol clock_pol `E2489  1 p 1 4 ]
 [v spi_init@sdo_tx_edge sdo_tx_edge `E2493  1 p 1 5 ]
-"28
+"5
 [v spi_init@mst_slv_oscdiv mst_slv_oscdiv `E2477  1 a 1 0 ]
-"114
+"23
 } 0
 "61 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
 [v _init_osc init_osc `(v  1 e 1 0 ]
@@ -256,17 +256,17 @@ CKE1_CPHA0_TRSMIT_ACT2IDL 1
 {
 "117
 } 0
-"116 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+"25 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
 [v _spi_transmit spi_transmit `(v  1 e 1 0 ]
 {
 [v spi_transmit@c c `uc  1 a 1 wreg ]
 [v spi_transmit@c c `uc  1 a 1 wreg ]
-"122
+"27
 [v spi_transmit@c c `uc  1 a 1 0 ]
-"127
+"28
 } 0
-"129
+"30
 [v _spi_read spi_read `(uc  1 e 1 0 ]
 {
-"143
+"34
 } 0

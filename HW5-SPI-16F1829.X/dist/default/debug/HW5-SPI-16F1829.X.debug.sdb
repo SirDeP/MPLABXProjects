@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F1829 ]
 [d frameptr 6 ]
-"23 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+"3 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
 [e E2477 . `uc
 MST_OSC_DIV_04 0
 MST_OSC_DIV_16 1
@@ -24,7 +24,7 @@ CKP1_CPOL1_IDLE_HIGH 1
 CKE0_CPHA1_TRSMIT_IDL2ACT 0
 CKE1_CPHA0_TRSMIT_ACT2IDL 1
 ]
-"65 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+"61 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
 [e E2477 . `uc
 MST_OSC_DIV_04 0
 MST_OSC_DIV_16 1
@@ -53,23 +53,23 @@ CKE1_CPHA0_TRSMIT_ACT2IDL 1
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"50 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+"49 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
 [v _main main `(v  1 e 1 0 ]
-"60
+"56
 [v _pic_init pic_init `(v  1 e 1 0 ]
-"68
+"64
 [v _init_osc init_osc `(v  1 e 1 0 ]
-"79
+"74
 [v _init_gpio init_gpio `(v  1 e 1 0 ]
-"93
+"86
 [v _isr isr `II(v  1 e 1 0 ]
-"23 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+"3 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
 [v _spi_init spi_init `(v  1 e 1 0 ]
-"137
+"25
 [v _spi_transmit spi_transmit `(v  1 e 1 0 ]
-"175
+"30
 [v _spi_read spi_read `(uc  1 e 1 0 ]
-[s S349 . 1 `uc 1 IOCIF 1 0 :1:0 
+[s S316 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 IOCIE 1 0 :1:3 
@@ -79,13 +79,13 @@ CKE1_CPHA0_TRSMIT_ACT2IDL 1
 `uc 1 GIE 1 0 :1:7 
 ]
 "374 /home/sirdep/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/include/proc/pic16f1829.h
-[s S358 . 1 `uc 1 . 1 0 :2:0 
+[s S325 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 T0IE 1 0 :1:5 
 ]
-[u S363 . 1 `S349 1 . 1 0 `S358 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES363  1 e 1 @11 ]
+[u S330 . 1 `S316 1 . 1 0 `S325 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES330  1 e 1 @11 ]
 [s S121 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 RB4 1 0 :1:4 
 `uc 1 RB5 1 0 :1:5 
@@ -128,7 +128,7 @@ CKE1_CPHA0_TRSMIT_ACT2IDL 1
 "1353
 [u S147 . 1 `S138 1 . 1 0 ]
 [v _PIE1bits PIE1bits `VES147  1 e 1 @145 ]
-[s S381 . 1 `uc 1 PS0 1 0 :1:0 
+[s S348 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 `uc 1 PSA 1 0 :1:3 
@@ -138,14 +138,14 @@ CKE1_CPHA0_TRSMIT_ACT2IDL 1
 `uc 1 nWPUEN 1 0 :1:7 
 ]
 "1538
-[s S390 . 1 `uc 1 PS 1 0 :3:0 
+[s S357 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 . 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
 ]
-[u S395 . 1 `S381 1 . 1 0 `S390 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES395  1 e 1 @149 ]
-[s S272 . 1 `uc 1 SCS0 1 0 :1:0 
+[u S362 . 1 `S348 1 . 1 0 `S357 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES362  1 e 1 @149 ]
+[s S240 . 1 `uc 1 SCS0 1 0 :1:0 
 `uc 1 SCS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF0 1 0 :1:3 
@@ -155,13 +155,13 @@ CKE1_CPHA0_TRSMIT_ACT2IDL 1
 `uc 1 SPLLEN 1 0 :1:7 
 ]
 "1788
-[s S281 . 1 `uc 1 SCS 1 0 :2:0 
+[s S249 . 1 `uc 1 SCS 1 0 :2:0 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF 1 0 :4:3 
 ]
-[u S285 . 1 `S272 1 . 1 0 `S281 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES285  1 e 1 @153 ]
-[s S317 . 1 `uc 1 LATC0 1 0 :1:0 
+[u S253 . 1 `S240 1 . 1 0 `S249 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES253  1 e 1 @153 ]
+[s S285 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -171,8 +171,8 @@ CKE1_CPHA0_TRSMIT_ACT2IDL 1
 `uc 1 LATC7 1 0 :1:7 
 ]
 "2200
-[u S326 . 1 `S317 1 . 1 0 ]
-[v _LATCbits LATCbits `VES326  1 e 1 @270 ]
+[u S294 . 1 `S285 1 . 1 0 ]
+[v _LATCbits LATCbits `VES294  1 e 1 @270 ]
 "2950
 [v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
 "2997
@@ -193,8 +193,6 @@ CKE1_CPHA0_TRSMIT_ACT2IDL 1
 "3861
 [u S94 . 1 `S85 1 . 1 0 ]
 [v _SSP1STATbits SSP1STATbits `VES94  1 e 1 @532 ]
-"3916
-[v _SSPSTATbits SSPSTATbits `VES94  1 e 1 @532 ]
 [s S38 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
@@ -209,31 +207,29 @@ CKE1_CPHA0_TRSMIT_ACT2IDL 1
 ]
 [u S49 . 1 `S38 1 . 1 0 `S47 1 . 1 0 ]
 [v _SSP1CON1bits SSP1CON1bits `VES49  1 e 1 @533 ]
-"4409
-[v _SSP2BUF SSP2BUF `VEuc  1 e 1 @537 ]
 "7623
 [v _GIE GIE `VEb  1 e 0 @95 ]
 "7695
 [v _INTE INTE `VEb  1 e 0 @92 ]
 "8034
 [v _PEIE PEIE `VEb  1 e 0 @94 ]
-"41 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+"45 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
 [v _spi_buffer spi_buffer `uc  1 e 1 0 ]
-"47
+"46
 [v _ButtonTrigger ButtonTrigger `i  1 e 2 0 ]
-"48
+"47
 [v _on on `i  1 e 2 0 ]
-"50
+"49
 [v _main main `(v  1 e 1 0 ]
 {
-"58
+"54
 } 0
-"60
+"56
 [v _pic_init pic_init `(v  1 e 1 0 ]
 {
-"66
+"62
 } 0
-"23 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+"3 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
 [v _spi_init spi_init `(v  1 e 1 0 ]
 {
 [v spi_init@mst_slv_oscdiv mst_slv_oscdiv `E2477  1 a 1 wreg ]
@@ -241,36 +237,36 @@ CKE1_CPHA0_TRSMIT_ACT2IDL 1
 [v spi_init@sdi_rx_smp sdi_rx_smp `E2485  1 p 1 3 ]
 [v spi_init@clock_pol clock_pol `E2489  1 p 1 4 ]
 [v spi_init@sdo_tx_edge sdo_tx_edge `E2493  1 p 1 5 ]
-"31
+"5
 [v spi_init@mst_slv_oscdiv mst_slv_oscdiv `E2477  1 a 1 0 ]
-"135
+"23
 } 0
-"68 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
+"64 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/1829.c
 [v _init_osc init_osc `(v  1 e 1 0 ]
 {
-"76
+"72
 } 0
-"79
+"74
 [v _init_gpio init_gpio `(v  1 e 1 0 ]
 {
-"89
+"83
 } 0
-"93
+"86
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"126
+"120
 } 0
-"137 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
+"25 /home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/spi.c
 [v _spi_transmit spi_transmit `(v  1 e 1 0 ]
 {
 [v spi_transmit@c c `uc  1 a 1 wreg ]
 [v spi_transmit@c c `uc  1 a 1 wreg ]
-"144
+"27
 [v spi_transmit@c c `uc  1 a 1 0 ]
-"149
+"28
 } 0
-"175
+"30
 [v _spi_read spi_read `(uc  1 e 1 0 ]
 {
-"190
+"34
 } 0

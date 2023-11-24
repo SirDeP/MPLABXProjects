@@ -4,22 +4,15 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>spi.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
     </logicalFolder>
-    <logicalFolder name="ScriptFiles"
-                   displayName="Script Files"
-                   projectFiles="true">
-      <itemPath>autoload.py</itemPath>
-    </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>spi.c</itemPath>
-      <itemPath>1829.c</itemPath>
+      <itemPath>newmain.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -32,7 +25,7 @@
     <conf name="default" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <targetDevice>PIC16F1829</targetDevice>
+        <targetDevice>PIC16F887</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PK5Tool</platformTool>
@@ -41,7 +34,7 @@
         <platform>2</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC12-16F1xxx_DFP" vendor="Microchip" version="1.7.242"/>
+        <pack name="PIC16Fxxx_DFP" vendor="Microchip" version="1.6.156"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -79,7 +72,7 @@
         <property key="define-macros" value=""/>
         <property key="disable-optimizations" value="true"/>
         <property key="extra-include-directories"
-                  value="../../../../opt/microchip/xc8/v2.45/pic/include/c99;../../../../opt/microchip/xc8/v2.45/pic/include/c90;../../../../opt/microchip/xc8/v2.45/pic/include/proc;../../../../opt/microchip/xc8/v2.45/pic/include/legacy"/>
+                  value="../../../../opt/microchip/xc8/v2.45/pic/include;../../../../opt/microchip/xc8/v2.45/pic/include/c99;../../../../opt/microchip/xc8/v2.45/pic/include/c90;../../../../opt/microchip/xc8/v2.45/pic/include/legacy;../../../../opt/microchip/xc8/v2.45/pic/include/proc"/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="garbage-collect-data" value="true"/>
         <property key="garbage-collect-functions" value="true"/>
@@ -186,9 +179,7 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-1fff"/>
         <property key="poweroptions.powerenable" value="false"/>
-        <property key="programmerToGoFilePath"
-                  value="/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/debug/default/PROJ_OPDR3-IRRemote-16F887_ptg"/>
-        <property key="programmerToGoImageName" value="PROJ_OPDR3-IRRemote-16F887_ptg"/>
+        <property key="programmerToGoImageName" value="ENDPROJ-ROTENC+POT_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.ledbrightness" value="5"/>
@@ -250,9 +241,7 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-1fff"/>
         <property key="poweroptions.powerenable" value="false"/>
-        <property key="programmerToGoFilePath"
-                  value="/home/sirdep/MPLABXProjects/HW5-SPI-16F1829.X/debug/default/PROJ_OPDR3-IRRemote-16F887_ptg"/>
-        <property key="programmerToGoImageName" value="PROJ_OPDR3-IRRemote-16F887_ptg"/>
+        <property key="programmerToGoImageName" value="ENDPROJ-ROTENC+POT_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.ledbrightness" value="5"/>

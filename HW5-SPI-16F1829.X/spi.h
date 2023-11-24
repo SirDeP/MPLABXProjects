@@ -3,6 +3,53 @@
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 
+#define PIC16F1829MSSP1 // Select correct PIC
+//#define PIC16F1829MSSP2
+//#define PIC16F887
+
+#ifdef PIC16F887
+// For the 16F887, only one SPI port:
+#define SCK_PIN             PORTCbits.RC3
+#define SDO_DDIR            TRISCbits.TRISC5   // DDIR = Data DIRection
+#define SCK_DDIR            TRISCbits.TRISC3
+#define SSPCON1BITS_SSPM    SSPCONbits.SSPM
+#define SSPCON1BITS_CKP     SSPCONbits.CKP
+#define SSPCON1BITS_SSPEN   SSPCONbits.SSPEN
+#define SSPSTATBITS_SMP     SSPSTATbits.SMP
+#define SSPSTATBITS_CKE     SSPSTATbits.CKE
+#define SSPSTATBITS_BF      SSPSTATbits.BF
+#define SSPIE_ENABLE        PIE1bits.SSPIE
+#define SSPBUFFER           SSPBUF
+#endif
+#ifdef PIC16F1829MSSP1
+// For the 16F1829, MSSP1:
+#define SCK_PIN             PORTBbits.RB6
+#define SDO_DDIR            TRISCbits.TRISC7
+#define SCK_DDIR            TRISBbits.TRISB6
+#define SSPCON1BITS_SSPM    SSP1CON1bits.SSPM
+#define SSPCON1BITS_CKP     SSP1CON1bits.CKP
+#define SSPCON1BITS_SSPEN   SSP1CON1bits.SSPEN
+#define SSPSTATBITS_SMP     SSP1STATbits.SMP
+#define SSPSTATBITS_CKE     SSP1STATbits.CKE
+#define SSPSTATBITS_BF      SSP1STATbits.BF
+#define SSPIE_ENABLE        PIE1bits.SSP1IE
+#define SSPBUFFER           SSP1BUF
+#endif
+#ifdef PIC16F1829MSSP2
+// For the 16F1829, MSSP2 (default alternate pin function assignment):
+#define SCK_PIN             PORTBbits.RB7
+#define SDO_DDIR            TRISCbits.TRISC1
+#define SCK_DDIR            TRISBbits.TRISB7
+#define SSPCON1BITS_SSPM    SSP2CON1bits.SSPM
+#define SSPCON1BITS_CKP     SSP2CON1bits.CKP
+#define SSPCON1BITS_SSPEN   SSP2CON1bits.SSPEN
+#define SSPSTATBITS_SMP     SSP2STATbits.SMP
+#define SSPSTATBITS_CKE     SSP2STATbits.CKE
+#define SSPSTATBITS_BF      SSP2STATbits.BF
+#define SSPIE_ENABLE        PIE4bits.SSP2IE
+#define SSPBUFFER           SSP2BUF
+#endif
+
 typedef enum {
     MST_OSC_DIV_04,   // 0x0: 0000
     MST_OSC_DIV_16,   // 0x1: 0001
@@ -35,10 +82,6 @@ typedef enum { CKE0_CPHA1_TRSMIT_IDL2ACT,
 void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_pol, txclkedge sdo_tx_edge);
 void spi_transmit(char c);
 char spi_read(void);
-
-#define PIC16F1829MSSP1 // Select correct PIC
-//#define PIC16F1829MSSP2
-//#define PIC16F887
 
 #endif	/* SPI_H */
 
