@@ -192,7 +192,7 @@
 //#include <proc/pic16f887.h>
 
 /* LEDs */
-#define MAX_AANTAL_LEDS 4
+#define MAX_LEDS 4
 
 /* Encoder */
 #define ENC_B PORTBbits.RB5
@@ -209,17 +209,17 @@
 /* (Object) Encoder */
 typedef struct _encoder
 {
-    int laatste_verandering_status;
-    int status;
-    int teller;
-    int oneven_teller;
+    int ENC_Last_State;
+    int ENC_State;
+    int Counter;
+    int OddCounter;
 } encoder;
 
 /* (Object) Potentiometer */
 typedef struct _potmeter
 {
-    int VU[MAX_AANTAL_LEDS + 1];
-    int die_berekende_adres;
+    int ADR[MAX_LEDS + 1];
+    int ADRESS;
 } potmeter;
 
 potmeter pm_1;
@@ -227,8 +227,8 @@ potmeter pm_1;
 encoder enc = {0};
 
 /* Functies */
-void VU_berekenaar(potmeter *pm_1);
-void led_regelaar(potmeter *pm_1);
+void ADC_berekenaar(potmeter *pm_1);
+void ADC_LEDS(potmeter *pm_1);
 
 void encoder_lezer(encoder *enc); // Leest encoder uit
 void bitshifter(encoder *enc); // Shift de bits afhankelijk van enc
@@ -240,165 +240,151 @@ void init_osc(void); // OSCILLATOR initialisatie
 void main(void)
 {
     pic_init();
-    /* Maak objecten aan: */
 
-
-
-    /* Initialiseren van variabelen: */
-    enc.laatste_verandering_status = 0;
-    enc.status = 0;
-    enc.teller = 0;
-    enc.oneven_teller = 0;
-    enc.laatste_verandering_status = ENC_A;
+    enc.ENC_Last_State = 0;
+    enc.ENC_State = 0;
+    enc.Counter = 0;
+    enc.OddCounter = 0;
+    enc.ENC_Last_State = ENC_A;
 
     /* ADC configuratie */
     ADCON0 = 0b00011111; // stel ADC ON0 in
     ADCON1bits.ADFM = 1; // Right justify
     while (1)
     {
-        //        switch (MODI_SCHAKELAAR)
-        //        {
-        //            case 0:
-        ////                encoder_lezer(&enc);
-        ////                bitshifter(&enc);
-        //                break;
-        //            case 1:
-        VU_berekenaar(&pm_1);
-        __delay_us(5); // delay voor debounce enzovoort
+        ADC_berekenaar(&pm_1);
+        __delay_us(5); // delay for Debounce
         GO = 1; // ADC0C0
         while (GO) continue;
-        led_regelaar(&pm_1);
-        //                break;
-        //        }
+        ADC_LEDS(&pm_1);
     }
 }
 
-void led_regelaar(potmeter *pm_1)
+void ADC_LEDS(potmeter *pm_1)
 {
-    for (int i = 0; i < MAX_AANTAL_LEDS; i++)
+    for (int i = 0; i < MAX_LEDS; i++)
     {
-        if (pm_1->die_berekende_adres > (pm_1->VU[i] + DEADZONE))
+        if (pm_1->ADRESS > (pm_1->ADR[i] + DEADZONE))
             PORTA = PORTA & ~(1 << i);
-        else if (pm_1->die_berekende_adres < (pm_1->VU[i] - DEADZONE))
+        else if (pm_1->ADRESS < (pm_1->ADR[i] - DEADZONE))
             PORTA = (unsigned char) (PORTA | (1 << i));
     }
 }
 
-void VU_berekenaar(potmeter *pm_1)
+void ADC_berekenaar(potmeter *pm_1)
 {
-    pm_1->die_berekende_adres = ADRESL + (ADRESH * 256); // UPDATE DE TOTALE ADRES L EN H in een VAR
-    pm_1->VU[0] = MAX_POT_METER / (MAX_AANTAL_LEDS + 1); // = MAX-POT-METER-RANGE/5 ~~204
+    pm_1->ADRESS = (ADRESH << 8) + ADRESL; // Combine ADRESL and ADRESH
+    pm_1->ADR[0] = MAX_POT_METER / (MAX_LEDS + 1); // = MAX-POT-METER-RANGE/5 ~~204
     /* Bereken die grenswaarden */
-    for (int i = 1; i <= MAX_AANTAL_LEDS; i++)
+    for (int i = 1; i <= MAX_LEDS; i++)
     {
-        pm_1->VU[i] = pm_1->VU[0] * (i + 1); // VU[1] = (1+1)x204; VU[2] = (2+1)x204; VU[3] = (3+1)x204; VU[4] = (4+1)x204;
+        pm_1->ADR[i] = pm_1->ADR[0] * (i + 1); // ADR[1] = (1+1)x204; ADR[2] = (2+1)x204; ADR[3] = (3+1)x204; ADR[4] = (4+1)x204;
     }
-}
-
-void bitshifter(encoder *enc)
-{
-    /* Bitshifting van de LEDs: */
-    PORTA = PORTA & ~(1 << (enc->oneven_teller)); // Bitshift & ~ zorgt voor dat de LEDs uitgaan, maar omdat de PORTA geinvert is, gaan ze juist aan
-    __delay_ms(1);
-    PORTA = PORTA | (unsigned char) (1 << (enc->oneven_teller)); // Bitshift & ~ zorgt voor dat de LEDs aan gaan, maar omdat de PORTA geinvert is, gaan ze juist uit
-    __delay_ms(1);
 }
 
 void encoder_lezer(encoder *enc)
 {
-    enc->status = ENC_A; // Lees de huidige status af door deze gelijk te stellen aan output A (ENC_A)
-    if (enc->status != enc->laatste_verandering_status)
+    ENC_State = REA; // Current State of A pin of RotaryEncoder
+//    if (ENC_State != ENC_Last_State) // Compare current state of REA with last state of REA
+//    {
+//        // If the state of REB differs REA state, that means the encoder is rotating clockwise
+//        if (REB != ENC_State) {
+//            counter++;
+//            if (counter % 2 != 0) // If counter is odd increase OddCounter variable
+//                OddCounter++;
+//        }
+//        else if (REA == ENC_State) // Counterclockwise rotation
+//        {
+//            counter--;
+//            if (counter % 2 != 0) // If counter is odd decrease OddCounter variable
+//                OddCounter--;
+//        }
+//        if (OddCounter < 0) // If OddCounter is smaller than 0 jump OddCounter and Counter to their respective highest allowed values
+//        {
+//            OddCounter = MAX - 1;
+//        }
+//    }
+//    ENC_Last_State = ENC_State; // Update last encoder state with current encoder state
+//    PORTA &= ~(1 << (OddCounter)); // Turn LED on or off depending on OddCounter
+//    PORTA |= (1 << (OddCounter)); // Inverted from normal, but PORTA is inverted so in this case correct
+//    if (OddCounter > MAX - 1) // Reset Counter and OddCounter to their standard values
+//    {
+//        OddCounter = 0;
+//        counter = 0;
+//    }
+    enc->ENC_State = ENC_A; // Current State of A pin of RotaryEncoder
+    if (enc->ENC_State != enc->ENC_Last_State)
     {
-        if (ENC_B != enc->status) // Als ENC_B veranderd ten opzichte van ENC_A, dan betekent het dat hij aan het draaien is
+        if (ENC_B != enc->ENC_State) // Compare current state of REA with last state of REA
         {
-            enc->teller++; // Als er gedraaid wordt, doe dan teller plus 1
-            if (enc->teller % 2 == 1) // Check of teller oneven is
+            enc->Counter++;
+            if (enc->Counter % 2 == 1) // If counter is odd increase OddCounter variable
             {
-                enc->oneven_teller++; // Oneven-teller plus 1
+                enc->OddCounter++; 
             }
         }
-        else if (ENC_A == enc->status) // Check of nu de andere kant op wordt gedraaid, zo ja:
+        else if (ENC_A == enc->ENC_State) // Counterclockwise rotation
         {
-            enc->teller--; // Doe teller min 1
-            if (enc->teller % 2 == 1) // Check of teller oneven is
+            enc->Counter--; // Doe Counter min 1
+            if (enc->Counter % 2 == 1) // If counter is odd decrease OddCounter variable
             {
-                enc->oneven_teller--; // Oneven-teller min 1
+                enc->OddCounter--;
             }
         }
-        /* Check of oneven_teller niet meer mag zijn dan het aantal ingestelde LEDs: */
-        if (enc->oneven_teller == -1)
+        // If OddCounter is smaller than 0 jump OddCounter to the highest allowed value
+        if (enc->OddCounter < 0)
         {
-            enc->oneven_teller = MAX_AANTAL_LEDS - 1;
+            enc->OddCounter = MAX_LEDS - 1;
         }
-        if (enc->oneven_teller > MAX_AANTAL_LEDS - 1)
+        // If OddCounter is greater than the highest allowed value jump OddCounter to 0
+        if (enc->OddCounter > MAX_LEDS - 1)
         {
-            enc->oneven_teller = 0; // Als het groter wordt, reset hem dan naar 0
+            enc->OddCounter = 0;
         }
     }
-    enc->laatste_verandering_status = enc->status;
+    enc->ENC_Last_State = enc->ENC_State;
+        /* Bitshifting van de LEDs: */
+    PORTA = PORTA & ~(1 << (enc->OddCounter)); // Bitshift & ~ Turn LEDs On
+    __delay_ms(1);
+    PORTA = PORTA | (unsigned char) (1 << (enc->OddCounter)); // Bitshift & ~ Turn LEDs Off
+    __delay_ms(1);
 }
 
 void pic_init(void)
 {
     init_osc();
     init_gpio();
-    PORTA = 0b1111; // Initialiseer PORTA zodat alle LEDs uitstaan!
+    PORTA = 0b1111; // Turn LEDs OFF
 }
 
 void init_gpio(void)
 {
-    TRISA = 0; // Alle LEDs moeten op output ingesteld worden (je kan ook per bit instellen)
-    TRISEbits.TRISE2 = 1; // register E (POT) == input
-    TRISBbits.TRISB4 = 1; // Pin van encoder moet als input
-    TRISBbits.TRISB5 = 1; // Pin van encoder moet als input
-    ANSEL = 0b1000000; // Analog uit: ANS0 T/M ANS6, ANS7 moet AAN (POT)
-    ANSELH = 0; // Analog uit voor hoge register voor de encoder
+    TRISA = 0; // All LEDS as output
+    TRISEbits.TRISE2 = 1; // Potmeter == input
+    TRISBbits.TRISB4 = 1; // Rot Enc Pins == Input
+    TRISBbits.TRISB5 = 1; // 
+    ANSEL = 0b1000000; // Analog off: ANS0 T/M ANS6, ANS7 on (POT)
+    ANSELH = 0; // Analog off: ANS8 T/M ANS13
 
-    IOCBbits.IOCB4 = 1;
+    IOCBbits.IOCB4 = 1; // Enable Interrupt on change for Rotary Encoder
     IOCBbits.IOCB5 = 1;
    
-    WPUB = 0;
+    WPUB = 0; // Disable weak pull up resistors on B
     INTCONbits.GIE = 1;
-    //INTCONbits.PEIE = 1;
-    //INTCONbits.INTE = 1;
     INTCONbits.RBIE = 1;
-
     INTCONbits.RBIF = 0;
 }
 
 void init_osc(void)
 {
-    // Do it like this, it's easily compared to the datasheet:
-    // System Clock Select (SCS)
-    //  OSCCON = 0b00111110;
     OSCCONbits.SCS = 0b1; // Clk determined by FOSC in Conf-1
-
-    /* 
-     * bit 6-4 Internal Oscillator Frequency Select bits
-    111 = 8 MHz
-    110 = 4 MHz (default)
-    101 = 2 MHz
-    100 = 1 MHz
-    011 = 500 kHz
-    010 = 250 kHz
-    001 = 125 kHz
-    000 = 31 kHz (LFINTOSC)
-     */
     OSCCONbits.IRCF = 0b111; // 8 MHz clock speed | Internal Resistor-Capacitor Frequency select (IRCF)
-    // Software Phase-Locked Loop ENable (SPLLEN)
     OSCCONbits.OSTS = 0b1; // OSC startup time
-    //    OSCCONbits.HTS = 0b1;
-    //    OSCCONbits.LTS = 0b1;
-
-    //OSSCONbits.LTS = 0b1;
-    // XOR (Don't do this, it's unmaintainable)
-    // OSCCON = 0b00111000;
     while (OSCCONbits.HTS != 0b1);
 }
 
 void __interrupt() isr(void)
 {
-
     if (INTCONbits.RBIF == 1)
     {
         PORTA = 0b1111;
@@ -406,8 +392,6 @@ void __interrupt() isr(void)
         {
             __delay_us(1);
             encoder_lezer(&enc);
-            bitshifter(&enc);
-            
         }
         INTCONbits.RBIF = 0;
     }
