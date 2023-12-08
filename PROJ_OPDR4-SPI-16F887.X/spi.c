@@ -18,7 +18,7 @@ void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_pol, 
         SCK_DDIR = 0; // Set SCK_DDIR for SCK to behave like an output
         SSPCON1BITS_CKP = clock_pol; // The data line `idle state' (CKP bit) needs to be set according to argument `clock_pol'
     }
-    if (clock_pol == 0 || SCK_PIN == 0) {
+    if (clock_pol == 0) {
         sdo_tx_edge ^= 1;
     }
         SSPSTATBITS_CKE = sdo_tx_edge; // Set the CKE bit according to the `sdo_tx_edge'
