@@ -7,7 +7,7 @@
  **********************************************************************/
 
 // PIC16F887 Configuration Bit Settings
-#define _XTAL_FREQ      4000000 // Used by the XC8 delay_ms(x) macro
+#define _XTAL_FREQ      8000000 // Used by the XC8 delay_ms(x) macro
 // 'C' source line config statements
 
 // CONFIG1
@@ -55,7 +55,7 @@ void pic_init(void)
     init_osc();
     init_timers();
     init_gpio();
-    spi_init(MST_OSC_DIV_04, SMP0_SDI_MIDDLE, CKP0_CPOL0_IDLE_LOW, 1);
+    spi_init(MST_OSC_DIV_04, SMP0_SDI_MIDDLE, CKP0_CPOL0_IDLE_LOW, CKE0_CPHA1_TRSMIT_IDL2ACT);
 }
 
 void init_gpio(void)
@@ -77,7 +77,7 @@ void init_osc(void)
     // System Clock Select (SCS)
     OSCCONbits.SCS = 0b1; // Internal Clock selected
     // Internal Resistor-Capacitor Frequency select (IRCF)
-    OSCCONbits.IRCF = 0b111; // 4MHz clock speed
+    OSCCONbits.IRCF = 0b111; // 8MHz clock speed
     OSCCONbits.OSTS = 0b1; // OSC startup time
     while (OSCCONbits.HTS != 0b1); // Wait with booting until clock is stable
 }
