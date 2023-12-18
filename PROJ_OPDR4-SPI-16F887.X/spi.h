@@ -80,7 +80,7 @@ typedef enum { CKE0_CPHA1_TRSMIT_IDL2ACT,
 
 // Prototypes
 void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_pol, txclkedge sdo_tx_edge);
-void spi_transmit(int c);
+void spi_transmit(char c);
 char spi_read(void);
 
 #endif	/* SPI_H */

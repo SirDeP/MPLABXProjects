@@ -27,13 +27,7 @@ void spi_init(sspmode mst_slv_oscdiv, rxsmpmoment sdi_rx_smp, clkpol clock_pol, 
     SSPCON1BITS_SSPEN = 1; // Enable the SPI module (by setting SSPEN bit).
 }
 
-void spi_transmit(int c)
+void spi_transmit(char c)
 {
     SSPBUFFER = c; // FILL BUFFER
-}
-
-char spi_read() // Read the received data
-{
-    while (!SSPSTATBITS_BF); // Wait for Data Receive complete
-    return (SSPBUFFER);
 }
