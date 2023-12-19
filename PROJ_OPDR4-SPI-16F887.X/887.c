@@ -28,7 +28,8 @@
 
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
-#define LED PORTAbits.RA0
+//#define LED PORTAbits.RA0
+#define NUMBER_OF_LEDS 8
 
 #include <xc.h>
 #include "spi.h"
@@ -65,7 +66,6 @@ void init_gpio(void)
     //TRISBbits.TRISB0 = 1;
     ANSEL = 0;
     ANSELH = 0;
-    LED = 1;
     GIE = 1;
     PEIE = 1;
     TMR1IE = 1;
@@ -111,7 +111,7 @@ void __interrupt() isr(void)
         if (on == 1)
         {
             i++;
-            if (i >= 8)
+            if (i >= NUMBER_OF_LEDS)
                 i = 0;
         }
         TMR1IF = 0; // interrupt must be cleared by software
