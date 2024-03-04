@@ -29,7 +29,7 @@
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 //#define LED PORTAbits.RA0
-#define NUMBER_OF_LEDS 8
+#define NUMBER_OF_LEDS 5
 
 #include <xc.h>
 #include "spi.h"
@@ -86,7 +86,7 @@ void init_osc(void)
 void init_timers(void)
 {
 //Timer1 Registers Prescaler= 2 - TMR1 Preset = 65535 - Freq = 1000000.00 Hz - Period = 0.000001 seconds
-T1CONbits.T1CKPS1 = 0;   // bits 5-4  Prescaler Rate Select bits
+T1CONbits.T1CKPS1 = 1;   // bits 5-4  Prescaler Rate Select bits
 T1CONbits.T1CKPS0 = 1;   // bit 4
 T1CONbits.T1OSCEN = 1;   // bit 3 Timer1 Oscillator Enable Control bit 1 = on
 T1CONbits.T1SYNC = 1;    // bit 2 Timer1 External Clock Input Synchronization Control bit...1 = Do not synchronize external clock input
@@ -102,9 +102,8 @@ void __interrupt() isr(void)
         on ^= 1;
         spi_buffer = 1;
         spi_buffer = spi_buffer << i;
-        if (on == 1) {
+        if (on == 1)
             PORTCbits.RC2 = 1;
-        }
         else if (on == 0)
             PORTCbits.RC2 = 0;
         spi_transmit((char)spi_buffer);
