@@ -34,7 +34,7 @@
         <platform>2</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC16Fxxx_DFP" vendor="Microchip" version="1.5.151"/>
+        <pack name="PIC16Fxxx_DFP" vendor="Microchip" version="1.6.156"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -72,7 +72,7 @@
         <property key="define-macros" value=""/>
         <property key="disable-optimizations" value="true"/>
         <property key="extra-include-directories"
-                  value="../../../../opt/microchip/xc8/v2.45/pic/include/c90;../../../../opt/microchip/xc8/v2.45/pic/include/c99;../../../../opt/microchip/xc8/v2.45/pic/include/legacy;../../../../opt/microchip/xc8/v2.45/pic/include/proc"/>
+                  value="../../../../opt/microchip/xc8/v2.45/pic/include/proc;../../../../opt/microchip/xc8/v2.45/pic/include/legacy"/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="garbage-collect-data" value="true"/>
         <property key="garbage-collect-functions" value="true"/>
@@ -179,7 +179,7 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-1fff"/>
         <property key="poweroptions.powerenable" value="true"/>
-        <property key="programmerToGoImageName" value="PROJ_OPDR1_ptg"/>
+        <property key="programmerToGoImageName" value="PROJ_OPDR3-IRRemote-16F887_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.ledbrightness" value="5"/>
@@ -241,7 +241,7 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-1fff"/>
         <property key="poweroptions.powerenable" value="true"/>
-        <property key="programmerToGoImageName" value="PROJ_OPDR1_ptg"/>
+        <property key="programmerToGoImageName" value="PROJ_OPDR3-IRRemote-16F887_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.ledbrightness" value="5"/>
